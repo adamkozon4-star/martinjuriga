@@ -1,4 +1,7 @@
-// Kľúč z https://web3forms.com (zadarmo). Bez neho formulár vyzve na telefonát.
+// Dopyty chodia na tento e-mail cez formsubmit.co (zadarmo, bez registrácie).
+// Prvý odoslaný dopyt pošle na e-mail potvrdzovaciu správu, Martin ju raz potvrdí.
+// Ak by sa neskôr použil web3forms.com, stačí vyplniť WEB3FORMS_KEY.
+const FORM_EMAIL = 'martin.juriga@merucompany.sk';
 const WEB3FORMS_KEY = '';
 const PHONE = '+421 915 448 705';
 
@@ -212,25 +215,32 @@ form.addEventListener('submit', async (e) => {
     return;
   }
 
-  if (!WEB3FORMS_KEY) {
-    status.textContent = `Formulár ešte nie je aktívny. Zavolajte mi prosím na ${PHONE}.`;
-    status.classList.add('err');
-    return;
-  }
-
   const btn = $('button[type="submit"]', form);
   btn.disabled = true;
   status.textContent = 'Odosielam…';
   try {
     const data = Object.fromEntries(new FormData(form));
-    data.access_key = WEB3FORMS_KEY;
-    const res = await fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify(data),
-    });
-    const json = await res.json();
-    if (!json.success) throw new Error(json.message);
+    if (data.botcheck) throw new Error('spam');
+    delete data.botcheck;
+    let ok;
+    if (WEB3FORMS_KEY) {
+      data.access_key = WEB3FORMS_KEY;
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(data),
+      });
+      ok = (await res.json()).success;
+    } else {
+      const res = await fetch(`https://formsubmit.co/ajax/${FORM_EMAIL}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ ...data, _subject: data.subject || 'Nový dopyt z webu', _template: 'table', _captcha: 'false' }),
+      });
+      const json = await res.json();
+      ok = json.success === true || json.success === 'true';
+    }
+    if (!ok) throw new Error('send failed');
     form.reset();
     status.textContent = 'Ďakujem! Ozvem sa vám do 24 hodín.';
     status.classList.add('ok');

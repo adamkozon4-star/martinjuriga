@@ -9,9 +9,8 @@ Každý push do vetvy `main` sa nasadí automaticky. Vlastnú doménu pripojíš
 ## Ešte treba doplniť
 | Čo | Kde |
 |---|---|
-| Kľúč formulára z [web3forms.com](https://web3forms.com), zaregistrovaný na martin.juriga@merucompany.sk | `main.js` (`WEB3FORMS_KEY`) |
+| Formulár: po prvom odoslanom dopyte príde na martin.juriga@merucompany.sk e-mail od FormSubmit, Martin klikne na potvrdenie (iba raz) | `main.js` (`FORM_EMAIL`) |
 | Samostatný finančný agent, v mene ktorého Martin koná (`[doplniť]`) | pätička v `index.html` |
-| Odkaz na Facebook profil (zakomentovaný v pätičke) | pätička v `index.html` |
 | Adresa kancelárie | kontakt a pätička v `index.html` |
 | Skutočné recenzie | `main.js` (`REVIEWS`) |
 
