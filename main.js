@@ -1,6 +1,6 @@
 // Kľúč z https://web3forms.com (zadarmo). Bez neho formulár vyzve na telefonát.
 const WEB3FORMS_KEY = '';
-const PHONE = '+421 900 000 000';
+const PHONE = '+421 915 448 705';
 
 const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
@@ -242,5 +242,26 @@ form.addEventListener('submit', async (e) => {
   }
 });
 $$('input', form).forEach((el) => el.addEventListener('input', () => el.classList.remove('is-invalid')));
+
+/* ---------- počítadlá čísel ---------- */
+const counters = $$('[data-count]');
+const countIO = new IntersectionObserver((entries) => {
+  entries.forEach((e) => {
+    if (!e.isIntersecting) return;
+    countIO.unobserve(e.target);
+    const el = e.target;
+    const target = +el.dataset.count;
+    const suffix = el.dataset.suffix || '';
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const t0 = performance.now();
+    const tick = (t) => {
+      const k = Math.min(1, (t - t0) / 1400);
+      el.textContent = Math.round(target * (1 - Math.pow(1 - k, 3))) + suffix;
+      if (k < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  });
+}, { threshold: 0.6 });
+counters.forEach((c) => countIO.observe(c));
 
 $('#year').textContent = new Date().getFullYear();
