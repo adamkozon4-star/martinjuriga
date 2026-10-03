@@ -79,10 +79,10 @@ const updateSteps = () => {
   steps.style.setProperty('--p', `${12 + p * 76}%`);
   const active = Math.ceil(p * stepItems.length + 0.2);
   stepItems.forEach((s, i) => s.classList.toggle('is-active', i < active && p > 0));
-  // 3D cesta sa vyfarbuje podľa vlastnej polohy: začne pri spodku obrazovky a skončí, kým je celá viditeľná
+  // 3D cesta sa vyfarbuje podľa vlastnej polohy: vrch dosky od 80 % po 30 % výšky obrazovky
   if (road && road.offsetParent) {
     const rr = road.getBoundingClientRect();
-    const pr = Math.min(1, Math.max(0, (vh * 0.95 - rr.top) / (rr.height * 0.25 + vh * 0.3)));
+    const pr = Math.min(1, Math.max(0, (vh * 0.8 - rr.top) / (vh * 0.5)));
     road.style.setProperty('--p', pr.toFixed(3));
     const on = Math.ceil(pr * roadTiles.length + 0.15);
     roadTiles.forEach((t, i) => t.classList.toggle('is-active', i < on && pr > 0));
