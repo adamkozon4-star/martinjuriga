@@ -1228,3 +1228,9 @@ main, .footer, .header { --ink: var(--page-text); --text: var(--page-text); --mu
 @media (prefers-reduced-motion: reduce) {
   .hero__title .line--chaos i, .hero .btn--primary::after { animation: none !important; }
 }
+
+/* fotka „rád pomôžem“ hneď vedľa nadpisu krokov */
+#postup .section-head { position: relative; }
+.head-face { position: absolute; left: calc(100% + 1.5rem); top: 50%; transform: translateY(-50%) rotate(5deg); animation: bob 8s ease-in-out infinite; }
+.head-face .face { width: 120px; height: 120px; }
+@media (max-width: 1100px) { .head-face { display: none; } }
