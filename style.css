@@ -941,7 +941,7 @@ input[type="range"]:focus-visible { box-shadow: 0 0 0 4px rgba(107, 146, 255, .3
   -webkit-mask-image: linear-gradient(#000 72%, transparent 99%); mask-image: linear-gradient(#000 72%, transparent 99%);
   animation: personIn 1.3s cubic-bezier(.2, .7, .2, 1) .2s both; }
 .svc-stage__pct { position: absolute; z-index: 3; left: 4%; bottom: 14%; width: 118px; filter: drop-shadow(0 20px 26px rgba(47, 98, 255, .25)); animation: float 7s ease-in-out infinite; animation-delay: -2.5s; }
-.svc-stage .h-card--free { left: auto; right: 2%; top: 16%; }
+.svc-stage .h-card--free { left: auto; right: 0; top: 2%; }
 .svc-stage .h-card--badge { right: 0; bottom: 18%; }
 
 /* karty so sklenenými ilustráciami */
@@ -985,11 +985,11 @@ input[type="range"]:focus-visible { box-shadow: 0 0 0 4px rgba(107, 146, 255, .3
 
 @media (max-width: 900px) {
   .svc-hero--stage .svc-hero__copy { padding-bottom: 0; }
-  .svc-stage { min-height: 0; justify-content: center; max-width: 520px; width: 100%; margin-inline: auto; padding-top: 2rem; }
+  .svc-stage { min-height: 0; justify-content: center; max-width: 520px; width: 100%; margin-inline: auto; padding-top: 4.6rem; }
   .svc-stage__person { width: min(380px, 78%); margin-right: -14%; }
   .svc-stage__house { width: 54%; left: 0; top: 10%; }
   .svc-stage__pct { width: 84px; left: 6%; bottom: 10%; }
-  .svc-stage .h-card--free { top: 2%; right: 0; }
+  .svc-stage .h-card--free { top: 1rem; right: 0; }
   .svc-stage .h-card--badge { bottom: 8%; }
   .geo-wrap { grid-template-columns: 1fr; }
   .geo__scene { margin: -6% -6% -10%; }
