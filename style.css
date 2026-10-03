@@ -1187,3 +1187,11 @@ main, .footer, .header { --ink: var(--page-text); --text: var(--page-text); --mu
 .promise__text mark { background: none; color: var(--blue); padding: 0; margin: 0; }
 .promise__note { color: #c9c2b9; }
 .promise__text, .promise__note { text-shadow: 0 2px 24px rgba(0, 0, 0, .65); }
+
+/* karta bývanie: možnosti pre klientov, ktorí už úver majú */
+.bento__opts { list-style: none; padding: 0; margin: -.4rem 0 1.3rem; display: grid; gap: .5rem; }
+.bento__opts a { display: flex; flex-direction: column; padding: .65rem .9rem; border-radius: 14px; background: #fff; border: 1px solid #eadfd5; transition: border-color .25s, transform .25s var(--ease); }
+.bento__opts a:hover { border-color: var(--blue); transform: translateX(3px); }
+.bento__opts b { font-size: .95rem; color: #1c1c1c; }
+.bento__opts span { font-size: .84rem; color: #7e756d; }
+#sluzby .section-head p { max-width: 34rem; color: #d6cfc6; font-size: 1.15rem; }
