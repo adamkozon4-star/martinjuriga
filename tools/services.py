@@ -42,7 +42,6 @@ def nav(home, current=None):
             <a href="{pre}#sluzby" class="nav__all">Prehľad všetkých služieb <span aria-hidden="true">→</span></a>
           </div>
         </div>
-        <a href="{pre}#situacie">Pre koho</a>
         <a href="{pre}#o-mne">O mne</a>
         <a href="{pre}#faq">Otázky</a>
       </nav>'''
