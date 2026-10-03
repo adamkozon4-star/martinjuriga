@@ -37,5 +37,5 @@ Každá služba má podstránku v priečinku `/<slug>/index.html` (napr. `hypote
 
 Nová podstránka = nový súbor v `tools/pages/` + záznam v `PAGES`. Kým súbor neexistuje, odkaz v menu vedie na sekciu Služby.
 
-Texty väčšiny podstránok (refinancovanie, sporenie pre deti, dôchodok, poistenia, finančný plán) sú v `tools/service_pages.py`. Po úprave spusti `python3 tools/service_pages.py && python3 tools/build_pages.py`. Hypotéky a investovanie sú písané priamo v `tools/pages/`. Sklenené ilustrácie sú v `tools/glass/`, 3D mapa v `tools/make_map.py`, 3D cesta krokov v `tools/make_road.py`.
+Texty väčšiny podstránok (refinancovanie, sporenie pre deti, dôchodok, poistenia, finančný plán) sú v `tools/service_pages.py`. Po úprave spusti `python3 tools/service_pages.py && python3 tools/build_pages.py`. Hypotéky a investovanie sú písané priamo v `tools/pages/`. Sklenené ilustrácie sú v `tools/glass/`, 3D mapa v `tools/make_map.py`, 3D cesta krokov v `tools/make_road.py`, ostrovčeky v sekcii životných etáp v `tools/make_life.py`.
 Priečinok `tools/` sa na Vercel nenasadzuje (`.vercelignore`).

@@ -1058,3 +1058,35 @@ input[type="range"]:focus-visible { box-shadow: 0 0 0 4px rgba(107, 146, 255, .3
 .svc-stage__house--chart { width: 52%; left: -4%; top: 4%; }
 .svc-stage__house--icon { width: 44%; left: -2%; top: 8%; }
 @media (max-width: 900px) { .svc-stage__house--icon { width: 42%; left: 2%; top: 12%; } }
+
+/* ---------- Životné etapy: 3D ostrovčeky ---------- */
+.life__visual { gap: 0; }
+.life__visual::before, .life__visual::after { pointer-events: none; }
+.isle { position: relative; width: min(380px, 92%); perspective: 1200px; margin: -6% 0 2%; }
+.isle__plane { --rx: 56deg; --rz: -24deg; position: relative; aspect-ratio: 1; border-radius: 18%; transform-style: preserve-3d; transform: rotateX(var(--rx)) rotateZ(var(--rz)) scale(.8);
+  background: linear-gradient(135deg, #ffffff, #f2f6ff); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .9);
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, .96), rgba(244, 247, 255, .96)), repeating-linear-gradient(0deg, transparent 0 23px, #e2e9f6 23px 24px), repeating-linear-gradient(90deg, transparent 0 23px, #e2e9f6 23px 24px);
+  background-blend-mode: multiply; }
+.isle__plane::before { content: ""; position: absolute; inset: 0; border-radius: inherit; background: var(--tone-2); transform: translateZ(-18px); }
+.isle__plane::after { content: ""; position: absolute; inset: 8% 4% -8%; border-radius: inherit; background: rgba(11, 16, 32, .22); filter: blur(26px); transform: translateZ(-40px); }
+.isle__obj { position: absolute; width: 0; height: 0; transform-style: preserve-3d; transform: rotateZ(calc(-1 * var(--rz))) rotateX(calc(-1 * var(--rx))); }
+.isle__obj-in { position: absolute; bottom: 0; left: 0; translate: -50% 0; display: block; }
+.isle__obj .glass { display: block; width: 92px; filter: drop-shadow(0 14px 16px rgba(47, 98, 255, .22)); }
+.isle__obj--lg .glass { width: 150px; }
+.life__panel:not([hidden]) .isle__obj-in { animation: isleIn .8s cubic-bezier(.3, 1.4, .5, 1) both; }
+.life__panel:not([hidden]) .isle__obj--sm:nth-child(2) .isle__obj-in { animation-delay: .12s; }
+.life__panel:not([hidden]) .isle__obj--sm:nth-child(3) .isle__obj-in { animation-delay: .22s; }
+.life__panel:not([hidden]) .isle__obj--lg .isle__obj-in { animation: isleIn .8s cubic-bezier(.3, 1.4, .5, 1) both, isleBob 5s ease-in-out .8s infinite; }
+@keyframes isleIn { from { opacity: 0; transform: translateY(-40px); } }
+@keyframes isleBob { 50% { transform: translateY(-8px); } }
+.life__chips a { display: inline-flex; gap: .35rem; padding: .5rem .95rem; border-radius: 999px; background: rgba(255, 255, 255, .85); font-size: .86rem; font-weight: 600; color: var(--ink);
+  backdrop-filter: blur(6px); transition: background .25s, color .25s, transform .25s var(--ease); }
+.life__chips a span { padding: 0; background: none; backdrop-filter: none; border-radius: 0; font-size: inherit; color: var(--blue); transition: transform .25s var(--ease); }
+.life__chips a:hover { background: var(--ink); color: #fff; transform: translateY(-2px); }
+.life__chips a:hover span { color: #fff; transform: translateX(3px); }
+@media (max-width: 600px) {
+  .isle { width: 100%; margin: -10% 0 0; }
+  .isle__obj .glass { width: 64px; }
+  .isle__obj--lg .glass { width: 108px; }
+}
+@media (prefers-reduced-motion: reduce) { .isle__obj-in { animation: none !important; } }
