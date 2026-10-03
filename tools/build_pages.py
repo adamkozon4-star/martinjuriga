@@ -22,6 +22,26 @@ PAGES = {
     title='Investovanie Orava – Dolný Kubín, Námestovo, Tvrdošín, Žilina | Martin Juriga',
     desc='Pravidelné aj jednorazové investovanie nastavené podľa vašich cieľov. Vysvetlím, ako investovanie funguje, porovnáme možnosti a nastavíme plán. Orava, Žilina aj online.',
     tema='Investície'),
+  'sporenie-pre-deti': dict(
+    title='Sporenie pre deti Orava – Dolný Kubín, Námestovo, Žilina | Martin Juriga',
+    desc='Sporenie a investovanie pre deti na štúdium, prvé bývanie či štart do života. Pomôžem vám vybrať riešenie a nastaviť sumu. Orava, Žilina aj online.',
+    tema='Investície'),
+  'dochodok': dict(
+    title='Dôchodok, II. a III. pilier Orava – Dolný Kubín, Námestovo, Žilina | Martin Juriga',
+    desc='Kontrola II. piliera, III. pilier a investovanie na dôchodok. Pomôžem vám nastaviť plán, aby ste sa nespoliehali len na štát. Orava, Žilina aj online.',
+    tema='Dôchodok'),
+  'zivotne-poistenie': dict(
+    title='Životné poistenie Orava – Dolný Kubín, Námestovo, Žilina | Martin Juriga',
+    desc='Životné poistenie nastavené na skutočné riziká: vážne choroby, úraz, invaliditu a zabezpečenie rodiny. Porovnanie viacerých poisťovní. Orava, Žilina aj online.',
+    tema='Poistenie'),
+  'majetkove-poistenie': dict(
+    title='Poistenie domu, bytu a domácnosti Orava – Dolný Kubín, Námestovo, Žilina | Martin Juriga',
+    desc='Poistenie nehnuteľnosti, domácnosti a zodpovednosti so správne nastavenou poistnou sumou. Porovnanie viacerých poisťovní. Orava, Žilina aj online.',
+    tema='Poistenie'),
+  'financny-plan': dict(
+    title='Finančný plán Orava – Dolný Kubín, Námestovo, Žilina | Martin Juriga',
+    desc='Bezplatný finančný plán: analýza zmlúv, rezerva, ciele, poistenie aj dôchodok v jednom prehľadnom pláne. Orava, Žilina aj online.',
+    tema='Finančný plán'),
 }
 
 idx = open('index.html').read()
