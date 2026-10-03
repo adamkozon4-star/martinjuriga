@@ -9,7 +9,7 @@ Každý push do vetvy `main` sa nasadí automaticky. Vlastnú doménu pripojíš
 ## Ešte treba doplniť
 | Čo | Kde |
 |---|---|
-| Formulár cez Resend: `RESEND_API_KEY` a `CONTACT_FROM` (formular@send.peakstudio.sk) sú nastavené vo Verceli, `CONTACT_TO` je voliteľné | `api/contact.js` |
+| Formulár cez Resend: `RESEND_API_KEY` a `CONTACT_FROM` (formular@send.peakstudio.sk) sú nastavené vo Verceli, `CONTACT_TO` a `CONTACT_BCC` (skrytá kópia, adresy oddelené čiarkou) sú voliteľné | `api/contact.js` |
 | Samostatný finančný agent, v mene ktorého Martin koná (`[doplniť]`) | pätička v `index.html` |
 | Adresa kancelárie | kontakt a pätička v `index.html` |
 | Skutočné recenzie | `main.js` (`REVIEWS`) |

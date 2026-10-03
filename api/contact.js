@@ -1,11 +1,14 @@
 // Kontaktný formulár: prijme dopyt z webu a pošle ho Martinovi e-mailom cez Resend (resend.com).
 // Premenné prostredia (Vercel → Settings → Environment Variables):
 //   RESEND_API_KEY  povinné, API kľúč z Resend
-//   CONTACT_TO      komu chodia dopyty (predvolene martin.juriga@merucompany.sk)
+//   CONTACT_TO      komu chodia dopyty, viac adries oddeľ čiarkou (predvolene martin.juriga@merucompany.sk)
+//   CONTACT_BCC     voliteľné, skrytá kópia, viac adries oddeľ čiarkou
 //   CONTACT_FROM    odosielateľ, musí byť z overenej domény v Resend,
 //                   napr. "Web Martin Juriga <web@martinjuriga.sk>"
 
-const TO = process.env.CONTACT_TO || 'martin.juriga@merucompany.sk';
+const list = (v) => (v || '').split(',').map((a) => a.trim()).filter(Boolean);
+const TO = list(process.env.CONTACT_TO || 'martin.juriga@merucompany.sk');
+const BCC = list(process.env.CONTACT_BCC);
 const FROM = process.env.CONTACT_FROM || 'Web Martin Juriga <onboarding@resend.dev>';
 const TOPICS = ['Finančný plán', 'Investície', 'Hypotéka', 'Poistenie', 'Dôchodok'];
 
@@ -62,7 +65,8 @@ export default async function handler(req, res) {
       headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({
         from: FROM,
-        to: [TO],
+        to: TO,
+        ...(BCC.length ? { bcc: BCC } : {}),
         subject: `Nový dopyt: ${tema} – ${meno}`,
         html,
         text,
