@@ -16,7 +16,7 @@ const mobileBar = $('.mobile-bar');
 const onScroll = () => {
   const y = window.scrollY;
   header.classList.toggle('is-scrolled', y > 20);
-  mobileBar.classList.toggle('is-visible', y > window.innerHeight * 0.7);
+  if (mobileBar) mobileBar.classList.toggle('is-visible', y > window.innerHeight * 0.7);
 };
 window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
@@ -29,6 +29,25 @@ $$('.nav a').forEach((a) => a.addEventListener('click', () => {
   header.classList.remove('menu-open');
   burger.setAttribute('aria-expanded', 'false');
 }));
+
+/* ---------- rozbaľovacie menu Služby ---------- */
+$$('.nav__drop').forEach((drop) => {
+  const toggle = $('.nav__toggle', drop);
+  const setOpen = (open) => {
+    drop.classList.toggle('is-open', open);
+    toggle.setAttribute('aria-expanded', open);
+  };
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    setOpen(!drop.classList.contains('is-open'));
+  });
+  document.addEventListener('click', (e) => { if (!drop.contains(e.target)) setOpen(false); });
+  drop.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    setOpen(false);
+    toggle.focus();
+  });
+});
 
 /* ---------- postupné zobrazovanie ---------- */
 const io = new IntersectionObserver((entries) => {
@@ -51,6 +70,7 @@ $$('.reveal').forEach((el) => {
 const steps = $('.steps');
 const stepItems = $$('.step');
 const updateSteps = () => {
+  if (!steps) return;
   const r = steps.getBoundingClientRect();
   const vh = window.innerHeight;
   const p = Math.min(1, Math.max(0, (vh * 0.75 - r.top) / (r.height + vh * 0.25)));
@@ -161,7 +181,7 @@ profiles.forEach((btn) => btn.addEventListener('click', () => {
 }));
 
 // ručná zmena výnosu zruší výber stratégie
-inputs.rate.addEventListener('input', () => {
+inputs.rate?.addEventListener('input', () => {
   const match = profiles.find((b) => +b.dataset.rate === +inputs.rate.value);
   profiles.forEach((b) => {
     b.classList.toggle('is-active', b === match);
@@ -169,8 +189,10 @@ inputs.rate.addEventListener('input', () => {
   });
   if (match) setAlloc(+match.dataset.stocks);
 });
-Object.values(inputs).forEach((el) => el.addEventListener('input', calc));
-calc();
+if (inputs.amount) {
+  Object.values(inputs).forEach((el) => el.addEventListener('input', calc));
+  calc();
+}
 
 /* ---------- referencie ---------- */
 // Sem doplň skutočné recenzie od klientov, sekcia sa potom zobrazí sama.
@@ -196,9 +218,9 @@ $$('[data-tema]').forEach((a) => a.addEventListener('click', () => {
 
 /* ---------- formulár ---------- */
 const form = $('#contact-form');
-const status = $('.form__status', form);
+const status = form && $('.form__status', form);
 
-form.addEventListener('submit', async (e) => {
+form?.addEventListener('submit', async (e) => {
   e.preventDefault();
   status.className = 'form__status';
 
@@ -251,7 +273,7 @@ form.addEventListener('submit', async (e) => {
     btn.disabled = false;
   }
 });
-$$('input', form).forEach((el) => el.addEventListener('input', () => el.classList.remove('is-invalid')));
+if (form) $$('input', form).forEach((el) => el.addEventListener('input', () => el.classList.remove('is-invalid')));
 
 /* ---------- počítadlá čísel ---------- */
 const counters = $$('[data-count]');
@@ -308,4 +330,5 @@ if (thread) {
   upd();
 }
 
-$('#year').textContent = new Date().getFullYear();
+const yearEl = $('#year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
