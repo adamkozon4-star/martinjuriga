@@ -1228,14 +1228,3 @@ main, .footer, .header { --ink: var(--page-text); --text: var(--page-text); --mu
 @media (prefers-reduced-motion: reduce) {
   .hero__title .line--chaos i, .hero .btn--primary::after { animation: none !important; }
 }
-
-/* Ako pracujem: čistý typografický výrok bez dekorácií */
-.promise__inner { max-width: 860px; }
-.promise__text { font-size: clamp(1.7rem, 3.3vw, 2.7rem); line-height: 1.2; letter-spacing: -.035em; font-weight: 600; color: var(--page-text); text-shadow: none; }
-.promise__text mark { font-weight: 700; }
-.promise__note { margin-top: 1.6rem; font-size: 1.02rem; text-shadow: none; }
-.promise__sign { display: inline-flex; align-items: center; gap: .8rem; margin-top: 2.2rem; text-align: left; }
-.promise__avatar { width: 46px; height: 46px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 2px rgba(224, 154, 91, .6); }
-.promise__avatar img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; }
-.promise__sign b { display: block; font-size: .95rem; color: var(--page-text); }
-.promise__sign small { display: block; font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--page-muted); }
