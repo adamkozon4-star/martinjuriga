@@ -1049,3 +1049,4 @@ input[type="range"]:focus-visible { box-shadow: 0 0 0 4px rgba(107, 146, 255, .3
 @media (max-width: 600px) {
   .road { display: none; }
 }
+.svc-stage__house--chart { width: 52%; left: -4%; top: 4%; }
