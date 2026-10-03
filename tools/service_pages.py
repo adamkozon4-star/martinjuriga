@@ -199,7 +199,7 @@ def render(c):
 
 IMG = {
     'portrait': '<img src="/img/martin-portrait.webp" width="800" height="978" loading="lazy" alt="Martin Juriga, finančný sprostredkovateľ z Oravy" />',
-    'povysenie': '<img src="/img/martin-povysenie.webp" width="800" height="1000" loading="lazy" alt="Martin Juriga s ocenením Consultant II v MeruCompany" style="object-position: 50% 15%" />',
+    'povysenie': '<img src="/img/martin-portrait.webp" width="800" height="978" loading="lazy" alt="Martin Juriga, finančný sprostredkovateľ z Oravy" />',
     'studio': '<img src="/img/martin-1200.webp" width="1200" height="1200" loading="lazy" alt="Martin Juriga, finančný sprostredkovateľ z Oravy" />',
 }
 IC_HOUSE = '<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>'
