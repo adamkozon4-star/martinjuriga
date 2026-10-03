@@ -1233,3 +1233,8 @@ main, .footer, .header { --ink: var(--page-text); --text: var(--page-text); --mu
 .head-face { position: absolute; left: calc(100% + 1.5rem); top: 50%; transform: translateY(-50%) rotate(5deg); animation: bob 8s ease-in-out infinite; }
 .head-face .face { width: 120px; height: 120px; }
 @media (max-width: 1100px) { .head-face { display: none; } }
+
+/* sklenená bublina s otáznikom pri nadpise otázok (namiesto pera) */
+#faq .section-head { position: relative; }
+.faq-bubble { position: absolute; top: -2.2rem; right: 0; width: 118px; transform: rotate(8deg); filter: drop-shadow(0 18px 22px rgba(224, 154, 91, .2)); animation: bob 7s ease-in-out infinite; }
+@media (max-width: 600px) { .faq-bubble { width: 84px; top: .6rem; } }
