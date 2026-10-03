@@ -203,7 +203,7 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round
 .hero {
   position: relative; overflow: hidden; isolation: isolate;
   min-height: 100svh; display: flex; align-items: center;
-  background: var(--black); color: #fff; padding: 110px 0 60px;
+  background: var(--black); color: #fff; padding: 110px 0 90px;
 }
 .hero__glow { position: absolute; border-radius: 50%; filter: blur(90px); z-index: -1; pointer-events: none; }
 .hero__glow--1 { width: 560px; height: 560px; left: -180px; top: -160px; background: rgba(47, 98, 255, .2); }
@@ -434,7 +434,31 @@ input[type="range"]:focus-visible { box-shadow: 0 0 0 4px rgba(107, 146, 255, .3
 .growth__axis { display: flex; justify-content: space-between; font-size: .75rem; color: rgba(255, 255, 255, .45); margin-top: .5rem; }
 
 /* ---------- pás výsledkov ---------- */
+/* papier s roztrhnutým okrajom leží cez spodok úvodu */
+.results { position: relative; z-index: 5; background: #fff; }
+.tear { position: absolute; left: 0; right: 0; bottom: calc(100% - 1px); width: 100%; height: clamp(26px, 3.4vw, 46px); filter: drop-shadow(0 -6px 10px rgba(0, 0, 0, .35)); pointer-events: none; }
+.tear__back { fill: #cfd8ea; stroke: none; opacity: .9; }
+.tear__front { fill: #fff; stroke: none; }
+.bill-wrap { position: absolute; left: calc(50% - clamp(110px, 10vw, 150px)); top: clamp(-190px, -12.5vw, -130px); width: clamp(190px, 19vw, 270px); z-index: 6; pointer-events: none; }
+.bill { transform: perspective(900px) rotateX(24deg) rotateY(-32deg) rotate(-14deg); transform-origin: 50% 60%; animation: billFloat 9s ease-in-out infinite; filter: drop-shadow(0 18px 18px rgba(0, 0, 0, .35)); }
+.bill svg { display: block; width: 100%; height: auto; border-radius: 6px; }
+.bill__waves path { fill: none; stroke: rgba(47, 98, 255, .32); stroke-width: .8; }
+.bill__rings circle { fill: none; stroke: rgba(47, 98, 255, .22); stroke-width: .7; }
+.bill__frame { fill: none; stroke: rgba(26, 63, 214, .55); stroke-width: 1.4; }
+.bill__frame--thin { stroke-width: .6; stroke-dasharray: 2 2; }
+.bill__num { font: 800 34px "Lexend", var(--font); fill: #1a3fd6; letter-spacing: -1px; }
+.bill__label { font: 700 9px var(--font); fill: #0b1020; letter-spacing: 2.4px; }
+.bill__micro { font: 600 5.4px var(--font); fill: rgba(11, 16, 32, .55); letter-spacing: 1px; }
+.bill__seal { fill: rgba(255, 255, 255, .7); stroke: #2f62ff; stroke-width: 1.6; }
+.bill__mark { fill: none; stroke: #2f62ff; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.bill__euro { font: 800 26px var(--font); fill: rgba(26, 63, 214, .8); text-anchor: end; }
+.bill-shadow { position: absolute; left: 12%; right: 6%; top: 128%; height: 26px; border-radius: 50%; background: radial-gradient(rgba(11, 16, 32, .28), transparent 70%); filter: blur(6px); animation: billShadow 9s ease-in-out infinite; }
+@keyframes billFloat { 50% { transform: perspective(900px) rotateX(18deg) rotateY(-24deg) rotate(-10deg) translateY(-14px); } }
+@keyframes billShadow { 50% { transform: scale(.85); opacity: .7; } }
+@media (max-width: 900px) { .bill-wrap { left: auto; right: 6px; top: -78px; width: 124px; } .bill-shadow { display: none; } }
+
 .results { border-bottom: 1px solid var(--line); }
+.results__row { position: relative; z-index: 1; }
 .results__row { display: grid; grid-template-columns: 1.5fr repeat(5, 1fr); }
 .results__intro { display: flex; flex-direction: column; justify-content: center; gap: .7rem; padding: 1.8rem 1.4rem 1.8rem 0; }
 .results__eyebrow { font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); }
