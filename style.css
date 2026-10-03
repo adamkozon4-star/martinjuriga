@@ -1215,18 +1215,6 @@ main, .footer, .header { --ink: var(--page-text); --text: var(--page-text); --mu
 .hero .scribble__line path + path { animation-delay: 2.1s; }
 .hero .scribble { text-shadow: 0 0 40px rgba(224, 154, 91, .35); }
 
-/* kruh za Martinom: tmavé sklo s oranžovým svetlom namiesto bieleho */
-.hero__circle { background: radial-gradient(circle at 50% 28%, #6b4a2c 0%, #3a2a1d 45%, #211c18 100%); box-shadow: inset 0 0 0 1px rgba(224, 154, 91, .35), 0 0 120px -20px rgba(224, 154, 91, .45); }
-.hero__rosette path { stroke-opacity: .35; }
-.hero__ring { border-color: rgba(224, 154, 91, .45); }
-.hero__ring--2 { width: min(760px, 125%); transform: translate(-50%, 18%); border-style: solid; border-color: rgba(224, 154, 91, .12); animation: heroRingIn 2.2s cubic-bezier(.2, .7, .2, 1) .35s both; }
-.hero__glow { position: absolute; left: 50%; bottom: 8%; width: min(520px, 85%); aspect-ratio: 1; translate: -50% 0; border-radius: 50%; background: rgba(224, 154, 91, .35); filter: blur(90px); pointer-events: none; animation: glowPulse 6s ease-in-out infinite; }
-@keyframes glowPulse { 50% { opacity: .6; transform: scale(1.08); } }
-/* bod, ktorý obieha po kruhu */
-.hero__orbit { position: absolute; left: 50%; bottom: 0; width: min(640px, 105%); aspect-ratio: 1; transform: translate(-50%, 14%); border-radius: 50%; pointer-events: none; animation: spin 18s linear infinite; }
-.hero__orbit i { position: absolute; left: 50%; top: -5px; width: 10px; height: 10px; margin-left: -5px; border-radius: 50%; background: #f0b47c; box-shadow: 0 0 14px 4px rgba(240, 180, 124, .8); }
-.hero__person { z-index: 2; -webkit-mask-image: linear-gradient(#000 82%, transparent); mask-image: linear-gradient(#000 82%, transparent); filter: drop-shadow(0 30px 50px rgba(0, 0, 0, .5)); }
-
 /* jemné zrno pre filmový dojem */
 .hero::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: .08; mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
@@ -1238,5 +1226,5 @@ main, .footer, .header { --ink: var(--page-text); --text: var(--page-text); --mu
 @keyframes shine { 0%, 70% { left: -60%; } 100% { left: 130%; } }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero__title .line--chaos i, .hero__orbit, .hero__glow, .hero .btn--primary::after { animation: none !important; }
+  .hero__title .line--chaos i, .hero .btn--primary::after { animation: none !important; }
 }
