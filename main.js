@@ -69,6 +69,8 @@ $$('.reveal').forEach((el) => {
 /* ---------- postup: linka sa plní pri scrollovaní ---------- */
 const steps = $('.steps');
 const stepItems = $$('.step');
+const road = $('.road');
+const roadTiles = $$('.road__tile');
 const updateSteps = () => {
   if (!steps) return;
   const r = steps.getBoundingClientRect();
@@ -77,6 +79,8 @@ const updateSteps = () => {
   steps.style.setProperty('--p', `${12 + p * 76}%`);
   const active = Math.ceil(p * stepItems.length + 0.2);
   stepItems.forEach((s, i) => s.classList.toggle('is-active', i < active && p > 0));
+  if (road) road.style.setProperty('--p', p.toFixed(3));
+  roadTiles.forEach((t, i) => t.classList.toggle('is-active', i < active && p > 0));
 };
 window.addEventListener('scroll', updateSteps, { passive: true });
 updateSteps();

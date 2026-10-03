@@ -95,10 +95,16 @@ def faq_from(body):
     items = re.findall(r'<summary>(.*?)<span class="faq__icon"></span></summary>\s*<p>(.*?)</p>', body, re.S)
     return [(html.unescape(q), html.unescape(re.sub('<[^>]+>', '', a))) for q, a in items]
 
+def partial(name):
+    return open(os.path.join(PAGES_DIR, '..', 'partials', name + '.html')).read()
+
 def update_index():
     global idx
     s = re.sub(r'      <nav class="nav" aria-label="Hlavná navigácia">.*?</nav>', lambda m: nav(True), idx, count=1, flags=re.S)
     s = re.sub(r'(<nav class="footer__col" aria-label="Služby">\s*<h4>Služby</h4>\n).*?(\s*</nav>)', lambda m: m.group(1)+footer_services(True)+m.group(2), s, count=1, flags=re.S)
+    # bloky <!-- @partial:x --> … <!-- /@partial:x --> na úvodnej stránke
+    s = re.sub(r'<!-- @partial:([\w-]+) -->\n.*?<!-- /@partial:\1 -->\n',
+               lambda m: f'<!-- @partial:{m.group(1)} -->\n' + partial(m.group(1)) + f'<!-- /@partial:{m.group(1)} -->\n', s, flags=re.S)
     open('index.html', 'w').write(s)
     idx = s
 
@@ -117,7 +123,7 @@ if __name__ == '__main__':
             continue
         meta = PAGES[slug]
         body = open(os.path.join(PAGES_DIR, slug + '.html')).read()
-        body = re.sub(r'<!-- @partial:([\w-]+) -->\n', lambda m: open(os.path.join(PAGES_DIR, '..', 'partials', m.group(1) + '.html')).read(), body)
+        body = re.sub(r'<!-- @partial:([\w-]+) -->\n', lambda m: partial(m.group(1)), body)
         out = page(slug, meta['title'], meta['desc'], names[slug], body, meta['tema'], faq_from(body), meta.get('og', 'og.jpg'))
         os.makedirs(slug, exist_ok=True)
         open(os.path.join(slug, 'index.html'), 'w').write(out)
