@@ -926,3 +926,6 @@ input[type="range"]:focus-visible { box-shadow: 0 0 0 4px rgba(107, 146, 255, .3
   .svc-grid { grid-template-columns: 1fr; }
   .svc-hero .h-card--badge { right: -.4rem; bottom: 2rem; }
 }
+.svc-card__link { display: inline-flex; gap: .4rem; margin-top: auto; padding-top: 1.2rem; font-weight: 700; font-size: .95rem; color: var(--blue); }
+.svc-card__link span { transition: transform .3s var(--ease); }
+.svc-card__link:hover span { transform: translateX(4px); }

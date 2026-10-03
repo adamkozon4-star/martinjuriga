@@ -28,3 +28,12 @@ Stratégie Opatrná / Vyvážená / Dynamická (3 / 5 / 7 % ročne, 30 / 60 / 90
 ## MeruCompany
 Martin pracuje pre MeruCompany, s. r. o. (IČO 52893511), podriadeného finančného agenta. Pred spustením pošli web na schválenie
 compliance oddeleniu MeruCompany. Agenti mávajú pravidlá pre osobné weby (povinné údaje, používanie loga, označenie „finančný poradca“).
+
+## Podstránky služieb
+Každá služba má podstránku v priečinku `/<slug>/index.html` (napr. `hypoteky-a-uvery/`). Tieto súbory sa negenerujú ručne:
+- obsah stránky je v `tools/pages/<slug>.html`, title a popis v `PAGES` v `tools/build_pages.py`,
+- hlavička, kontakt a pätička sa preberajú z `index.html`,
+- po akejkoľvek zmene spusti `python3 tools/build_pages.py`. Pregeneruje podstránky, menu Služby, pätičku aj `sitemap.xml`.
+
+Nová podstránka = nový súbor v `tools/pages/` + záznam v `PAGES`. Kým súbor neexistuje, odkaz v menu vedie na sekciu Služby.
+Priečinok `tools/` sa na Vercel nenasadzuje (`.vercelignore`).
