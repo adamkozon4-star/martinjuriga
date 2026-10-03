@@ -23,8 +23,8 @@ def pct(x, y):
 
 ground = f'''<svg class="geo__ground" viewBox="0 0 {W} {H}" aria-hidden="true">
               <defs>
-                <linearGradient id="geoLand" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#eef3fd"/></linearGradient>
-                <pattern id="geoGrid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#dfe6f4" stroke-width="1"/></pattern>
+                <linearGradient id="geoLand" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#faf5f1"/></linearGradient>
+                <pattern id="geoGrid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#efe9e4" stroke-width="1"/></pattern>
               </defs>
               <rect width="{W}" height="{H}" rx="34" fill="url(#geoLand)"/>
               <rect width="{W}" height="{H}" rx="34" fill="url(#geoGrid)" opacity=".7"/>
@@ -35,10 +35,10 @@ ground = f'''<svg class="geo__ground" viewBox="0 0 {W} {H}" aria-hidden="true">
               <path d="M20 240c26-14 70-6 80 22s-16 50-46 50-48-14-50-38 0-26 16-34z" fill="#e5f3e8"/>
               <path d="M360 300c36-14 92 2 100 36s-30 62-70 60-60-24-60-50 12-38 30-46z" fill="#e5f3e8"/>
               <!-- Oravská priehrada -->
-              <path d="M262 120c18-20 60-24 92-14s36 30 18 42-56 10-80 6-46-14-30-34z" fill="#d3e2ff" stroke="#a9c3ff" stroke-width="2"/>
+              <path d="M262 120c18-20 60-24 92-14s36 30 18 42-56 10-80 6-46-14-30-34z" fill="#f5e8dd" stroke="#f3d2b5" stroke-width="2"/>
               <!-- Orava a Váh -->
-              <path d="M362 146c18 8 32 6 42 4M404 150c-10 34-40 50-66 70s-38 34-38 42c0 30-30 50-60 72s-50 26-62 26" fill="none" stroke="#a9c3ff" stroke-width="7" stroke-linecap="round"/>
-              <path d="M10 380c40-14 70-24 100-28s70-6 108-10 70-8 100 4" fill="none" stroke="#a9c3ff" stroke-width="8" stroke-linecap="round"/>
+              <path d="M362 146c18 8 32 6 42 4M404 150c-10 34-40 50-66 70s-38 34-38 42c0 30-30 50-60 72s-50 26-62 26" fill="none" stroke="#f3d2b5" stroke-width="7" stroke-linecap="round"/>
+              <path d="M10 380c40-14 70-24 100-28s70-6 108-10 70-8 100 4" fill="none" stroke="#f3d2b5" stroke-width="8" stroke-linecap="round"/>
               <!-- cesty -->
               <g fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M92 352c50-6 90-10 128-8s60-30 80-82c20-40 60-70 104-112 20-30 36-60 48-88M300 262c-20-60-50-110-64-158M404 150c-50-30-110-36-168-46" stroke="#ffffff" stroke-width="12"/>
@@ -54,8 +54,8 @@ def tree(x, y, i):
 
 def house(x, y):
     return (f'<span class="geo__obj geo__house" style="{pct(x, y)}"><svg viewBox="0 0 30 30" aria-hidden="true">'
-            '<path d="M15 3L28 9 15 15 2 9z" fill="#ffffff"/><path d="M2 9l13 6v13L2 22z" fill="#eef2fa"/><path d="M28 9L15 15v13l13-6z" fill="#cdd6e8"/>'
-            '<path d="M5 14v3M8 15.5v3M18 18v3M22 16v3M25 14.5v3" stroke="#9fb0cf" stroke-width="1.4"/></svg></span>')
+            '<path d="M15 3L28 9 15 15 2 9z" fill="#ffffff"/><path d="M2 9l13 6v13L2 22z" fill="#f7f4f1"/><path d="M28 9L15 15v13l13-6z" fill="#e2dad3"/>'
+            '<path d="M5 14v3M8 15.5v3M18 18v3M22 16v3M25 14.5v3" stroke="#c4b6aa" stroke-width="1.4"/></svg></span>')
 
 def pin(name, x, y, main, i):
     cls = 'geo__pin geo__pin--main' if main else 'geo__pin'
@@ -94,7 +94,7 @@ html = f'''    <!-- ============ KDE POMÁHAM (3D mapa, generuje tools/make_map.
         <div class="geo reveal" role="img" aria-label="Mapa Oravy a Žiliny so zvýraznenými mestami {towns_text}">
           <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
             <defs>
-              <radialGradient id="geoPin" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#8fb0ff"/><stop offset=".55" stop-color="#2f62ff"/><stop offset="1" stop-color="#1a3fd6"/></radialGradient>
+              <radialGradient id="geoPin" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#f5c79b"/><stop offset=".55" stop-color="#e09a5b"/><stop offset="1" stop-color="#b8743a"/></radialGradient>
               <linearGradient id="geoTree" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4fae6a"/><stop offset="1" stop-color="#1f7a43"/></linearGradient>
             </defs>
           </svg>

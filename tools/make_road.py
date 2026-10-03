@@ -46,14 +46,14 @@ html = f'''        <!-- 3D cesta krokov (generuje tools/make_road.py) -->
           <div class="road__scene">
             <div class="road__plane">
               <svg class="road__ground" viewBox="0 0 {W} {H}" preserveAspectRatio="none">
-                <defs><pattern id="roadGrid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#dfe6f4" stroke-width="1"/></pattern></defs>
-                <rect width="{W}" height="{H}" rx="40" fill="#fbfcff"/>
+                <defs><pattern id="roadGrid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#efe9e4" stroke-width="1"/></pattern></defs>
+                <rect width="{W}" height="{H}" rx="40" fill="#fefdfc"/>
                 <rect width="{W}" height="{H}" rx="40" fill="url(#roadGrid)" opacity=".8"/>
                 <path d="M40 286c50-16 120-4 128 22s-40 40-90 36-64-44-38-58z" fill="#e5f3e8"/>
                 <path d="M760 250c50-12 130 6 134 40s-60 50-110 44-70-70-24-84z" fill="#e5f3e8"/>
                 <path d="M440 40c50-12 120 0 124 24s-60 34-100 30-60-42-24-54z" fill="#e5f3e8"/>
                 <path d="{ROAD}" fill="none" stroke="#ffffff" stroke-width="46" stroke-linecap="round"/>
-                <path d="{ROAD}" fill="none" stroke="#e3e9f5" stroke-width="34" stroke-linecap="round"/>
+                <path d="{ROAD}" fill="none" stroke="#f1ece7" stroke-width="34" stroke-linecap="round"/>
                 <path d="{ROAD}" fill="none" stroke="#ffffff" stroke-width="3" stroke-dasharray="14 14" stroke-linecap="round"/>
                 <path d="{ROAD}" class="road__progress" pathLength="1" fill="none" stroke-width="34" stroke-linecap="round"/>
               </svg>

@@ -315,6 +315,19 @@ if (hero && !reduced && matchMedia('(pointer: fine)').matches) {
   hero.addEventListener('mouseleave', () => layers.forEach(([el]) => { el.style.translate = ''; }));
 }
 
+/* ---------- pozadie s horami: pri scrollovaní sa pomaly posúva až po koniec obrázka ---------- */
+const pageBg = $('.page-bg');
+if (pageBg) {
+  let bgRaf;
+  const updBg = () => {
+    const max = document.documentElement.scrollHeight - innerHeight;
+    pageBg.style.setProperty('--bp', max > 0 ? Math.min(1, scrollY / max).toFixed(4) : 0);
+  };
+  window.addEventListener('scroll', () => { cancelAnimationFrame(bgRaf); bgRaf = requestAnimationFrame(updBg); }, { passive: true });
+  window.addEventListener('resize', updBg);
+  updBg();
+}
+
 /* ---------- niť medzi výsledkami a sľubom ---------- */
 const thread = $('.promise__thread');
 if (thread) {

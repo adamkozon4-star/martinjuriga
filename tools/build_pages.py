@@ -86,7 +86,7 @@ def page(slug, title, desc, h_name, body, tema, faq, og_image):
   <title>{title}</title>
   <meta name="description" content="{desc}" />
   <link rel="canonical" href="{url}" />
-  <meta name="theme-color" content="#f3f6fd" />
+  <meta name="theme-color" content="#fbf8f5" />
   <link rel="icon" href="/img/favicon.png" type="image/png" />
   <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
   <meta property="og:type" content="website" />
@@ -109,6 +109,7 @@ def page(slug, title, desc, h_name, body, tema, faq, og_image):
 {ld_html}
 </head>
 <body id="top">
+  <div class="page-bg" aria-hidden="true"><div class="page-bg__img"></div></div>
 
 {header}
 
