@@ -4,7 +4,7 @@
 //   CONTACT_TO      komu chodia dopyty, viac adries oddeľ čiarkou (predvolene martin.juriga@merucompany.sk)
 //   CONTACT_BCC     voliteľné, skrytá kópia, viac adries oddeľ čiarkou
 //   CONTACT_FROM    odosielateľ, musí byť z overenej domény v Resend,
-//                   napr. "Web Martin Juriga <web@martinjuriga.sk>"
+//                   tu: "Web Martin Juriga <formular@send.peakstudio.sk>"
 
 const list = (v) => (v || '').split(',').map((a) => a.trim()).filter(Boolean);
 const TO = list(process.env.CONTACT_TO || 'martin.juriga@merucompany.sk');
