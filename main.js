@@ -1,8 +1,4 @@
-// Dopyty chodia na tento e-mail cez formsubmit.co (zadarmo, bez registrácie).
-// Prvý odoslaný dopyt pošle na e-mail potvrdzovaciu správu, Martin ju raz potvrdí.
-// Ak by sa neskôr použil web3forms.com, stačí vyplniť WEB3FORMS_KEY.
-const FORM_EMAIL = 'martin.juriga@merucompany.sk';
-const WEB3FORMS_KEY = '';
+// Dopyty z formulára posiela serverová funkcia api/contact.js cez Resend.
 const PHONE = '+421 915 448 705';
 
 const $ = (s, el = document) => el.querySelector(s);
@@ -257,25 +253,13 @@ form?.addEventListener('submit', async (e) => {
   try {
     const data = Object.fromEntries(new FormData(form));
     if (data.botcheck) throw new Error('spam');
-    delete data.botcheck;
-    let ok;
-    if (WEB3FORMS_KEY) {
-      data.access_key = WEB3FORMS_KEY;
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(data),
-      });
-      ok = (await res.json()).success;
-    } else {
-      const res = await fetch(`https://formsubmit.co/ajax/${FORM_EMAIL}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ ...data, _subject: data.subject || 'Nový dopyt z webu', _template: 'table', _captcha: 'false' }),
-      });
-      const json = await res.json();
-      ok = json.success === true || json.success === 'true';
-    }
+    data.stranka = location.pathname;
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(data),
+    });
+    const ok = res.ok && (await res.json()).ok === true;
     if (!ok) throw new Error('send failed');
     form.reset();
     status.textContent = 'Ďakujem! Ozvem sa vám do 24 hodín.';

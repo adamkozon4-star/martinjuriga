@@ -9,7 +9,7 @@ Každý push do vetvy `main` sa nasadí automaticky. Vlastnú doménu pripojíš
 ## Ešte treba doplniť
 | Čo | Kde |
 |---|---|
-| Formulár: po prvom odoslanom dopyte príde na martin.juriga@merucompany.sk e-mail od FormSubmit, Martin klikne na potvrdenie (iba raz) | `main.js` (`FORM_EMAIL`) |
+| Formulár cez Resend: vo Verceli nastaviť `RESEND_API_KEY`, `CONTACT_FROM` (adresa z overenej domény) a prípadne `CONTACT_TO` | `api/contact.js` |
 | Samostatný finančný agent, v mene ktorého Martin koná (`[doplniť]`) | pätička v `index.html` |
 | Adresa kancelárie | kontakt a pätička v `index.html` |
 | Skutočné recenzie | `main.js` (`REVIEWS`) |
