@@ -17,7 +17,7 @@
   --radius: 24px;
   --radius-sm: 14px;
   --shadow: 0 20px 60px -20px rgba(20, 20, 20, .25);
-  --font: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
   --ease: cubic-bezier(.2, .7, .2, 1);
 }
 
@@ -190,7 +190,7 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round
 .header__inner { display: flex; align-items: center; gap: 2rem; height: 80px; transition: height .4s var(--ease), padding .4s var(--ease), background .4s, border-radius .4s; }
 .logo { display: flex; align-items: center; gap: .8rem; color: #fff; }
 .logo__mark { display: block; height: 34px; width: auto; filter: drop-shadow(0 4px 14px rgba(224, 154, 91, .45)); transition: height .4s var(--ease); }
-.logo__text { display: flex; flex-direction: column; font-family: "Lexend", var(--font); font-weight: 600; font-size: 1.02rem; line-height: 1.1; letter-spacing: -.01em; }
+.logo__text { display: flex; flex-direction: column; font-family: var(--font); font-weight: 600; font-size: 1.02rem; line-height: 1.1; letter-spacing: -.01em; }
 .logo__text small { font-family: var(--font); font-weight: 500; font-size: .6rem; color: rgba(255, 255, 255, .6); letter-spacing: .28em; text-transform: uppercase; margin-top: .25rem; }
 .nav { display: flex; gap: 2rem; margin-left: auto; }
 .nav a { color: rgba(255, 255, 255, .7); font-size: .95rem; font-weight: 500; position: relative; transition: color .3s; }
@@ -698,7 +698,7 @@ input[type="range"]:focus-visible { box-shadow: 0 0 0 4px rgba(234, 177, 128, .3
 .years-badge { position: absolute; z-index: 3; top: 9%; right: 4%; width: 118px; height: 118px; border-radius: 50%; background: #fff; display: grid; place-items: center; box-shadow: 0 20px 40px -20px rgba(20, 20, 20, .35); }
 .years-badge__ring { position: absolute; inset: 0; width: 100%; height: 100%; animation: spin 22s linear infinite; }
 .years-badge__ring text { font: 700 9px var(--font); letter-spacing: 1.2px; fill: var(--ink); }
-.years-badge__num { font: 800 2.1rem/1 "Lexend", var(--font); color: var(--blue); letter-spacing: -.04em; }
+.years-badge__num { font: 800 2.1rem/1 var(--font); color: var(--blue); letter-spacing: -.04em; }
 .years-badge__num sup { font-size: .55em; vertical-align: super; }
 
 .h-card { position: absolute; z-index: 3; background: rgba(255, 255, 255, .92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid #f3eeea; border-radius: 18px; box-shadow: 0 24px 50px -24px rgba(20, 20, 20, .35); animation: float 7s ease-in-out infinite; }
@@ -1238,3 +1238,14 @@ main, .footer, .header { --ink: var(--page-text); --text: var(--page-text); --mu
 #faq .section-head { position: relative; }
 .faq-bubble { position: absolute; top: -2.2rem; right: 0; width: 118px; transform: rotate(8deg); filter: drop-shadow(0 18px 22px rgba(224, 154, 91, .2)); animation: bob 7s ease-in-out infinite; }
 @media (max-width: 600px) { .faq-bubble { width: 84px; top: .6rem; } }
+
+/* ==========================================================
+   Jednotný vizuálny jazyk: tmavá rytina + oranžový akcent, jedno písmo (Montserrat)
+   ========================================================== */
+h1, h2, h3 { letter-spacing: -.03em; }
+.hero__title { letter-spacing: -.045em; }
+/* namiesto ručne písaného písma: pokojný oranžový podnadpis */
+.script-accent { font: 500 italic clamp(1.05rem, 1.6vw, 1.3rem)/1.3 var(--font); letter-spacing: 0; transform: none; margin-top: .7rem; color: var(--blue); }
+.hand-note span { font: 500 italic 1.05rem var(--font); transform: none; }
+.face__label { font: 600 .78rem var(--font); letter-spacing: .02em; transform: translateX(-50%); color: #1c1c1c; }
+.photo-wide .script-accent { font-size: clamp(1.2rem, 2vw, 1.6rem); }

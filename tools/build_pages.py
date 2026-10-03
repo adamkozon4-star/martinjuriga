@@ -98,8 +98,8 @@ def page(slug, title, desc, h_name, body, tema, faq, og_image):
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lexend:wght@500;600&family=Caveat:wght@500;600&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lexend:wght@500;600&family=Caveat:wght@500;600&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet" /></noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet" /></noscript>
   <link rel="stylesheet" href="/style.css" />
   <!-- Vercel Web Analytics a Speed Insights (bez cookies) -->
   <script>window.va = window.va || function () {{ (window.vaq = window.vaq || []).push(arguments); }}; window.si = window.si || function () {{ (window.siq = window.siq || []).push(arguments); }};</script>
