@@ -1169,3 +1169,6 @@ main, .footer, .header { --ink: var(--page-text); --text: var(--page-text); --mu
   .burger { border-color: rgba(255, 255, 255, .18); background: #2a2a2a; }
   .burger span { background: #fff; }
 }
+/* obrysové tlačidlo na tmavom pozadí úvodu */
+.hero .btn--outline, .svc-hero .btn--outline { background: rgba(255, 255, 255, .05); border-color: rgba(255, 255, 255, .3); color: #fff; }
+.hero .btn--outline:hover, .svc-hero .btn--outline:hover { background: #fff; border-color: #fff; color: #1c1c1c; }
