@@ -1195,3 +1195,8 @@ main, .footer, .header { --ink: var(--page-text); --text: var(--page-text); --mu
 .bento__opts b { font-size: .95rem; color: #1c1c1c; }
 .bento__opts span { font-size: .84rem; color: #7e756d; }
 #sluzby .section-head p { max-width: 34rem; color: #d6cfc6; font-size: 1.15rem; }
+/* štítky miest na 3D mape: tmavý text na bielom */
+.geo__pin-in b { color: #1c1c1c; }
+.geo__pin--main .geo__pin-in b { background: #1c1c1c; color: #fff; }
+.geo-towns li { color: #1c1c1c; }
+.geo-towns li:last-child { color: #b8743a; }
