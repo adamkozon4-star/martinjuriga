@@ -1,4 +1,4 @@
-# Martin Juriga – web finančného poradcu
+# Martin Juriga – web finančného sprostredkovateľa
 
 Statický web (HTML + CSS + JS), bez buildu. Stačí otvoriť `index.html` alebo nasadiť priečinok.
 
