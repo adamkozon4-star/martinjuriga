@@ -1315,3 +1315,11 @@ h1, h2, h3 { letter-spacing: -.03em; }
   .mobile-bar { background: rgba(32, 30, 28, .92); border: 1px solid var(--card-line); box-shadow: 0 16px 40px -12px rgba(0, 0, 0, .8); }
   .mobile-bar .btn--ghost-dark { background: rgba(255, 255, 255, .08); border-color: var(--card-line); color: var(--page-text); }
 }
+
+/* výrez Martina: plynulejší prechod do pozadia bez hranatej žiary */
+.svc-stage__glow { width: 70%; bottom: 22%; right: 6%; background: radial-gradient(closest-side, rgba(224, 154, 91, .22), transparent); filter: none; }
+.svc-stage__person {
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 52%, rgba(0, 0, 0, .75) 66%, rgba(0, 0, 0, .35) 80%, transparent 96%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 52%, rgba(0, 0, 0, .75) 66%, rgba(0, 0, 0, .35) 80%, transparent 96%);
+}
+.hero__person { -webkit-mask-image: none; mask-image: none; }
