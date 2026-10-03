@@ -1249,3 +1249,69 @@ h1, h2, h3 { letter-spacing: -.03em; }
 .hand-note span { font: 500 italic 1.05rem var(--font); transform: none; }
 .face__label { font: 600 .78rem var(--font); letter-spacing: .02em; transform: translateX(-50%); color: #1c1c1c; }
 .photo-wide .script-accent { font-size: clamp(1.2rem, 2vw, 1.6rem); }
+
+/* ==========================================================
+   Tmavé karty s jemným okrajom (namiesto bielych)
+   ========================================================== */
+:root { --card: linear-gradient(160deg, rgba(48, 44, 41, .92), rgba(32, 30, 28, .94)); --card-line: rgba(255, 255, 255, .08); --card-line-hi: rgba(224, 154, 91, .45); }
+.bento__card, .svc-card:not(.svc-card--cta), .faq__item, .docs__col, .results__row, .h-card, .about__stat, .form,
+.geo-towns li, .pill, .nav__menu, .creds li, .road + .steps .step, .contact__photo {
+  --ink: var(--page-text); --text: var(--page-text); --muted: var(--page-muted); --line: var(--card-line); --soft: rgba(255, 255, 255, .05); --bg: transparent;
+  color: var(--page-text);
+}
+.bento__card, .svc-card:not(.svc-card--cta), .faq__item, .docs__col, .form {
+  background: var(--card); border: 1px solid var(--card-line); box-shadow: 0 30px 60px -36px rgba(0, 0, 0, .8), inset 0 1px 0 rgba(255, 255, 255, .04);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+}
+.bento__card:hover, .svc-card:not(.svc-card--cta):hover { border-color: var(--card-line-hi); box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .9), 0 0 0 1px rgba(224, 154, 91, .15); }
+.faq__item[open] { border-color: var(--card-line-hi); box-shadow: 0 24px 50px -30px rgba(0, 0, 0, .9); }
+.faq__icon { background: rgba(255, 255, 255, .08); }
+.faq__icon::before, .faq__icon::after { background: var(--page-text); }
+.faq__item summary { color: var(--page-text); }
+.bento__copy p, .svc-card p, .docs__col li, .faq__item p { color: var(--page-muted); }
+
+/* pás s číslami */
+.results__row { background: rgba(32, 30, 28, .9); border-color: var(--card-line); box-shadow: 0 40px 80px -40px rgba(0, 0, 0, .9), inset 0 1px 0 rgba(255, 255, 255, .05); }
+.result strong { color: var(--page-text); }
+.result:hover { background: rgba(255, 255, 255, .03); }
+.results__row::after { background: #1e1e1e; }
+
+/* malé štítky a karty */
+.pill, .geo-towns li, .creds li { background: rgba(255, 255, 255, .06); border: 1px solid var(--card-line); color: var(--page-text); box-shadow: none; }
+.geo-towns li:last-child { background: rgba(224, 154, 91, .12); border-color: rgba(224, 154, 91, .35); color: #f0b47c; }
+.h-card { background: rgba(32, 30, 28, .88); border-color: var(--card-line); box-shadow: 0 24px 50px -24px rgba(0, 0, 0, .8); }
+.h-card--badge strong, .h-card--free { color: var(--page-text); }
+.about__stat { background: rgba(32, 30, 28, .92); border: 1px solid var(--card-line); }
+.nav__menu { background: #262422; border-color: var(--card-line); }
+.nav__item strong { color: var(--page-text); }
+.nav__item small { color: var(--page-muted); }
+.nav__item:hover { background: rgba(255, 255, 255, .05); }
+.nav__ic { background: rgba(224, 154, 91, .14); }
+.nav__all { border-top-color: var(--card-line) !important; }
+
+/* karty krokov pod 3D cestou */
+@media (min-width: 901px) {
+  .road + .steps .step { --ink: var(--page-text); --text: var(--page-text); --muted: var(--page-muted); color: var(--page-text); background: var(--card); border-color: var(--card-line); box-shadow: 0 24px 50px -30px rgba(0, 0, 0, .9); }
+  .road + .steps .step .step__num { background: rgba(224, 154, 91, .14); color: #f0b47c; }
+  .road + .steps .step.is-active .step__num { background: var(--blue); color: #1c1c1c; }
+}
+
+/* formulár */
+.form .field input, .form .field textarea { background: rgba(255, 255, 255, .05); border-color: var(--card-line); color: var(--page-text); }
+.form .field input:focus, .form .field textarea:focus { background: rgba(255, 255, 255, .08); }
+.form .chips span { border-color: var(--card-line); color: var(--page-muted); }
+.form .chips legend, .form .field span { color: var(--page-text); }
+.contact { background: rgba(28, 27, 26, .85); }
+
+/* tlačidlá v kartách */
+.btn--light { background: rgba(255, 255, 255, .08); color: var(--page-text); border: 1px solid var(--card-line); box-shadow: none; }
+.btn--light:hover { background: var(--blue); color: #1c1c1c; border-color: var(--blue); }
+.bento__opts a { background: rgba(255, 255, 255, .05); border-color: var(--card-line); }
+.bento__opts b { color: var(--page-text); }
+.bento__opts span { color: var(--page-muted); }
+.svc-card__link { color: #f0b47c; }
+/* spodná lišta na mobile */
+@media (max-width: 900px) {
+  .mobile-bar { background: rgba(32, 30, 28, .92); border: 1px solid var(--card-line); box-shadow: 0 16px 40px -12px rgba(0, 0, 0, .8); }
+  .mobile-bar .btn--ghost-dark { background: rgba(255, 255, 255, .08); border-color: var(--card-line); color: var(--page-text); }
+}
