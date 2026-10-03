@@ -929,3 +929,78 @@ input[type="range"]:focus-visible { box-shadow: 0 0 0 4px rgba(107, 146, 255, .3
 .svc-card__link { display: inline-flex; gap: .4rem; margin-top: auto; padding-top: 1.2rem; font-weight: 700; font-size: .95rem; color: var(--blue); }
 .svc-card__link span { transition: transform .3s var(--ease); }
 .svc-card__link:hover span { transform: translateX(4px); }
+
+/* ---------- úvod podstránky: výrez, sklenený domček a % ---------- */
+.svc-hero--stage { padding-bottom: 0; }
+.svc-hero--stage .svc-hero__copy { padding-bottom: clamp(3rem, 6vw, 5rem); }
+.svc-hero--stage .svc-hero__inner { align-items: end; }
+.svc-stage { position: relative; display: flex; justify-content: flex-end; align-items: flex-end; min-height: 600px; }
+.svc-stage__glow { position: absolute; right: 2%; bottom: 8%; width: 78%; aspect-ratio: 1; border-radius: 50%; background: rgba(47, 98, 255, .2); filter: blur(70px); pointer-events: none; }
+.svc-stage__house { position: absolute; z-index: 1; left: -6%; top: 6%; width: 58%; filter: drop-shadow(0 30px 40px rgba(47, 98, 255, .22)); animation: float 9s ease-in-out infinite; }
+.svc-stage__person { position: relative; z-index: 2; width: min(450px, 78%); height: auto; margin-right: -2%;
+  -webkit-mask-image: linear-gradient(#000 72%, transparent 99%); mask-image: linear-gradient(#000 72%, transparent 99%);
+  animation: personIn 1.3s cubic-bezier(.2, .7, .2, 1) .2s both; }
+.svc-stage__pct { position: absolute; z-index: 3; left: 4%; bottom: 14%; width: 118px; filter: drop-shadow(0 20px 26px rgba(47, 98, 255, .25)); animation: float 7s ease-in-out infinite; animation-delay: -2.5s; }
+.svc-stage .h-card--free { left: auto; right: 2%; top: 16%; }
+.svc-stage .h-card--badge { right: 0; bottom: 18%; }
+
+/* karty so sklenenými ilustráciami */
+.svc-card__media { display: grid; place-items: center; height: 150px; margin: -.6rem 0 .4rem; }
+.svc-card__media .glass { width: 132px; }
+.svc-card:hover .glass { transform: translateY(-8px) rotate(-3deg); }
+.svc-card__media + h3 { margin-top: .4rem; }
+
+/* ---------- Kde pomáham: 3D mapa ---------- */
+.geo-section { overflow: clip; }
+.geo-wrap { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+.geo-copy .section-head { margin-bottom: 1.4rem; }
+.geo-copy > p { color: var(--muted); font-size: 1.05rem; max-width: 30rem; }
+.geo-towns { display: flex; flex-wrap: wrap; gap: .5rem; list-style: none; padding: 0; margin: 1.6rem 0 2rem; }
+.geo-towns li { padding: .45rem .9rem; border-radius: 999px; background: #fff; border: 1px solid var(--line); font-size: .88rem; font-weight: 600; }
+.geo-towns li:last-child { background: #eef3ff; border-color: #dbe5ff; color: var(--blue); }
+
+.geo__scene { perspective: 1600px; margin: -8% 2% -10% 0; }
+.geo svg { stroke: none; }
+.geo__plane { --rx: 54deg; --rz: -12deg; position: relative; aspect-ratio: 600 / 420; transform-style: preserve-3d; transform: rotateX(var(--rx)) rotateZ(var(--rz)) scale(.9); }
+.geo__plane::before { content: ""; position: absolute; inset: 0; border-radius: 34px; background: #c3d1ee; transform: translateZ(-18px); }
+.geo__plane::after { content: ""; position: absolute; inset: 4% 4% -6%; border-radius: 50px; background: rgba(11, 16, 32, .28); filter: blur(30px); transform: translateZ(-40px); }
+.geo__ground { position: absolute; inset: 0; width: 100%; height: 100%; display: block; border-radius: 34px; box-shadow: inset 0 0 0 1px #e1e8f5; }
+.geo__region { font: 800 13px var(--font); letter-spacing: .3em; fill: #b6c3dc; }
+.geo__obj, .geo__pin { position: absolute; width: 0; height: 0; transform-style: preserve-3d; transform: rotateZ(calc(-1 * var(--rz))) rotateX(calc(-1 * var(--rx))); }
+.geo__obj svg { position: absolute; bottom: 0; left: 0; translate: -50% 0; display: block; overflow: visible; }
+.geo__tree svg { width: calc(22px * var(--s, 1)); height: auto; }
+.geo__house svg { width: 30px; height: auto; }
+.geo__shadow { position: absolute; width: 30px; height: 12px; translate: -50% -50%; border-radius: 50%; background: radial-gradient(rgba(11, 16, 32, .35), transparent 70%); transform: translateZ(1px); }
+.geo__shadow--main::after { content: ""; position: absolute; inset: -14px -22px; border-radius: 50%; border: 2px solid rgba(47, 98, 255, .5); animation: geoPulse 2.4s ease-out infinite; }
+@keyframes geoPulse { from { transform: scale(.4); opacity: 1; } to { transform: scale(1.6); opacity: 0; } }
+.geo__pin-in { position: absolute; bottom: 0; left: 0; translate: -50% 0; display: flex; flex-direction: column; align-items: center; opacity: 0; }
+.geo__pin-in svg { width: 34px; height: auto; filter: drop-shadow(0 8px 10px rgba(26, 63, 214, .35)); }
+.geo__pin--main .geo__pin-in svg { width: 46px; }
+.geo__pin-in b { order: -1; margin-bottom: .35rem; padding: .3rem .65rem; border-radius: 999px; background: #fff; color: var(--ink); font-size: .78rem; font-weight: 700; white-space: nowrap; box-shadow: 0 10px 24px -12px rgba(11, 16, 32, .45); }
+.geo__pin--main .geo__pin-in b { background: var(--ink); color: #fff; font-size: .85rem; }
+.geo.is-in .geo__pin-in { animation: pinDrop .9s cubic-bezier(.3, 1.5, .5, 1) calc(var(--d) + .5s) both; }
+.geo.is-in .geo__pin--main .geo__pin-in { animation: pinDrop .9s cubic-bezier(.3, 1.5, .5, 1) calc(var(--d) + .5s) both, pinBob 3.5s ease-in-out 2.4s infinite; }
+@keyframes pinDrop { from { opacity: 0; transform: translateY(-120px); } 60% { opacity: 1; } to { opacity: 1; transform: none; } }
+@keyframes pinBob { 0%, 100% { opacity: 1; transform: none; } 50% { opacity: 1; transform: translateY(-8px); } }
+
+@media (max-width: 900px) {
+  .svc-hero--stage .svc-hero__copy { padding-bottom: 0; }
+  .svc-stage { min-height: 0; justify-content: center; max-width: 520px; width: 100%; margin-inline: auto; padding-top: 2rem; }
+  .svc-stage__person { width: min(380px, 78%); margin-right: -14%; }
+  .svc-stage__house { width: 54%; left: 0; top: 10%; }
+  .svc-stage__pct { width: 84px; left: 6%; bottom: 10%; }
+  .svc-stage .h-card--free { top: 2%; right: 0; }
+  .svc-stage .h-card--badge { bottom: 8%; }
+  .geo-wrap { grid-template-columns: 1fr; }
+  .geo__scene { margin: -6% -6% -10%; }
+}
+@media (max-width: 600px) {
+  .geo__pin-in b { font-size: .68rem; padding: .22rem .5rem; }
+  .geo__pin-in svg { width: 26px; }
+  .geo__pin--main .geo__pin-in svg { width: 34px; }
+  .geo__tree svg { width: calc(14px * var(--s, 1)); }
+  .geo__house svg { width: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .geo__pin-in { opacity: 1; animation: none !important; }
+}

@@ -1,5 +1,5 @@
     <!-- ============ ÚVOD ============ -->
-    <section class="svc-hero">
+    <section class="svc-hero svc-hero--stage">
       <div class="hero__bg" aria-hidden="true"></div>
       <div class="container svc-hero__inner">
         <div class="svc-hero__copy">
@@ -22,9 +22,11 @@
           </ul>
         </div>
 
-        <div class="svc-hero__media reveal">
-          <div class="about__block" aria-hidden="true"></div>
-          <img src="/img/martin-1200.webp" width="1200" height="1200" alt="Martin Juriga, hypotéky a úvery na Orave" fetchpriority="high" style="object-position: 50% 20%" />
+        <div class="svc-stage reveal">
+          <div class="svc-stage__glow" aria-hidden="true"></div>
+          <svg class="glass svc-stage__house" viewBox="0 0 240 220" aria-hidden="true"><ellipse cx="120" cy="206" rx="92" ry="10" fill="url(#gShadow)" stroke="none"/><rect x="150" y="44" width="22" height="44" rx="4" class="g-body"/><path d="M44 104L120 40l76 64v92H44z" class="g-body"/><path d="M58 110l62-52 62 52v74H58z" class="g-inner"/><rect x="70" y="118" width="28" height="26" rx="5" class="g-core-fill" opacity=".5"/><rect x="142" y="118" width="28" height="26" rx="5" class="g-core-fill" opacity=".5"/><path d="M102 196v-40a18 18 0 0 1 36 0v40z" class="g-core-fill"/><path d="M30 108L120 30l90 78" class="g-tube-edge" stroke-width="20"/><path d="M30 108L120 30l90 78" class="g-tube" stroke-width="16"/><path d="M30 108L120 30l90 78" class="g-core" stroke-width="3"/><path d="M54 118v68" class="g-shine"/></svg>
+          <img class="svc-stage__person" src="/img/martin-cutout-1000.webp" srcset="/img/martin-cutout-640.webp 640w, /img/martin-cutout-1000.webp 1000w" sizes="(max-width: 900px) 80vw, 460px" width="1000" height="1195" alt="Martin Juriga, hypotéky a úvery na Orave" fetchpriority="high" />
+          <svg class="glass svc-stage__pct" viewBox="0 0 160 160" aria-hidden="true"><path d="M38 46a18 18 0 1 0 36 0a18 18 0 1 0-36 0" class="g-tube-edge" stroke-width="16"/><path d="M38 46a18 18 0 1 0 36 0a18 18 0 1 0-36 0" class="g-tube" stroke-width="12"/><path d="M38 46a18 18 0 1 0 36 0a18 18 0 1 0-36 0" class="g-core" stroke-width="3"/><path d="M86 114a18 18 0 1 0 36 0a18 18 0 1 0-36 0" class="g-tube-edge" stroke-width="16"/><path d="M86 114a18 18 0 1 0 36 0a18 18 0 1 0-36 0" class="g-tube" stroke-width="12"/><path d="M86 114a18 18 0 1 0 36 0a18 18 0 1 0-36 0" class="g-core" stroke-width="3"/><path d="M118 28L42 132" class="g-tube-edge" stroke-width="16"/><path d="M118 28L42 132" class="g-tube" stroke-width="12"/><path d="M118 28L42 132" class="g-core" stroke-width="3"/></svg>
           <div class="h-card h-card--free"><span class="pill__dot"></span>Služba je pre vás bezplatná</div>
           <div class="h-card h-card--badge">
             <span class="h-card__medal"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></span>
@@ -42,30 +44,31 @@
           <h2>Hypotéka alebo úver<br />na to, čo práve riešite.</h2>
         </div>
 
+<!-- @partial:glass-defs -->
         <div class="svc-grid">
           <article class="svc-card reveal">
-            <svg class="svc-card__ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
+            <div class="svc-card__media"><svg class="glass" viewBox="0 0 200 200" aria-hidden="true"><ellipse cx="100" cy="186" rx="62" ry="9" fill="url(#gShadow)" stroke="none"/><path d="M40 96L100 44l60 52v78H40z" class="g-body"/><path d="M52 100l48-41 48 41v64H52z" class="g-inner"/><path d="M84 176v-42a16 16 0 0 1 32 0v42z" class="g-core-fill"/><path d="M30 100L100 38l70 62" class="g-tube-edge" stroke-width="16"/><path d="M30 100L100 38l70 62" class="g-tube" stroke-width="12"/><path d="M30 100L100 38l70 62" class="g-core" stroke-width="3"/><path d="M50 108v58" class="g-shine"/></svg></div>
             <h3>Kúpa bytu alebo domu</h3>
             <p>Zistíme, koľko si môžete požičať, porovnáme ponuky bánk a vybavíme hypotéku od žiadosti až po podpis.</p>
           </article>
           <article class="svc-card reveal">
-            <svg class="svc-card__ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V10l8-6 8 6v11"/><path d="M9 21v-6h6v6M2 21h20"/></svg>
+            <div class="svc-card__media"><svg class="glass" viewBox="0 0 200 200" aria-hidden="true"><ellipse cx="100" cy="186" rx="70" ry="9" fill="url(#gShadow)" stroke="none"/><rect x="34" y="148" width="64" height="28" rx="6" class="g-body"/><rect x="102" y="148" width="64" height="28" rx="6" class="g-body"/><rect x="34" y="116" width="30" height="28" rx="6" class="g-body"/><rect x="68" y="116" width="64" height="28" rx="6" class="g-core-fill"/><rect x="136" y="116" width="30" height="28" rx="6" class="g-body"/><rect x="34" y="84" width="64" height="28" rx="6" class="g-body"/><rect x="102" y="84" width="64" height="28" rx="6" class="g-body"/><path d="M24 74L100 22l76 52" class="g-tube-edge" stroke-width="16"/><path d="M24 74L100 22l76 52" class="g-tube" stroke-width="12"/><path d="M24 74L100 22l76 52" class="g-core" stroke-width="3"/><path d="M44 92v76" class="g-shine"/></svg></div>
             <h3>Výstavba domu</h3>
             <p>Hypotéka na stavbu s čerpaním po etapách. Pomôžem s rozpočtom aj s dokladmi, ktoré si banka vyžiada.</p>
           </article>
           <article class="svc-card reveal">
-            <svg class="svc-card__ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg>
+            <div class="svc-card__media"><svg class="glass" viewBox="0 0 200 200" aria-hidden="true"><ellipse cx="100" cy="186" rx="62" ry="9" fill="url(#gShadow)" stroke="none"/><rect x="30" y="34" width="118" height="50" rx="16" class="g-body"/><rect x="40" y="45" width="98" height="28" rx="11" class="g-core-fill"/><path d="M148 59h22v46H100v38" class="g-tube-edge" stroke-width="16"/><path d="M148 59h22v46H100v38" class="g-tube" stroke-width="12"/><path d="M148 59h22v46H100v38" class="g-core" stroke-width="3"/><rect x="86" y="136" width="28" height="46" rx="10" class="g-body"/><path d="M93 144v30" class="g-shine"/><path d="M44 42h60" class="g-shine"/></svg></div>
             <h3>Rekonštrukcia</h3>
             <p>Úver na prerábku bytu alebo domu. Pozrieme sa, či je lepšie riešenie so zabezpečením nehnuteľnosťou alebo bez neho.</p>
           </article>
           <article class="svc-card reveal">
-            <svg class="svc-card__ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5.3L20 9M20 12a8 8 0 0 1-14 5.3L4 15M20 4v5h-5M4 20v-5h5"/></svg>
+            <div class="svc-card__media"><svg class="glass" viewBox="0 0 200 200" aria-hidden="true"><ellipse cx="100" cy="186" rx="62" ry="9" fill="url(#gShadow)" stroke="none"/><path d="M52 104a50 50 0 0 1 86-40" class="g-tube-edge" stroke-width="20"/><path d="M52 104a50 50 0 0 1 86-40" class="g-tube" stroke-width="16"/><path d="M52 104a50 50 0 0 1 86-40" class="g-core" stroke-width="3"/><path d="M148 96a50 50 0 0 1-86 40" class="g-tube-edge" stroke-width="20"/><path d="M148 96a50 50 0 0 1-86 40" class="g-tube" stroke-width="16"/><path d="M148 96a50 50 0 0 1-86 40" class="g-core" stroke-width="3"/><path d="M126 44l16 22-26 4" class="g-tube-edge" stroke-width="18"/><path d="M126 44l16 22-26 4" class="g-tube" stroke-width="14"/><path d="M126 44l16 22-26 4" class="g-core" stroke-width="3"/><path d="M74 156l-16-22 26-4" class="g-tube-edge" stroke-width="18"/><path d="M74 156l-16-22 26-4" class="g-tube" stroke-width="14"/><path d="M74 156l-16-22 26-4" class="g-core" stroke-width="3"/></svg></div>
             <h3>Refinancovanie</h3>
             <p>Končí vám fixácia alebo máte pocit, že platíte priveľa? Porovnáme, či sa oplatí prejsť do inej banky.</p>
             <a href="/refinancovanie/" class="svc-card__link">Viac o refinancovaní <span aria-hidden="true">→</span></a>
           </article>
           <article class="svc-card reveal">
-            <svg class="svc-card__ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></svg>
+            <div class="svc-card__media"><svg class="glass" viewBox="0 0 200 200" aria-hidden="true"><ellipse cx="100" cy="186" rx="70" ry="9" fill="url(#gShadow)" stroke="none"/><path d="M30 154v12a36 12 0 0 0 72 0v-12" class="g-body"/><path d="M30 161.5a36 12 0 0 0 72 0" class="g-rim"/><path d="M30 139v12a36 12 0 0 0 72 0v-12" class="g-body"/><path d="M30 146.5a36 12 0 0 0 72 0" class="g-rim"/><path d="M30 124v12a36 12 0 0 0 72 0v-12" class="g-body"/><path d="M30 131.5a36 12 0 0 0 72 0" class="g-rim"/><path d="M30 109v12a36 12 0 0 0 72 0v-12" class="g-body"/><path d="M30 116.5a36 12 0 0 0 72 0" class="g-rim"/><path d="M30 94v12a36 12 0 0 0 72 0v-12" class="g-body"/><path d="M30 101.5a36 12 0 0 0 72 0" class="g-rim"/><path d="M30 79v12a36 12 0 0 0 72 0v-12" class="g-body"/><path d="M30 86.5a36 12 0 0 0 72 0" class="g-rim"/><ellipse cx="66" cy="79" rx="36" ry="12" class="g-face"/><ellipse cx="66" cy="79" rx="27" ry="8.5" class="g-core-fill"/><path d="M102 165v12a34 11 0 0 0 68 0v-12" class="g-body"/><path d="M102 172.5a34 11 0 0 0 68 0" class="g-rim"/><path d="M102 150v12a34 11 0 0 0 68 0v-12" class="g-body"/><path d="M102 157.5a34 11 0 0 0 68 0" class="g-rim"/><path d="M102 135v12a34 11 0 0 0 68 0v-12" class="g-body"/><path d="M102 142.5a34 11 0 0 0 68 0" class="g-rim"/><path d="M102 120v12a34 11 0 0 0 68 0v-12" class="g-body"/><path d="M102 127.5a34 11 0 0 0 68 0" class="g-rim"/><path d="M102 105v12a34 11 0 0 0 68 0v-12" class="g-body"/><path d="M102 112.5a34 11 0 0 0 68 0" class="g-rim"/><path d="M102 90v12a34 11 0 0 0 68 0v-12" class="g-body"/><path d="M102 97.5a34 11 0 0 0 68 0" class="g-rim"/><path d="M102 75v12a34 11 0 0 0 68 0v-12" class="g-body"/><path d="M102 82.5a34 11 0 0 0 68 0" class="g-rim"/><path d="M102 60v12a34 11 0 0 0 68 0v-12" class="g-body"/><path d="M102 67.5a34 11 0 0 0 68 0" class="g-rim"/><path d="M102 45v12a34 11 0 0 0 68 0v-12" class="g-body"/><path d="M102 52.5a34 11 0 0 0 68 0" class="g-rim"/><ellipse cx="136" cy="45" rx="34" ry="11" class="g-face"/><ellipse cx="136" cy="45" rx="25" ry="7.5" class="g-core-fill"/></svg></div>
             <h3>Spotrebný úver a konsolidácia</h3>
             <p>Úver na auto či iné väčšie výdavky, alebo spojenie viacerých úverov do jedného s prehľadnou splátkou.</p>
           </article>
@@ -177,6 +180,7 @@
       </div>
     </section>
 
+<!-- @partial:mapa -->
     <!-- ============ FAQ ============ -->
     <section class="section" id="faq">
       <div class="container faq">

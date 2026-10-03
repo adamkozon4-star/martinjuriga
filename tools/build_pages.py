@@ -117,6 +117,7 @@ if __name__ == '__main__':
             continue
         meta = PAGES[slug]
         body = open(os.path.join(PAGES_DIR, slug + '.html')).read()
+        body = re.sub(r'<!-- @partial:([\w-]+) -->\n', lambda m: open(os.path.join(PAGES_DIR, '..', 'partials', m.group(1) + '.html')).read(), body)
         out = page(slug, meta['title'], meta['desc'], names[slug], body, meta['tema'], faq_from(body), meta.get('og', 'og.jpg'))
         os.makedirs(slug, exist_ok=True)
         open(os.path.join(slug, 'index.html'), 'w').write(out)
