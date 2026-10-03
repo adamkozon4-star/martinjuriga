@@ -10,7 +10,7 @@ GLASS_DIR = os.path.join(os.path.dirname(__file__), 'glass')
 CHECK = '<li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>'
 SCRIBBLE = ('<svg class="scribble__line" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true">'
             '<path d="M4 17C58 7 132 5 196 11c38 4 70 7 100-3"/><path d="M40 21c60-6 130-8 210-4"/></svg>')
-TOWNS = 'Pre klientov z Dolného Kubína, Námestova, Tvrdošína, Trstenej, Žiliny aj online z celého Slovenska.'
+TOWNS = 'Pre klientov z Dolného Kubína, Námestova, Tvrdošína, Trstenej, Žiliny, Bratislavy a osobne aj online z celého Slovenska.'
 
 
 def glass(name, cls=None):
@@ -129,6 +129,7 @@ def render(c):
             <h2 class="reveal">{w['h2']}<br /><span class="text-muted">{w['muted']}</span></h2>
             <p class="reveal">{w['p']}</p>
             <ul class="checks reveal">
+              <li>Banky, poisťovne aj investičné spoločnosti pod jednou strechou</li>
 {lis(w['checks'])}
             </ul>
             <a href="#kontakt" class="btn btn--dark reveal">{w['btn']} <span aria-hidden="true">→</span></a>
@@ -237,7 +238,7 @@ CONTENT = {
       checks=['Porovnanie ponúk viacerých bánk na jednom mieste', 'Prepočet, či sa prechod oplatí aj po započítaní nákladov', 'Komunikáciu s novou aj pôvodnou bankou vybavím za vás', 'Ak sa prechod neoplatí, férovo vám to poviem'],
       btn='Chcem porovnať ponuky'),
     steps_h2='Do novej banky<br />bez starostí.',
-    steps=[('Stretnutie', 'Zadarmo, do hodiny. Pozrieme sa na váš súčasný úver, zostatok a termín konca fixácie.'),
+    steps=[('Stretnutie', 'Zadarmo, do hodiny. Spoznáme sa a zistíme, či chcete spolupracovať vy so mnou a ja s vami.'),
            ('Porovnanie a prepočet', 'Porovnáme splátku aj celkové náklady vrátane poplatkov spojených s prechodom.'),
            ('Žiadosť v novej banke', 'Pomôžem s dokladmi a počas schvaľovania komunikujem s bankou.'),
            ('Splatenie starého úveru', 'Nová banka splatí pôvodný úver a vy už platíte len jednu splátku v novej banke.')],
@@ -276,10 +277,10 @@ CONTENT = {
       checks=['Vysvetlím rozdiel medzi sporením a investovaním', 'Suma, ktorá vám nebude chýbať v rozpočte', 'Dohodneme, kedy a ako dieťa peniaze dostane', 'Pravidelne spolu skontrolujeme, ako sa plánu darí'],
       btn='Chcem sporiť pre dieťa'),
     steps_h2='Od prvej otázky<br />po sporenie pre dieťa.',
-    steps=[('Stretnutie', 'Zadarmo, do hodiny. Porozprávame sa o tom, na čo chcete pre dieťa odkladať.'),
+    steps=[('Stretnutie', 'Zadarmo, do hodiny. Spoznáme sa a zistíme, či chcete spolupracovať vy so mnou a ja s vami.'),
            ('Cieľ a suma', 'Zistíme, koľko, na ako dlho a aké riziko vám je príjemné.'),
            ('Výber riešenia', 'Porovnáme sporenie a investovanie a vysvetlím rozdiely. Rozhodnutie je na vás.'),
-           ('Zmluva a servis', 'Pomôžem so zmluvou a pravidelne spolu skontrolujeme, ako sa sporeniu darí.')],
+           ('Podpis a pravidelný servis', 'Podpis zmlúv a minimálne raz za rok servisné stretnutie.')],
     steps_note=INVEST_NOTE,
     docs=dict(eyebrow='Na čo myslieť', h2='Ako na sporenie pre deti.',
       p='Z týchto zásad vychádzam, keď s rodičmi nastavujeme sporenie pre deti.',
@@ -315,10 +316,10 @@ CONTENT = {
       checks=['Kontrola II. piliera a výber stratégie', 'III. pilier s príspevkom zamestnávateľa, ak ho máte', 'Investovanie navyše podľa vašich možností', 'Pravidelné prehodnotenie, ako sa blíži dôchodok'],
       btn='Chcem riešiť dôchodok'),
     steps_h2='Od prvého stretnutia<br />po dôchodkový plán.',
-    steps=[('Stretnutie', 'Zadarmo, do hodiny. Porozprávame sa o tom, ako si dôchodok predstavujete.'),
+    steps=[('Stretnutie', 'Zadarmo, do hodiny. Spoznáme sa a zistíme, či chcete spolupracovať vy so mnou a ja s vami.'),
            ('Kontrola súčasného stavu', 'Pozrieme sa na II. a III. pilier aj ďalšie sporenia a investície.'),
            ('Dôchodkový plán', 'Pripravím návrh, koľko a kam odkladať. Rozhodnutie je na vás.'),
-           ('Nastavenie a servis', 'Pomôžem so zmenami a zmluvami a pravidelne plán spolu prehodnotíme.')],
+           ('Podpis a pravidelný servis', 'Podpis zmlúv a minimálne raz za rok servisné stretnutie.')],
     steps_note=INVEST_NOTE,
     docs=dict(eyebrow='Na čo myslieť', h2='Zásady pri dôchodku.',
       p='Na tieto veci sa s klientmi pri dôchodku pozeráme najčastejšie.',
@@ -354,10 +355,10 @@ CONTENT = {
       checks=['Poistné sumy podľa príjmu a záväzkov', 'Bez zbytočných pripoistení', 'Porovnanie viacerých poisťovní', 'Pomoc pri nahlásení poistnej udalosti'],
       btn='Chcem skontrolovať poistenie'),
     steps_h2='Od rozhovoru<br />po poistenie, ktoré sedí.',
-    steps=[('Stretnutie', 'Zadarmo, do hodiny. Porozprávame sa o vašej rodine, práci a záväzkoch.'),
+    steps=[('Stretnutie', 'Zadarmo, do hodiny. Spoznáme sa a zistíme, či chcete spolupracovať vy so mnou a ja s vami.'),
            ('Analýza rizík', 'Zistíme, ktoré situácie by vás finančne najviac zasiahli.'),
            ('Návrh a porovnanie', 'Porovnám ponuky viacerých poisťovní a vysvetlím rozdiely. Rozhodnutie je na vás.'),
-           ('Zmluva a servis', 'Pomôžem so zmluvou aj pri poistnej udalosti a poistenie pravidelne spolu skontrolujeme.')],
+           ('Podpis a pravidelný servis', 'Podpis zmlúv, minimálne raz za rok servis a pomoc aj pri poistnej udalosti.')],
     steps_note='Rozsah krytia a výluky určujú poistné podmienky konkrétnej poisťovne.',
     docs=dict(eyebrow='Na čo myslieť', h2='Na čo myslieť pri životnom poistení.',
       p='Na tieto veci sa pri nastavovaní a kontrole životného poistenia pozeráme najčastejšie.',
@@ -393,10 +394,10 @@ CONTENT = {
       checks=['Poistná suma podľa skutočnej hodnoty majetku', 'Porovnanie viacerých poisťovní', 'Pozor na výluky a spoluúčasť', 'Pomoc pri nahlásení škody'],
       btn='Chcem skontrolovať poistenie'),
     steps_h2='Od ocenenia<br />po poistený domov.',
-    steps=[('Stretnutie', 'Zadarmo, do hodiny. Porozprávame sa o tom, čo chcete poistiť.'),
+    steps=[('Stretnutie', 'Zadarmo, do hodiny. Spoznáme sa a zistíme, či chcete spolupracovať vy so mnou a ja s vami.'),
            ('Ocenenie majetku', 'Spolu určíme, akú hodnotu má nehnuteľnosť a domácnosť.'),
            ('Porovnanie ponúk', 'Porovnám ponuky viacerých poisťovní a vysvetlím rozdiely. Rozhodnutie je na vás.'),
-           ('Zmluva a servis', 'Pomôžem so zmluvou aj pri škode a poistenie pravidelne spolu skontrolujeme.')],
+           ('Podpis a pravidelný servis', 'Podpis zmlúv, minimálne raz za rok servis a pomoc aj pri škode.')],
     steps_note='Rozsah krytia a výluky určujú poistné podmienky konkrétnej poisťovne.',
     docs=dict(eyebrow='Čo si pripraviť', h2='Čo budeme potrebovať.',
       p='Na prvé stretnutie stačí pár základných údajov. Ostatné doplníme spolu.',
@@ -433,10 +434,10 @@ CONTENT = {
       checks=['Prehľad všetkých financií na jednom mieste', 'Konkrétne kroky, nie všeobecné rady', 'Rozhodnutie je vždy na vás', 'Pravidelná aktualizácia, keď sa vám zmení život'],
       btn='Chcem finančný plán'),
     steps_h2='Štyri kroky<br />k jasnému plánu.',
-    steps=[('Stretnutie', 'Zadarmo, do hodiny. Spoznáme sa a zistíme, čo od financií čakáte.'),
-           ('Analýza', 'Prejdeme príjmy, výdavky, zmluvy a ciele. Zmapujeme, kde ste dnes.'),
-           ('Finančný plán', 'Predstavím vám plán na mieru a vysvetlím každý krok. Rozhodnutie je na vás.'),
-           ('Realizácia a servis', 'Pomôžem plán uviesť do praxe a pravidelne ho spolu aktualizujeme.')],
+    steps=[('Stretnutie', 'Zadarmo, do hodiny. Spoznáme sa a zistíme, či chcete spolupracovať vy so mnou a ja s vami.'),
+           ('Analýza cieľov a potrieb', 'Prejdeme príjmy, výdavky, zmluvy a ciele. Zmapujeme, kde ste dnes.'),
+           ('Plán na mieru', 'Predstavím vám plán šitý na vás a vysvetlím každý krok. Rozhodnutie je na vás.'),
+           ('Podpis a pravidelný servis', 'Podpis zmlúv a minimálne raz za rok servisné stretnutie.')],
     steps_note='Finančný plán je pre vás bezplatný a nezaväzuje vás k podpisu žiadnej zmluvy.',
     docs=dict(eyebrow='Čo si pripraviť', h2='Čo prineste na stretnutie.',
       p='Nemusíte mať všetko. Čím viac však budeme vedieť, tým presnejší bude plán.',

@@ -1200,3 +1200,5 @@ main, .footer, .header { --ink: var(--page-text); --text: var(--page-text); --mu
 .geo__pin--main .geo__pin-in b { background: #1c1c1c; color: #fff; }
 .geo-towns li { color: #1c1c1c; }
 .geo-towns li:last-child { color: #b8743a; }
+/* oranžové tlačidlá: tmavý text kvôli čitateľnosti (biela na oranžovej má nízky kontrast) */
+.btn--primary, .btn--primary:hover, .chips input:checked + span, .header__cta { color: #1c1c1c; }
