@@ -1323,3 +1323,35 @@ h1, h2, h3 { letter-spacing: -.03em; }
   mask-image: linear-gradient(to bottom, #000 0%, #000 52%, rgba(0, 0, 0, .75) 66%, rgba(0, 0, 0, .35) 80%, transparent 96%);
 }
 .hero__person { -webkit-mask-image: none; mask-image: none; }
+
+/* ==========================================================
+   Úvodná animácia (logo sa nakreslí ako rastúci graf)
+   ========================================================== */
+.intro { display: none; }
+html.intro-on .intro { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; background: radial-gradient(60% 60% at 50% 45%, #2a2420 0%, #1e1e1e 60%, #161616 100%); }
+html.intro-on { overflow: hidden; }
+html.intro-on .intro::before { content: ""; position: absolute; inset: 0; background: url("/img/hory.svg") center 70% / cover no-repeat; opacity: 0; animation: introBg 1.6s ease .2s forwards; }
+.intro__inner { position: relative; display: grid; justify-items: center; }
+.intro__mark { width: clamp(110px, 16vw, 170px); height: auto; overflow: visible; filter: drop-shadow(0 0 28px rgba(224, 154, 91, .35)); }
+.intro__trace, .intro__path { fill: none; stroke-width: 52; stroke-linecap: round; stroke-linejoin: round; }
+.intro__trace { stroke: rgba(255, 255, 255, .06); }
+.intro__path { stroke: url(#introGrad); stroke-dasharray: 1400; stroke-dashoffset: 1400; animation: introDraw 1s cubic-bezier(.65, 0, .25, 1) .15s forwards; }
+.intro__spark { fill: #fff; opacity: 0; filter: drop-shadow(0 0 10px #f3c08a); animation: introSpark .7s ease .78s forwards; }
+.intro__name { margin-top: 1.6rem; overflow: hidden; }
+.intro__name span { display: block; font: 700 clamp(1.6rem, 3.4vw, 2.5rem)/1.1 var(--font); letter-spacing: -.03em; color: #f3efe9; transform: translateY(110%); animation: introUp .7s cubic-bezier(.2, .7, .2, 1) .75s forwards; }
+.intro__tag { margin-top: .5rem; overflow: hidden; }
+.intro__tag span { display: block; font: 600 .78rem var(--font); letter-spacing: .38em; text-transform: uppercase; color: #e09a5b; transform: translateY(110%); animation: introUp .7s cubic-bezier(.2, .7, .2, 1) .92s forwards; }
+.intro__bar { width: 180px; height: 2px; margin-top: 1.8rem; border-radius: 2px; background: rgba(255, 255, 255, .1); overflow: hidden; }
+.intro__bar i { display: block; height: 100%; width: 100%; background: linear-gradient(90deg, #c9803f, #f3c08a); transform: scaleX(0); transform-origin: left; animation: introBar 1.6s cubic-bezier(.4, 0, .2, 1) .2s forwards; }
+/* odchod: opona sa zdvihne a obsah jemne zmizne */
+html.intro-out .intro { animation: introLift .8s cubic-bezier(.76, 0, .24, 1) forwards; }
+html.intro-out .intro__inner { animation: introFade .4s ease forwards; }
+@keyframes introDraw { to { stroke-dashoffset: 0; } }
+@keyframes introSpark { 0% { opacity: 0; transform: scale(.2); transform-origin: 512px 40px; } 50% { opacity: 1; transform: scale(1.4); transform-origin: 512px 40px; } 100% { opacity: .9; transform: scale(1); transform-origin: 512px 40px; } }
+@keyframes introUp { to { transform: none; } }
+@keyframes introBar { to { transform: scaleX(1); } }
+@keyframes introBg { to { opacity: .55; } }
+@keyframes introLift { to { clip-path: inset(0 0 100% 0); } }
+@keyframes introFade { to { opacity: 0; transform: translateY(-24px); } }
+/* animácie úvodu stránky počkajú, kým opona odíde */
+html.intro-on:not(.intro-out) .hero *, html.intro-on:not(.intro-out) .svc-hero * { animation-play-state: paused !important; }
