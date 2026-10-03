@@ -86,6 +86,8 @@ const updateSteps = () => {
     road.style.setProperty('--p', pr.toFixed(3));
     const on = Math.ceil(pr * roadTiles.length + 0.15);
     roadTiles.forEach((t, i) => t.classList.toggle('is-active', i < on && pr > 0));
+    // karty krokov pod cestou svietia spolu so svojou dlaždicou
+    stepItems.forEach((st, i) => st.classList.toggle('is-active', i < on && pr > 0));
   }
 };
 window.addEventListener('scroll', updateSteps, { passive: true });
