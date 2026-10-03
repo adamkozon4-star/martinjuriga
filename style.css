@@ -1122,7 +1122,7 @@ body { background: transparent; color: var(--page-text); }
   background-image: linear-gradient(rgba(255, 255, 255, .028) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .028) 1px, transparent 1px);
   background-size: 56px 56px; }
 .page-bg__img { position: absolute; left: 50%; top: 0; height: max(135vh, calc(100vw * 890 / 1600)); aspect-ratio: 1600 / 890;
-  background: url("/img/hory.webp") center / cover no-repeat; opacity: .9;
+  background: url("/img/hory.svg") center / cover no-repeat; opacity: .9;
   transform: translate(-50%, calc(var(--bp, 0) * (100vh - 100%))); will-change: transform; }
 .page-bg::after { content: ""; position: absolute; inset: 0; background: radial-gradient(120% 80% at 50% 0%, transparent 55%, rgba(0, 0, 0, .35)); }
 
