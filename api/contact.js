@@ -18,7 +18,7 @@ const MARTIN_EMAIL = 'martin.juriga@merucompany.sk';
 const PHONE = '+421 915 448 705';
 const SITE = 'https://martinjuriga.sk';
 
-const TOPICS = ['Finančný plán', 'Investície', 'Hypotéka', 'Poistenie', 'Dôchodok'];
+const TOPICS = ['Investície', 'Hypotéka', 'Poistenie', 'Dôchodok', 'Rezerva', 'II. a III. pilier', 'Poistenie nehnuteľnosti', 'PZP'];
 const PAGES = {
   '/': 'Úvodná stránka',
   '/hypoteky-a-uvery/': 'Hypotéky a úvery',

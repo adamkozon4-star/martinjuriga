@@ -37,11 +37,11 @@ PAGES = {
   'majetkove-poistenie': dict(
     title='Poistenie domu, bytu a domácnosti Orava – Dolný Kubín, Námestovo, Žilina | Martin Juriga',
     desc='Poistenie nehnuteľnosti, domácnosti a zodpovednosti so správne nastavenou poistnou sumou. Porovnanie viacerých poisťovní. Orava, Žilina aj online.',
-    tema='Poistenie'),
+    tema='Poistenie nehnuteľnosti'),
   'financny-plan': dict(
     title='Finančný plán Orava – Dolný Kubín, Námestovo, Žilina | Martin Juriga',
     desc='Bezplatný finančný plán: analýza zmlúv, rezerva, ciele, poistenie aj dôchodok v jednom prehľadnom pláne. Orava, Žilina aj online.',
-    tema='Finančný plán'),
+    tema='Investície'),
 }
 
 idx = open('index.html').read()
@@ -61,7 +61,7 @@ def page(slug, title, desc, h_name, body, tema, faq, og_image):
     header = header.replace('<a href="#top" class="logo"', '<a href="/" class="logo"')
     header = to_sub(header)
     contact = to_sub(cut('    <!-- ============ KONTAKT', '</section>'))
-    contact = contact.replace('value="Finančný plán" checked', 'value="Finančný plán"').replace(f'value="{tema}" />', f'value="{tema}" checked />')
+    contact = contact.replace(' checked />', ' />').replace(f'value="{tema}" />', f'value="{tema}" checked />')
     foot = cut('  <!-- ============ FOOTER', '</html>')
     foot = re.sub(r'(<p class="footer__h">Služby</p>\n).*?(\s*</nav>)', lambda m: m.group(1)+footer_services(False)+m.group(2), foot, count=1, flags=re.S)
     foot = to_sub(foot).replace('<a href="#top" class="logo">', '<a href="/" class="logo">').replace('src="main.js"', 'src="/main.js"')
