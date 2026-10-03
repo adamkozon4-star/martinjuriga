@@ -274,4 +274,38 @@ const countIO = new IntersectionObserver((entries) => {
 }, { threshold: 0.6 });
 counters.forEach((c) => countIO.observe(c));
 
+/* ---------- úvod: paralaxa a svetlo za kurzorom ---------- */
+const hero = $('.hero');
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (hero && !reduced && matchMedia('(pointer: fine)').matches) {
+  const layers = [['.hero__circle', 14], ['.hero__ring', 22], ['.hero__person', 8], ['.years-badge', 34], ['.h-card--chart', 40], ['.h-card--badge', 30], ['.hero__round', 26]]
+    .map(([sel, d]) => [$(sel, hero), d]).filter(([el]) => el);
+  let raf2;
+  hero.addEventListener('mousemove', (e) => {
+    cancelAnimationFrame(raf2);
+    raf2 = requestAnimationFrame(() => {
+      const r = hero.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      layers.forEach(([el, d]) => { el.style.translate = `${(-x * d).toFixed(1)}px ${(-y * d).toFixed(1)}px`; });
+      hero.style.setProperty('--mx', `${e.clientX - r.left}px`);
+      hero.style.setProperty('--my', `${e.clientY - r.top}px`);
+    });
+  });
+  hero.addEventListener('mouseleave', () => layers.forEach(([el]) => { el.style.translate = ''; }));
+}
+
+/* ---------- niť medzi výsledkami a sľubom ---------- */
+const thread = $('.promise__thread');
+if (thread) {
+  const upd = () => {
+    const r = thread.getBoundingClientRect();
+    const vh = window.innerHeight;
+    const p = Math.min(1, Math.max(0, (vh * 0.9 - r.top) / (r.height + vh * 0.25)));
+    thread.style.setProperty('--p', reduced ? 1 : p.toFixed(3));
+  };
+  window.addEventListener('scroll', upd, { passive: true });
+  upd();
+}
+
 $('#year').textContent = new Date().getFullYear();

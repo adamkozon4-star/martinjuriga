@@ -734,7 +734,7 @@ input[type="range"]:focus-visible { box-shadow: 0 0 0 4px rgba(107, 146, 255, .3
 .footer .logo__text small { color: rgba(255, 255, 255, .6); }
 
 /* výsledky nadväzujú na úvod */
-.results { position: relative; z-index: 4; background: #fff; border-top: 1px solid #e6ecf7; box-shadow: 0 -20px 40px -30px rgba(11, 16, 32, .25); }
+
 
 @media (max-width: 1080px) {
   .h-card--chart { left: -2%; width: 190px; }
@@ -762,4 +762,64 @@ input[type="range"]:focus-visible { box-shadow: 0 0 0 4px rgba(107, 146, 255, .3
   .burger { border-color: #d5ddec; background: #fff; }
   .burger span { background: var(--ink); }
   .header.is-scrolled { background: rgba(255, 255, 255, .9); border-color: #e3e9f5; }
+}
+
+
+/* ==========================================================
+   Život v úvode a prepojenie sekcií
+   ========================================================== */
+/* výsledky ako plávajúca karta cez spodok úvodu */
+.hero { padding-bottom: 60px; }
+.results { position: relative; z-index: 6; background: transparent; border: 0; margin-top: -110px; }
+.results__row {
+  background: rgba(255, 255, 255, .96); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border: 1px solid #e3e9f5; border-radius: 30px; padding: 0 clamp(1rem, 2.4vw, 2rem);
+  box-shadow: 0 40px 80px -40px rgba(11, 16, 32, .45), 0 2px 0 rgba(255, 255, 255, .8) inset;
+}
+.results__row::after { content: ""; position: absolute; left: 50%; bottom: -9px; width: 18px; height: 18px; border-radius: 50%; background: #fff; border: 3px solid var(--blue); transform: translateX(-50%); box-shadow: 0 0 0 6px rgba(47, 98, 255, .15); z-index: 2; }
+.promise { margin-top: 28px !important; }
+.promise__thread { position: absolute; left: 50%; top: -28px; width: 2px; height: calc(clamp(5rem, 11vw, 9rem) - .4rem); transform: translateX(-50%); z-index: 1; background: repeating-linear-gradient(rgba(47, 98, 255, .25) 0 6px, transparent 6px 12px); }
+.promise__thread i { position: absolute; inset: 0; background: linear-gradient(var(--blue), #6b92ff); transform-origin: top; transform: scaleY(var(--p, 0)); transition: transform .15s linear; }
+.promise__thread::after { content: ""; position: absolute; left: 50%; bottom: -4px; width: 10px; height: 10px; border-radius: 50%; background: var(--blue); transform: translateX(-50%) scale(var(--p, 0)); }
+
+/* svetlo, ktoré sleduje kurzor */
+.hero__bg::before { content: ""; position: absolute; inset: 0; background: radial-gradient(420px circle at var(--mx, 70%) var(--my, 45%), rgba(47, 98, 255, .16), transparent 70%); transition: background .2s; }
+
+/* paralaxa */
+.hero__circle, .hero__ring, .hero__person, .years-badge, .h-card, .hero__round { transition: translate .7s cubic-bezier(.2, .7, .2, 1); }
+
+/* nástupná sekvencia */
+@keyframes heroCircleIn { from { opacity: 0; transform: translate(-50%, 12%) scale(.6); } }
+@keyframes heroRingIn { from { opacity: 0; transform: translate(-50%, 14%) scale(.5) rotate(-60deg); } }
+@keyframes personIn { from { opacity: 0; transform: translateY(60px) scale(.96); filter: blur(6px) drop-shadow(0 30px 40px rgba(11, 16, 32, .18)); } }
+@keyframes popIn { 0% { opacity: 0; scale: .6; } 70% { scale: 1.05; } 100% { opacity: 1; scale: 1; } }
+@keyframes cardUp { from { opacity: 0; transform: translateY(40px); } }
+.hero__circle { animation: heroCircleIn 1.4s cubic-bezier(.2, .7, .2, 1) .1s both; }
+.hero__ring { animation: heroRingIn 1.8s cubic-bezier(.2, .7, .2, 1) .2s both; }
+.hero__person { animation: personIn 1.3s cubic-bezier(.2, .7, .2, 1) .35s both; }
+.years-badge { animation: popIn .8s cubic-bezier(.2, .7, .2, 1) 1.1s both; }
+.h-card--chart { animation: popIn .8s cubic-bezier(.2, .7, .2, 1) 1.3s both, float 7s ease-in-out 2.1s infinite; }
+.h-card--badge { animation: popIn .8s cubic-bezier(.2, .7, .2, 1) 1.5s both, float 7s ease-in-out 2.3s infinite reverse; }
+.hero__round { animation: popIn .7s cubic-bezier(.2, .7, .2, 1) 1.7s both; }
+.results__row { animation: cardUp 1s cubic-bezier(.2, .7, .2, 1) .9s both; }
+.hero__round::after { content: ""; position: absolute; inset: -6px; border-radius: 50%; border: 1px solid rgba(11, 16, 32, .25); animation: ripple 2.4s ease-out 2.4s infinite; }
+@keyframes ripple { from { opacity: 1; transform: scale(.9); } to { opacity: 0; transform: scale(1.5); } }
+
+/* nadpis: riadky vychádzajú zdola */
+.hero__title .line { display: block; overflow: hidden; padding: 0 .1em .34em; margin: 0 -.1em -.34em; }
+.hero__title .line > span { display: inline-block; animation: lineUp 1s cubic-bezier(.2, .7, .2, 1) both; }
+.hero__title .line:nth-child(2) > span { animation-delay: .15s; }
+@keyframes lineUp { from { transform: translateY(105%); } }
+.hero__title.reveal { opacity: 1; transform: none; }
+
+/* číslo v kartách výsledkov pri prechode myšou */
+.result { transition: background .3s; border-radius: 0; }
+.result:hover { background: linear-gradient(180deg, rgba(47, 98, 255, .06), transparent); }
+.result:hover strong { color: var(--blue); }
+
+@media (max-width: 900px) {
+  .hero { padding-bottom: 40px; }
+  .results { margin-top: -60px; }
+  .results__row { border-radius: 22px; margin-inline: 12px; width: auto; }
+  .results__row::after { display: none; }
 }
