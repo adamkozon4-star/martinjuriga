@@ -1119,9 +1119,9 @@ body { background: transparent; color: var(--page-text); }
 
 /* pozadie celej stránky */
 .page-bg { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; background-color: var(--page);
-  background-image: url("/img/vzor.svg"); background-size: 300px 300px; }
+  }
 .page-bg__img { position: absolute; left: 50%; top: 0; height: max(135vh, calc(100vw * 890 / 1600)); aspect-ratio: 1600 / 890;
-  background: url("/img/hory.svg") center / cover no-repeat; opacity: .9;
+  background: url("/img/hory.svg") center / cover no-repeat;
   transform: translate(-50%, calc(var(--bp, 0) * (100vh - 100%))); will-change: transform; }
 .page-bg::after { content: ""; position: absolute; inset: 0; background: radial-gradient(120% 80% at 50% 0%, transparent 55%, rgba(0, 0, 0, .35)); }
 
