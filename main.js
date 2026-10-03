@@ -71,6 +71,7 @@ const steps = $('.steps');
 const stepItems = $$('.step');
 const road = $('.road');
 const roadTiles = $$('.road__tile');
+const wideSteps = matchMedia('(min-width: 901px)');
 const updateSteps = () => {
   if (!steps) return;
   const r = steps.getBoundingClientRect();
@@ -87,7 +88,8 @@ const updateSteps = () => {
     const on = Math.ceil(pr * roadTiles.length + 0.15);
     roadTiles.forEach((t, i) => t.classList.toggle('is-active', i < on && pr > 0));
     // karty krokov pod cestou svietia spolu so svojou dlaždicou
-    stepItems.forEach((st, i) => st.classList.toggle('is-active', i < on && pr > 0));
+    // na desktope sú pod doskou karty napojené na dlaždice, na mobile sa kroky rozsvecujú postupne samy
+    if (wideSteps.matches) stepItems.forEach((st, i) => st.classList.toggle('is-active', i < on && pr > 0));
   }
 };
 window.addEventListener('scroll', updateSteps, { passive: true });

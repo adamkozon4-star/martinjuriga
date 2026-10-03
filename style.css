@@ -1047,7 +1047,13 @@ input[type="range"]:focus-visible { box-shadow: 0 0 0 4px rgba(107, 146, 255, .3
   .road + .steps .step p { margin-top: .45rem; }
 }
 @media (max-width: 600px) {
-  .road { display: none; }
+  /* na mobile menšia doska cez celú šírku */
+  .road { margin: 3.2rem -16px 0; }
+  .road__scene { margin: -2% 0 6%; }
+  .road__plane { --rx: 52deg; transform: rotateX(var(--rx)) rotateZ(var(--rz)) scale(1.04); }
+  .road__tile { width: 15%; }
+  .road__obj .glass { width: 46px; }
+  .road__obj b { font-size: .62rem; padding: .15rem .45rem; }
 }
 .svc-stage__house--chart { width: 52%; left: -4%; top: 4%; }
 .svc-stage__house--icon { width: 44%; left: -2%; top: 8%; }
