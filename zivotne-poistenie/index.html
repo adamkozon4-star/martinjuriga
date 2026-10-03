@@ -18,8 +18,13 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lexend:wght@500;600&family=Caveat:wght@500;600&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lexend:wght@500;600&family=Caveat:wght@500;600&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lexend:wght@500;600&family=Caveat:wght@500;600&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet" /></noscript>
   <link rel="stylesheet" href="/style.css" />
+  <!-- Vercel Web Analytics a Speed Insights (bez cookies) -->
+  <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); }; window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
 
   <script type="application/ld+json">
   {"@context": "https://schema.org", "@type": "Service", "name": "Životné poistenie", "serviceType": "Životné poistenie", "url": "https://martinjuriga.sk/zivotne-poistenie/", "description": "Životné poistenie nastavené na skutočné riziká: vážne choroby, úraz, invaliditu a zabezpečenie rodiny. Porovnanie viacerých poisťovní. Orava, Žilina aj online.", "provider": {"@type": "FinancialService", "name": "Martin Juriga – finančné plánovanie", "url": "https://martinjuriga.sk/", "telephone": "+421915448705", "address": {"@type": "PostalAddress", "streetAddress": "Medzibrodie nad Oravou 136", "postalCode": "026 01", "addressLocality": "Dolný Kubín", "addressCountry": "SK"}}, "areaServed": ["Dolný Kubín", "Námestovo", "Tvrdošín", "Trstená", "Žilina", "Slovensko"]}
@@ -440,7 +445,7 @@
 
           <form class="form" id="contact-form" novalidate>
             <input type="hidden" name="subject" value="Nový dopyt z webu martinjuriga.sk" />
-            <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" />
+            <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" aria-label="Nevypĺňajte" />
 
             <fieldset class="chips">
               <legend>S čím vám môžem pomôcť?</legend>
@@ -485,7 +490,7 @@
         </div>
 
         <nav class="footer__col" aria-label="Služby">
-          <h4>Služby</h4>
+          <p class="footer__h">Služby</p>
           <a href="/hypoteky-a-uvery/">Hypotéky a úvery</a>
           <a href="/refinancovanie/">Refinancovanie</a>
           <a href="/investovanie/">Investovanie</a>
@@ -497,7 +502,7 @@
         </nav>
 
         <nav class="footer__col" aria-label="Navigácia">
-          <h4>Navigácia</h4>
+          <p class="footer__h">Navigácia</p>
           <a href="/#situacie">Riešenia podľa situácie</a>
           <a href="/#postup">Ako spolupracujeme</a>
           <a href="/#o-mne">O mne</a>
@@ -506,7 +511,7 @@
         </nav>
 
         <div class="footer__col footer__contact">
-          <h4>Kontakt</h4>
+          <p class="footer__h">Kontakt</p>
           <a href="tel:+421915448705">+421 915 448 705</a>
           <a href="mailto:martin.juriga@merucompany.sk">martin.juriga@merucompany.sk</a>
           <span>Kedykoľvek, po dohode</span>

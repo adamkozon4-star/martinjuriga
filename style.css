@@ -514,7 +514,7 @@ input[type="range"]:focus-visible { box-shadow: 0 0 0 4px rgba(107, 146, 255, .3
 .socials a:hover { background: var(--blue); border-color: var(--blue); color: #fff; transform: translateY(-3px); }
 .socials svg { width: 19px; height: 19px; }
 .footer__col { display: flex; flex-direction: column; align-items: flex-start; gap: .75rem; font-size: .95rem; }
-.footer__col h4 { margin: 0 0 .5rem; color: #fff; font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.footer__col h4, .footer__h { margin: 0 0 .5rem; color: #fff; font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
 .footer__col a:not(.btn) { position: relative; transition: color .25s, transform .25s var(--ease); }
 .footer__col a:not(.btn):hover { color: #fff; transform: translateX(3px); }
 .footer__contact a:not(.btn) { color: #fff; font-weight: 600; }

@@ -63,7 +63,7 @@ def page(slug, title, desc, h_name, body, tema, faq, og_image):
     contact = to_sub(cut('    <!-- ============ KONTAKT', '</section>'))
     contact = contact.replace('value="Finančný plán" checked', 'value="Finančný plán"').replace(f'value="{tema}" />', f'value="{tema}" checked />')
     foot = cut('  <!-- ============ FOOTER', '</html>')
-    foot = re.sub(r'(<h4>Služby</h4>\n).*?(\s*</nav>)', lambda m: m.group(1)+footer_services(False)+m.group(2), foot, count=1, flags=re.S)
+    foot = re.sub(r'(<p class="footer__h">Služby</p>\n).*?(\s*</nav>)', lambda m: m.group(1)+footer_services(False)+m.group(2), foot, count=1, flags=re.S)
     foot = to_sub(foot).replace('<a href="#top" class="logo">', '<a href="/" class="logo">').replace('src="main.js"', 'src="/main.js"')
     ld = [
       {"@context": "https://schema.org", "@type": "Service", "name": h_name, "serviceType": h_name, "url": url,
@@ -98,8 +98,13 @@ def page(slug, title, desc, h_name, body, tema, faq, og_image):
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lexend:wght@500;600&family=Caveat:wght@500;600&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lexend:wght@500;600&family=Caveat:wght@500;600&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lexend:wght@500;600&family=Caveat:wght@500;600&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet" /></noscript>
   <link rel="stylesheet" href="/style.css" />
+  <!-- Vercel Web Analytics a Speed Insights (bez cookies) -->
+  <script>window.va = window.va || function () {{ (window.vaq = window.vaq || []).push(arguments); }}; window.si = window.si || function () {{ (window.siq = window.siq || []).push(arguments); }};</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
 
 {ld_html}
 </head>
@@ -125,7 +130,7 @@ def partial(name):
 def update_index():
     global idx
     s = re.sub(r'      <nav class="nav" aria-label="Hlavná navigácia">.*?</nav>', lambda m: nav(True), idx, count=1, flags=re.S)
-    s = re.sub(r'(<nav class="footer__col" aria-label="Služby">\s*<h4>Služby</h4>\n).*?(\s*</nav>)', lambda m: m.group(1)+footer_services(True)+m.group(2), s, count=1, flags=re.S)
+    s = re.sub(r'(<nav class="footer__col" aria-label="Služby">\s*<p class="footer__h">Služby</p>\n).*?(\s*</nav>)', lambda m: m.group(1)+footer_services(True)+m.group(2), s, count=1, flags=re.S)
     # bloky <!-- @partial:x --> … <!-- /@partial:x --> na úvodnej stránke
     s = re.sub(r'<!-- @partial:([\w-]+) -->\n.*?<!-- /@partial:\1 -->\n',
                lambda m: f'<!-- @partial:{m.group(1)} -->\n' + partial(m.group(1)) + f'<!-- /@partial:{m.group(1)} -->\n', s, flags=re.S)
