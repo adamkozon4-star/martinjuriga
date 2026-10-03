@@ -1172,3 +1172,18 @@ main, .footer, .header { --ink: var(--page-text); --text: var(--page-text); --mu
 /* obrysové tlačidlo na tmavom pozadí úvodu */
 .hero .btn--outline, .svc-hero .btn--outline { background: rgba(255, 255, 255, .05); border-color: rgba(255, 255, 255, .3); color: #fff; }
 .hero .btn--outline:hover, .svc-hero .btn--outline:hover { background: #fff; border-color: #fff; color: #1c1c1c; }
+
+/* karta Finančný plán: tmavý text na bielej karte, sýtejší graf */
+.plan-sheet { --ink: #1c1c1c; --muted: #7e756d; --line: #eadfd5; color: #1c1c1c; }
+.plan-sheet__title { color: #1c1c1c; }
+.plan-sheet__chart rect { fill: #f1d9c2; }
+.plan-sheet__chart rect:nth-child(3) { fill: #ecc49e; }
+.plan-sheet__chart rect:nth-child(4) { fill: #e6b07e; }
+.plan-sheet__chart rect.hi { fill: #e09a5b; }
+.plan-sheet__chart path { stroke: #1c1c1c; stroke-width: 1.8; }
+.plan-sheet__row b { background: #eadfd5; }
+
+/* zvýraznenie v texte o prístupe: čistá oranžová namiesto hnedého pozadia */
+.promise__text mark { background: none; color: var(--blue); padding: 0; margin: 0; }
+.promise__note { color: #c9c2b9; }
+.promise__text, .promise__note { text-shadow: 0 2px 24px rgba(0, 0, 0, .65); }
