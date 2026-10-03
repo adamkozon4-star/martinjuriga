@@ -79,7 +79,7 @@ def page(slug, title, desc, h_name, body, tema, faq, og_image):
 
 {ld_html}
 </head>
-<body>
+<body id="top">
 
 {header}
 
