@@ -88,6 +88,11 @@ html = f'''    <!-- ============ KDE POMÁHAM (3D mapa, generuje tools/make_map.
           <ul class="geo-towns reveal">
             <li>Dolný Kubín</li><li>Námestovo</li><li>Tvrdošín</li><li>Trstená</li><li>Žilina</li><li>Bratislava</li><li>osobne aj online po celom Slovensku</li>
           </ul>
+          <div class="geo-gallery reveal">
+            <img src="/img/kancelaria-recepcia2-800.webp" width="600" height="800" loading="lazy" alt="Recepcia kancelárie" />
+            <img src="/img/kancelaria-kreslo-800.webp" width="800" height="600" loading="lazy" alt="Pracovisko v kancelárii" />
+            <img src="/img/kancelaria-chodba-800.webp" width="596" height="800" loading="lazy" alt="Chodba v kancelárii" />
+          </div>
           <a href="#kontakt" class="btn btn--dark reveal">Dohodnúť stretnutie <span aria-hidden="true">→</span></a>
         </div>
 

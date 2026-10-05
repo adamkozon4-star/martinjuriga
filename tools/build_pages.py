@@ -50,7 +50,7 @@ def cut(start, end):
     i = idx.index(start); j = idx.index(end, i) + len(end); return idx[i:j]
 
 def to_sub(fragment):
-    f = fragment.replace('src="img/', 'src="/img/').replace('href="ochrana-osobnych-udajov.html"', 'href="/ochrana-osobnych-udajov.html"')
+    f = fragment.replace('src="img/', 'src="/img/').replace('srcset="img/', 'srcset="/img/').replace(', img/', ', /img/').replace('href="ochrana-osobnych-udajov.html"', 'href="/ochrana-osobnych-udajov.html"')
     # kotvy na úvodnú stránku, okrem tých, ktoré sú aj na podstránke
     return re.sub(r'href="#(?!kontakt"|top")([\w-]+)"', r'href="/#\1"', f)
 

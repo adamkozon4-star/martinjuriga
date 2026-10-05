@@ -198,6 +198,14 @@ def render(c):
 '''
 
 
+def office(name):
+    w, h = OFFICE[name]
+    return (f'<img src="/img/kancelaria-{name}-1600.webp" srcset="/img/kancelaria-{name}-800.webp 800w, /img/kancelaria-{name}-1600.webp 1600w" '
+            f'sizes="(max-width: 900px) 90vw, 560px" width="{w}" height="{h}" loading="lazy" alt="Kancelária, kde sa stretávame s klientmi" />')
+
+
+OFFICE = {'kreslo': (1600, 1200), 'priestor': (1200, 1600), 'chodba': (1070, 1436), 'vstup': (1200, 1600), 'recepcia2': (1200, 1600), 'stol': (1600, 1200), 'stol2': (1600, 1200), 'pracovisko': (1600, 1200)}
+
 IMG = {
     'portrait': '<img src="/img/martin-portrait.webp" width="800" height="978" loading="lazy" alt="Martin Juriga, finančný sprostredkovateľ z Oravy" />',
     'povysenie': '<img src="/img/martin-portrait.webp" width="800" height="978" loading="lazy" alt="Martin Juriga, finančný sprostredkovateľ z Oravy" />',
@@ -232,7 +240,7 @@ CONTENT = {
       ('heart', 'Zmenila sa vaša situácia', 'Nový príjem, rodina alebo zmena spoludlžníka. Úver upravíme tak, aby sedel k tomu, ako žijete dnes.'),
     ],
     cta=('Ešte len kupujete bývanie?', 'Pozrite si, ako vám pomôžem s novou hypotékou na kúpu, výstavbu alebo rekonštrukciu.', 'Hypotéky a úvery', '/hypoteky-a-uvery/'),
-    why=dict(img=IMG['portrait'], stat=('0 €', 'platíte za moje služby'),
+    why=dict(img=office('kreslo'), stat=('0 €', 'platíte za moje služby'),
       h2='Vaša banka ukáže svoju ponuku.', muted='Ja vám ukážem aj ostatné.',
       p='Pri konci fixácie väčšina ľudí podpíše to, čo im pošle vlastná banka. Niekedy je to dobrá voľba, inokedy nie. Spolu to porovnáme a rozhodnete sa podľa čísel, nie podľa pohodlia.',
       checks=['Porovnanie ponúk viacerých bánk na jednom mieste', 'Prepočet, či sa prechod oplatí aj po započítaní nákladov', 'Komunikáciu s novou aj pôvodnou bankou vybavím za vás', 'Ak sa prechod neoplatí, férovo vám to poviem'],
@@ -271,7 +279,7 @@ CONTENT = {
       ('gift', 'Príspevok od starých rodičov', 'Pravidelný darček od starých či krstných rodičov, ktorý má väčší zmysel ako ďalšia hračka.'),
       ('shield', 'Úrazové poistenie detí', 'Pre aktívne deti, aby vás nezaskočili výdavky po úraze pri športe či v škole.'),
     ],
-    why=dict(img=IMG['povysenie'], stat=('0 €', 'platíte za moje služby'),
+    why=dict(img=office('priestor'), stat=('0 €', 'platíte za moje služby'),
       h2='Pri deťoch je čas', muted='najväčšia výhoda.',
       p='Kto začne skôr, môže sporiť menšiu mesačnú sumu. Pomôžem vám vybrať riešenie, ktoré sedí k tomu, na čo a na ako dlho chcete pre dieťa odkladať.',
       checks=['Vysvetlím rozdiel medzi sporením a investovaním', 'Suma, ktorá vám nebude chýbať v rozpočte', 'Dohodneme, kedy a ako dieťa peniaze dostane', 'Pravidelne spolu skontrolujeme, ako sa plánu darí'],
@@ -310,7 +318,7 @@ CONTENT = {
       ('hourglass', 'Odhad budúceho dôchodku', 'Približne spočítame, s akým dôchodkom môžete rátať a koľko vám bude chýbať do životnej úrovne, ktorú chcete.'),
       ('magnifier', 'Kontrola súčasných zmlúv', 'Pozrieme sa na zmluvy, ktoré už máte: poplatky, fondy a to, či ešte sedia k vašej situácii.'),
     ],
-    why=dict(img=IMG['studio'], stat=('0 €', 'platíte za moje služby'),
+    why=dict(img=office('chodba'), stat=('0 €', 'platíte za moje služby'),
       h2='Na štát sa spoliehať nedá.', muted='Na plán áno.',
       p='Dôchodok sa nedá vyriešiť rok pred ním. Čím skôr začnete, tým menšia mesačná suma stačí. Pozrieme sa na to, čo už máte, a doplníme, čo chýba.',
       checks=['Kontrola II. piliera a výber stratégie', 'III. pilier s príspevkom zamestnávateľa, ak ho máte', 'Investovanie navyše podľa vašich možností', 'Pravidelné prehodnotenie, ako sa blíži dôchodok'],
@@ -349,7 +357,7 @@ CONTENT = {
       ('house', 'Poistenie k hypotéke', 'Aby úver nebol pre rodinu záťažou, ak by ste ho nemohli splácať.', ('/hypoteky-a-uvery/', 'Viac o hypotékach')),
       ('magnifier', 'Kontrola súčasnej zmluvy', 'Pozrieme sa na vaše poistenie: poistné sumy, výluky a to, či ešte sedí k vášmu životu.'),
     ],
-    why=dict(img=IMG['povysenie'], stat=('22', 'životných poistení s klientmi'),
+    why=dict(img=office('vstup'), stat=('22', 'životných poistení s klientmi'),
       h2='Poistenie nie je o tom, koľko platíte.', muted='Je o tom, čo vám vyplatí.',
       p='Veľa ľudí má poistenie, ktoré v ťažkej chvíli nepomôže, lebo poistné sumy sú nízke alebo kryje nesprávne riziká. Nastavíme ho podľa vášho príjmu, rodiny a záväzkov.',
       checks=['Poistné sumy podľa príjmu a záväzkov', 'Bez zbytočných pripoistení', 'Porovnanie viacerých poisťovní', 'Pomoc pri nahlásení poistnej udalosti'],
@@ -388,7 +396,7 @@ CONTENT = {
       ('umbrella', 'Živelné riziká', 'Povodeň, záplava, krupobitie či zosuv pôdy. Pozrieme sa, ktoré riziká má zmysel kryť práve vo vašej lokalite.'),
       ('magnifier', 'Kontrola súčasnej zmluvy', 'Pozrieme sa, či poistná suma ešte zodpovedá hodnote majetku a či zmluva kryje to, čo potrebujete.'),
     ],
-    why=dict(img=IMG['portrait'], stat=('0 €', 'platíte za moje služby'),
+    why=dict(img=office('recepcia2'), stat=('0 €', 'platíte za moje služby'),
       h2='Podpoistený majetok', muted='je najdrahšia chyba.',
       p='Ak je poistná suma nižšia ako skutočná hodnota majetku, poisťovňa môže plnenie pomerne znížiť. Preto začíname tým, aby bol majetok ocenený správne.',
       checks=['Poistná suma podľa skutočnej hodnoty majetku', 'Porovnanie viacerých poisťovní', 'Pozor na výluky a spoluúčasť', 'Pomoc pri nahlásení škody'],
@@ -428,7 +436,7 @@ CONTENT = {
       ('shield', 'Ochrana príjmu a rodiny', 'Poistenie nastavené na riziká, ktoré by vás finančne najviac zasiahli.', ('/zivotne-poistenie/', 'Viac o životnom poistení')),
       ('hourglass', 'Dôchodok a dlhodobé investovanie', 'Aby ste mali na dôchodku viac ako minimum od štátu.', ('/dochodok/', 'Viac o dôchodku')),
     ],
-    why=dict(img=IMG['studio'], stat=('60', 'analýz cieľov a potrieb'),
+    why=dict(img=office('stol'), stat=('60', 'analýz cieľov a potrieb'),
       h2='Plán namiesto', muted='náhodných zmlúv.',
       p='Veľa ľudí má zmluvy, ktoré im niekto kedysi ponúkol, a nevie, či do seba zapadajú. Finančný plán ich dá dokopy a ukáže, čo má zmysel ponechať, upraviť alebo doplniť.',
       checks=['Prehľad všetkých financií na jednom mieste', 'Konkrétne kroky, nie všeobecné rady', 'Rozhodnutie je vždy na vás', 'Pravidelná aktualizácia, keď sa vám zmení život'],

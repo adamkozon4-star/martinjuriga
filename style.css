@@ -1355,3 +1355,10 @@ html.intro-out .intro__inner { animation: introFade .4s ease forwards; }
 @keyframes introFade { to { opacity: 0; transform: translateY(-24px); } }
 /* animácie úvodu stránky počkajú, kým opona odíde */
 html.intro-on:not(.intro-out) .hero *, html.intro-on:not(.intro-out) .svc-hero * { animation-play-state: paused !important; }
+
+/* fotky kancelárie */
+.geo-gallery { display: grid; grid-template-columns: 1fr 1.4fr 1fr; gap: .6rem; margin: 0 0 1.8rem; max-width: 30rem; }
+.geo-gallery img { width: 100%; height: 130px; object-fit: cover; border-radius: 14px; border: 1px solid rgba(255, 255, 255, .08); box-shadow: 0 18px 30px -20px rgba(0, 0, 0, .8); }
+.photo-wide small { color: rgba(255, 255, 255, .7); }
+/* sekcia Ako pracujem: logo z recepcie ako jemné pozadie */
+.promise { background: linear-gradient(rgba(30, 28, 26, .9), rgba(30, 28, 26, .9)), url("/img/kancelaria-logo-1600.webp") center 72% / cover no-repeat; }
