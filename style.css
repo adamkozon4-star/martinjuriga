@@ -1362,3 +1362,4 @@ html.intro-on:not(.intro-out) .hero *, html.intro-on:not(.intro-out) .svc-hero *
 .photo-wide small { color: rgba(255, 255, 255, .7); }
 /* sekcia Ako pracujem: logo z recepcie ako jemné pozadie */
 .promise { background: linear-gradient(rgba(30, 28, 26, .9), rgba(30, 28, 26, .9)), url("/img/kancelaria-logo-1600.webp") center 72% / cover no-repeat; }
+.face img { object-position: 50% 30%; }
