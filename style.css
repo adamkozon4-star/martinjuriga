@@ -1363,3 +1363,27 @@ html.intro-on:not(.intro-out) .hero *, html.intro-on:not(.intro-out) .svc-hero *
 /* sekcia Ako pracujem: logo z recepcie ako jemné pozadie */
 .promise { background: linear-gradient(rgba(30, 28, 26, .9), rgba(30, 28, 26, .9)), url("/img/kancelaria-logo-1600.webp") center 72% / cover no-repeat; }
 .face img { object-position: 50% 30%; }
+
+/* sekcia krokov: vlastná tmavá scéna, aby sa nestrácala vo vzore hôr */
+#postup > .container { position: relative; isolation: isolate; padding: clamp(3.2rem, 6vw, 5rem) clamp(1rem, 4vw, 3.5rem) clamp(2.4rem, 5vw, 4rem); }
+#postup > .container::before { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: clamp(28px, 4vw, 48px);
+  background:
+    radial-gradient(55% 38% at 50% 50%, rgba(224, 154, 91, .17), transparent 72%),
+    radial-gradient(40% 30% at 50% 0%, rgba(224, 154, 91, .08), transparent 80%),
+    radial-gradient(circle at 1px 1px, rgba(255, 255, 255, .06) 1px, transparent 1.6px) 0 0 / 22px 22px,
+    linear-gradient(180deg, #1b1a19 0%, #141312 100%);
+  border: 1px solid rgba(255, 255, 255, .07);
+  box-shadow: 0 70px 140px -60px rgba(0, 0, 0, .95), 0 0 0 10px rgba(20, 19, 18, .35), inset 0 1px 0 rgba(255, 255, 255, .06); }
+#postup > .container::after { content: ""; position: absolute; top: -1px; left: 50%; width: min(420px, 60%); height: 1px; translate: -50% 0;
+  background: linear-gradient(90deg, transparent, rgba(224, 154, 91, .8), transparent); }
+#postup .road__plane::after { background: rgba(0, 0, 0, .55); }
+@media (min-width: 901px) {
+  #postup .road + .steps .step { background: linear-gradient(170deg, #2b2826 0%, #1e1c1b 100%); border-color: rgba(255, 255, 255, .09);
+    box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .95), inset 0 1px 0 rgba(255, 255, 255, .07); }
+  #postup .road + .steps .step.is-active { border-color: rgba(224, 154, 91, .5);
+    box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .95), 0 -14px 40px -24px rgba(224, 154, 91, .55), inset 0 1px 0 rgba(240, 180, 124, .25); }
+}
+@media (max-width: 900px) {
+  #postup > .container { width: calc(100% - 16px); padding-inline: 18px; }
+  #postup .step__num { background: #262321; }
+}
