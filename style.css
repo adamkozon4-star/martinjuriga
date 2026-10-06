@@ -1365,8 +1365,8 @@ html.intro-on:not(.intro-out) .hero *, html.intro-on:not(.intro-out) .svc-hero *
 .face img { object-position: 50% 30%; }
 
 /* sekcia krokov: rovnaký panel ako kontakt, aby sa nestrácala vo vzore hôr */
-#postup > .container { position: relative; isolation: isolate; padding: clamp(3rem, 6vw, 4.5rem) clamp(1rem, 4vw, 3.5rem) clamp(2.4rem, 5vw, 4rem); }
-#postup > .container::before { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: 32px;
+#postup > .container, #kde > .container { position: relative; isolation: isolate; padding: clamp(3rem, 6vw, 4.5rem) clamp(1rem, 4vw, 3.5rem) clamp(2.4rem, 5vw, 4rem); }
+#postup > .container::before, #kde > .container::before { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: 32px;
   background: radial-gradient(600px 600px at 0% 100%, rgba(224, 154, 91, .16), transparent 70%), rgba(28, 27, 26, .85);
   border: 1px solid rgba(255, 255, 255, .08); }
 #postup .road__plane::after { background: rgba(0, 0, 0, .55); }
@@ -1377,6 +1377,7 @@ html.intro-on:not(.intro-out) .hero *, html.intro-on:not(.intro-out) .svc-hero *
     box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .95), 0 -14px 40px -24px rgba(224, 154, 91, .55), inset 0 1px 0 rgba(240, 180, 124, .25); }
 }
 @media (max-width: 900px) {
-  #postup > .container { width: calc(100% - 16px); padding-inline: 18px; }
+  #postup > .container, #kde > .container { width: calc(100% - 16px); padding-inline: 18px; }
   #postup .step__num { background: #262321; }
+  #kde .geo__scene { margin: -4% -2% -6%; }
 }
