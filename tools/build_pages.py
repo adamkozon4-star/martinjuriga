@@ -138,10 +138,38 @@ def update_index():
     open('index.html', 'w').write(s)
     idx = s
 
+NOT_FOUND = '''    <!-- ============ 404 ============ -->
+    <section class="svc-hero">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="container svc-hero__inner nf">
+        <div class="svc-hero__copy">
+          <span class="pill"><span class="pill__dot"></span>Chyba 404</span>
+          <h1>Túto stránku sa nepodarilo nájsť.</h1>
+          <p class="svc-hero__lead">Odkaz je pravdepodobne neplatný alebo stránka bola presunutá. Pokračujte na úvodnú stránku alebo si vyberte službu.</p>
+          <div class="hero__actions">
+            <a href="/" class="btn btn--primary">Späť na úvod <span aria-hidden="true">→</span></a>
+            <a href="/#kontakt" class="btn btn--outline">Kontakt</a>
+          </div>
+        </div>
+      </div>
+    </section>
+'''
+
+def build_404():
+    out = page('404', 'Stránka sa nenašla | Martin Juriga', 'Táto stránka neexistuje.', '', NOT_FOUND, '', [], 'og.jpg')
+    out = re.sub(r'  <link rel="canonical"[^>]*>\n', '  <meta name="robots" content="noindex" />\n', out)
+    out = re.sub(r'  <meta property="og:url"[^>]*>\n', '', out)
+    out = re.sub(r'  <script type="application/ld\+json">.*?</script>\n', '', out, flags=re.S)
+    out = re.sub(r'    <!-- ============ KONTAKT.*?</section>\n?', '', out, flags=re.S)
+    out = out.replace('href="#kontakt"', 'href="/#kontakt"')
+    open('404.html', 'w').write(out)
+
 def update_sitemap(slugs):
-    urls = ['  <url><loc>https://martinjuriga.sk/</loc><priority>1.0</priority></url>']
-    urls += [f'  <url><loc>https://martinjuriga.sk/{s}/</loc><priority>0.8</priority></url>' for s in slugs]
-    urls += ['  <url><loc>https://martinjuriga.sk/ochrana-osobnych-udajov.html</loc><priority>0.2</priority></url>']
+    import datetime
+    today = datetime.date.today().isoformat()
+    u = lambda path, pr: f'  <url><loc>https://martinjuriga.sk/{path}</loc><lastmod>{today}</lastmod><priority>{pr}</priority></url>'
+    urls = [u('', '1.0')] + [u(f'{s}/', '0.8') for s in slugs]
+    # ochrana osobných údajov má noindex, preto v sitemap nie je
     open('sitemap.xml', 'w').write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + '\n'.join(urls) + '\n</urlset>\n')
 
 if __name__ == '__main__':
@@ -159,4 +187,5 @@ if __name__ == '__main__':
         open(os.path.join(slug, 'index.html'), 'w').write(out)
         built.append(slug)
     update_sitemap(built)
+    build_404()
     print('postavené:', ', '.join(built))
