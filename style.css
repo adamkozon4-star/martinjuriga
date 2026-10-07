@@ -1381,3 +1381,6 @@ html.intro-on:not(.intro-out) .hero *, html.intro-on:not(.intro-out) .svc-hero *
   #postup .step__num { background: #262321; }
   #kde .geo__scene { margin: -4% -2% -6%; }
 }
+
+/* originálny podpis v sekcii O mne */
+.signature-img { display: block; width: clamp(180px, 20vw, 260px); height: auto; transform: rotate(-4deg); }
