@@ -80,7 +80,7 @@ def render(c):
         <div class="svc-stage reveal">
           <div class="svc-stage__glow" aria-hidden="true"></div>
           {glass(c['big'], 'svc-stage__house svc-stage__house--icon')}
-          <img class="svc-stage__person" src="/img/martin-cutout-1000.webp" srcset="/img/martin-cutout-640.webp 640w, /img/martin-cutout-1000.webp 1000w" sizes="(max-width: 900px) 80vw, 460px" width="1000" height="1195" alt="Martin Juriga, {c['name'].lower()}" fetchpriority="high" />
+          <img class="svc-stage__person" src="/img/martin-sluzby-1000.webp" srcset="/img/martin-sluzby-640.webp 640w, /img/martin-sluzby-1000.webp 1000w" sizes="(max-width: 900px) 80vw, 460px" width="1000" height="1195" alt="Martin Juriga, {c['name'].lower()}" fetchpriority="high" />
           {glass(c['small'], 'svc-stage__pct')}
           <div class="h-card h-card--free"><span class="pill__dot"></span>{c.get('free', 'Služba je pre vás bezplatná')}</div>
           <div class="h-card h-card--badge">
