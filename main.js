@@ -262,8 +262,8 @@ form?.addEventListener('submit', async (e) => {
     const ok = res.ok && (await res.json()).ok === true;
     if (!ok) throw new Error('send failed');
     form.reset();
-    status.textContent = 'Ďakujem! Ozvem sa vám do 24 hodín.';
-    status.classList.add('ok');
+    status.textContent = '';
+    setSent(true);
   } catch {
     status.textContent = `Niečo sa nepodarilo. Zavolajte mi prosím na ${PHONE}.`;
     status.classList.add('err');
@@ -272,6 +272,34 @@ form?.addEventListener('submit', async (e) => {
   }
 });
 if (form) $$('input', form).forEach((el) => el.addEventListener('input', () => el.classList.remove('is-invalid')));
+
+// po odoslaní sa formulár zbalí a ostane poďakovanie s tlačidlom na novú správu
+const done = form && document.createElement('div');
+if (done) {
+  done.className = 'form__done';
+  done.setAttribute('role', 'status');
+  done.innerHTML = `
+    <svg class="form__done-ic" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="28"/><path d="M20 33l8 8 16-17"/></svg>
+    <h3 tabindex="-1">Ďakujem, správa odišla!</h3>
+    <p>Ozvem sa vám do 24 hodín a dohodneme si stretnutie, osobne alebo online. Ak ste zadali e-mail, poslal som vám aj potvrdenie.</p>
+    <button type="button" class="btn btn--light form__again">Napísať ďalšiu správu <span aria-hidden="true">↺</span></button>`;
+  form.appendChild(done);
+}
+function setSent(on) {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const from = form.offsetHeight;
+  form.classList.toggle('is-sent', on);
+  const to = form.offsetHeight;
+  if (!reduce) form.animate([{ height: from + 'px' }, { height: to + 'px' }], { duration: 550, easing: 'cubic-bezier(.2, .7, .2, 1)' });
+  if (on) {
+    $('h3', done).focus({ preventScroll: true });
+    const top = form.getBoundingClientRect().top;
+    if (top < 80 || top > innerHeight * .55) window.scrollBy({ top: top - 110, behavior: reduce ? 'auto' : 'smooth' });
+  } else {
+    $('input[name="meno"]', form)?.focus({ preventScroll: true });
+  }
+}
+done?.querySelector('.form__again').addEventListener('click', () => setSent(false));
 
 /* ---------- počítadlá čísel ---------- */
 const counters = $$('[data-count]');

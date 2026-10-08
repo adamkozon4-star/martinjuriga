@@ -1536,3 +1536,19 @@ img.intro__mark { filter: none; width: clamp(130px, 18vw, 200px); clip-path: ins
 }
 html, body { overflow-x: clip; }
 @media (max-width: 900px) { #kde .geo { margin-top: 3.5rem; } }
+
+/* formulár po odoslaní: zbalí sa, ostane poďakovanie s animovanou fajkou */
+.form { overflow: hidden; }
+.form__done { display: none; }
+.form.is-sent > :not(.form__done) { display: none; }
+.form.is-sent .form__done { display: grid; justify-items: center; text-align: center; gap: .9rem; padding: 1.6rem .4rem 1rem; animation: doneIn .6s cubic-bezier(.2, .7, .2, 1) both; }
+.form__done-ic { width: 84px; height: 84px; fill: none; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 10px 30px rgba(224, 154, 91, .45)); }
+.form__done-ic circle { stroke: var(--blue); stroke-width: 3; stroke-dasharray: 176; stroke-dashoffset: 176; transform: rotate(-90deg); transform-origin: center; animation: doneDraw .7s cubic-bezier(.65, 0, .35, 1) .15s forwards; }
+.form__done-ic path { stroke: #f3c08a; stroke-width: 4.5; stroke-dasharray: 40; stroke-dashoffset: 40; animation: doneDraw .45s cubic-bezier(.65, 0, .35, 1) .75s forwards; }
+.form__done h3 { font-size: clamp(1.4rem, 2.4vw, 1.75rem); letter-spacing: -.03em; outline: none; color: var(--page-text); }
+.form__done p { color: var(--page-muted); max-width: 26rem; line-height: 1.6; }
+.form__done .btn { margin-top: .6rem; }
+@keyframes doneDraw { to { stroke-dashoffset: 0; } }
+@keyframes doneIn { from { opacity: 0; transform: translateY(14px) scale(.97); } }
+@media (prefers-reduced-motion: reduce) { .form.is-sent .form__done, .form__done-ic circle, .form__done-ic path { animation: none; stroke-dashoffset: 0; } }
+.form__done .btn { white-space: nowrap; padding-inline: 1.3rem; }
