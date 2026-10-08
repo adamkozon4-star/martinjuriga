@@ -18,6 +18,10 @@ PAGES = {
     title='Refinancovanie hypotéky Orava – Dolný Kubín, Námestovo, Žilina | Martin Juriga',
     desc='Končí vám fixácia? Porovnám ponuky viacerých bánk a ak sa prechod oplatí, vybavím refinancovanie hypotéky či úveru za vás. Orava, Žilina aj online.',
     tema='Hypotéka'),
+  'skratenie-uveru': dict(
+    title='Skrátenie hypotéky a úveru Orava – Dolný Kubín, Námestovo, Žilina | Martin Juriga',
+    desc='Ako splatiť hypotéku skôr ako za 30 rokov. Prepočítam mimoriadne splátky, kratšiu dobu splácania aj refinancovanie a ukážem, koľko ušetríte na úrokoch. Orava, Žilina aj online.',
+    tema='Hypotéka'),
   'investovanie': dict(
     title='Investovanie Orava – Dolný Kubín, Námestovo, Tvrdošín, Žilina | Martin Juriga',
     desc='Pravidelné aj jednorazové investovanie nastavené podľa vašich cieľov. Vysvetlím, ako investovanie funguje, porovnáme možnosti a nastavíme plán. Orava, Žilina aj online.',

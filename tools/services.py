@@ -17,6 +17,7 @@ ICONS = {
 SERVICES = [
  ('hypoteky-a-uvery', 'Hypotéky a úvery', 'Kúpa, výstavba, rekonštrukcia', 'home'),
  ('refinancovanie', 'Refinancovanie', 'Koniec fixácie, nižšia splátka', 'refi'),
+ ('skratenie-uveru', 'Skrátenie úveru', 'Splaťte bývanie skôr', 'pension'),
  ('investovanie', 'Investovanie', 'Pravidelne aj jednorazovo', 'invest'),
  ('sporenie-pre-deti', 'Sporenie pre deti', 'Štart do samostatného života', 'kids'),
  ('dochodok', 'Dôchodok', 'II. a III. pilier', 'pension'),
@@ -27,7 +28,7 @@ SERVICES = [
 # podslužby, ktoré sú v menu pripojené pod hlavnou službou (slug podstránky alebo priamy odkaz)
 SUBS = {
  'hypoteky-a-uvery': [('refinancovanie', 'Refinancovanie', 'nižší úrok a splátka'),
-                      ('/hypoteky-a-uvery/#skratenie', 'Skrátenie úveru', 'napr. 15 rokov namiesto 30')],
+                      ('skratenie-uveru', 'Skrátenie úveru', 'napr. 15 rokov namiesto 30')],
 }
 SUB_SLUGS = {s for subs in SUBS.values() for s, _, _ in subs}
 def href(slug, home):
