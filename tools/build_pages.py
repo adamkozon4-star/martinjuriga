@@ -67,8 +67,9 @@ def page(slug, title, desc, h_name, body, tema, faq, og_image):
     foot = to_sub(foot).replace('<a href="#top" class="logo">', '<a href="/" class="logo">').replace('src="main.js"', 'src="/main.js"')
     ld = [
       {"@context": "https://schema.org", "@type": "Service", "name": h_name, "serviceType": h_name, "url": url,
+       "image": ["https://martinjuriga.sk/img/martin-juriga.jpg", f"https://martinjuriga.sk/img/{og_image}"],
        "description": desc,
-       "provider": {"@type": "FinancialService", "name": "Martin Juriga – finančné plánovanie", "url": "https://martinjuriga.sk/", "telephone": "+421915448705",
+       "provider": {"@type": "FinancialService", "name": "Martin Juriga – finančné plánovanie", "url": "https://martinjuriga.sk/", "image": "https://martinjuriga.sk/img/martin-juriga.jpg", "telephone": "+421915448705",
                     "address": {"@type": "PostalAddress", "streetAddress": "Medzibrodie nad Oravou 136", "postalCode": "026 01", "addressLocality": "Dolný Kubín", "addressCountry": "SK"}},
        "areaServed": ["Dolný Kubín", "Námestovo", "Tvrdošín", "Trstená", "Žilina", "Slovensko"]},
       {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
@@ -87,7 +88,10 @@ def page(slug, title, desc, h_name, body, tema, faq, og_image):
   <meta name="description" content="{desc}" />
   <link rel="canonical" href="{url}" />
   <meta name="theme-color" content="#fbf8f5" />
-  <link rel="icon" href="/img/favicon.png" type="image/png" />
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" href="/img/favicon-96.png" type="image/png" sizes="96x96" />
+  <link rel="icon" href="/img/favicon-192.png" type="image/png" sizes="192x192" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
   <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="{title}" />
@@ -158,6 +162,7 @@ NOT_FOUND = '''    <!-- ============ 404 ============ -->
 def build_404():
     out = page('404', 'Stránka sa nenašla | Martin Juriga', 'Táto stránka neexistuje.', '', NOT_FOUND, '', [], 'og.jpg')
     out = re.sub(r'  <link rel="canonical"[^>]*>\n', '  <meta name="robots" content="noindex" />\n', out)
+    out = out.replace('  <meta name="robots" content="index, follow, max-image-preview:large" />\n', '')
     out = re.sub(r'  <meta property="og:url"[^>]*>\n', '', out)
     out = re.sub(r'  <script type="application/ld\+json">.*?</script>\n', '', out, flags=re.S)
     out = re.sub(r'    <!-- ============ KONTAKT.*?</section>\n?', '', out, flags=re.S)
