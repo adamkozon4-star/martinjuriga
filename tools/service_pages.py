@@ -204,7 +204,7 @@ def office(name):
             f'sizes="(max-width: 900px) 90vw, 560px" width="{w}" height="{h}" loading="lazy" alt="Kancelária, kde sa stretávame s klientmi" />')
 
 
-OFFICE = {'kreslo': (1600, 1200), 'priestor': (1200, 1600), 'chodba': (1070, 1436), 'vstup': (1200, 1600), 'recepcia2': (1200, 1600), 'stol': (1600, 1200), 'stol2': (1600, 1200), 'pracovisko': (1600, 1200)}
+OFFICE = {'pracovisko-okna': (1600, 1200), 'priestor': (1200, 1600), 'chodba': (1070, 1436), 'vstup': (1200, 1600), 'recepcia2': (1200, 1600), 'stol': (1600, 1200), 'stol2': (1600, 1200), 'pracovisko': (1600, 1200)}
 
 IMG = {
     'portrait': '<img src="/img/martin-portrait.webp" width="800" height="978" loading="lazy" alt="Martin Juriga, finančný sprostredkovateľ z Oravy" />',
@@ -240,7 +240,7 @@ CONTENT = {
       ('heart', 'Zmenila sa vaša situácia', 'Nový príjem, rodina alebo zmena spoludlžníka. Úver upravíme tak, aby sedel k tomu, ako žijete dnes.'),
     ],
     cta=('Ešte len kupujete bývanie?', 'Pozrite si, ako vám pomôžem s novou hypotékou na kúpu, výstavbu alebo rekonštrukciu.', 'Hypotéky a úvery', '/hypoteky-a-uvery/'),
-    why=dict(img=office('kreslo'), stat=('0 €', 'platíte za moje služby'),
+    why=dict(img=office('pracovisko-okna'), stat=('0 €', 'platíte za moje služby'),
       h2='Vaša banka ukáže svoju ponuku.', muted='Ja vám ukážem aj ostatné.',
       p='Pri konci fixácie väčšina ľudí podpíše to, čo im pošle vlastná banka. Niekedy je to dobrá voľba, inokedy nie. Spolu to porovnáme a rozhodnete sa podľa čísel, nie podľa pohodlia.',
       checks=['Porovnanie ponúk viacerých bánk na jednom mieste', 'Prepočet, či sa prechod oplatí aj po započítaní nákladov', 'Komunikáciu s novou aj pôvodnou bankou vybavím za vás', 'Ak sa prechod neoplatí, férovo vám to poviem'],

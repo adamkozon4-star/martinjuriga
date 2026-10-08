@@ -73,18 +73,21 @@ for x, y in HOUSES:
 for i, (n, x, y, m) in enumerate(TOWNS):
     objs.append(pin(n, x, y, m, i))
 
-PHOTOS = [  # (súbor, šírka, výška 1600-verzie, popis); prvé SHOWN sú viditeľné náhľady
+PHOTOS = [  # (súbor, šírka, výška 1600-verzie, popis); prvé SHOWN sú náhľady, zvyšok ako prechádzka kanceláriou
     ('fasada', 1600, 1200, 'Budova kancelárie MeruCompany zvonku'),
     ('recepcia-pult', 1200, 1600, 'Recepcia s logom MeruCompany'),
-    ('zasadacky', 1600, 1200, 'Presklené zasadačky na stretnutia'),
-    ('skolenie', 1600, 1200, 'Miestnosť na stretnutia a školenia'),
+    ('salonik', 1600, 1200, 'Priestor na stretnutia s klientmi'),
+    ('zasadacky', 1600, 1200, 'Presklené zasadačky'),
     ('vchod', 1600, 1200, 'Vchod do kancelárie'),
     ('dvere', 1600, 1200, 'Vstupné dvere s logom MeruCompany'),
-    ('recepcia4', 1600, 1200, 'Recepcia kancelárie'),
+    ('recepcia4', 1600, 1200, 'Recepcia hneď pri vchode'),
+    ('recepcia2', 1200, 1600, 'Recepcia a presklené kancelárie'),
     ('recepcia-kancelaria', 1600, 1200, 'Recepcia a pracovné miesta'),
-    ('kreslo', 1600, 1200, 'Pracovisko v kancelárii'),
-    ('recepcia2', 1200, 1600, 'Recepcia kancelárie'),
+    ('chodba-sklo', 1600, 1200, 'Chodba popri zasadačkách'),
+    ('chodba-rastlina', 1600, 1200, 'Pohľad smerom k vchodu'),
     ('chodba', 1070, 1436, 'Chodba v kancelárii'),
+    ('skolenie', 1600, 1200, 'Miestnosť na stretnutia a školenia'),
+    ('pracovisko-okna', 1600, 1200, 'Pracovné miesta pri oknách'),
 ]
 SHOWN = 4
 def photo(i, f, w, h, alt):
