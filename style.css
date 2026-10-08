@@ -1394,11 +1394,8 @@ html.intro-on:not(.intro-out) .hero *, html.intro-on:not(.intro-out) .svc-hero *
 .hero__person { width: min(500px, 92%); margin-bottom: 4.6rem; filter: drop-shadow(0 24px 30px rgba(0, 0, 0, .35)) drop-shadow(0 0 40px rgba(224, 154, 91, .12)); }
 @media (max-width: 900px) { .hero__person { width: min(340px, 78%); margin-bottom: 1.8rem; } .hero__visual::after { bottom: calc(1.8rem - 2%); } }
 
-/* úvod: art-deco oblúk za Martinom a lesklá podlaha s odrazom */
-.hero__arch { position: absolute; left: 50%; bottom: 3.2rem; height: 96%; width: auto; translate: -50% 0; z-index: 0; pointer-events: none;
-  filter: drop-shadow(0 0 10px rgba(224, 154, 91, .35)); animation: archIn 1.6s cubic-bezier(.2, .7, .2, 1) .1s both; }
-@keyframes archIn { from { opacity: 0; transform: translateY(20px); } }
+/* úvod: lesklá podlaha s odrazom pod kreslom */
 .hero__person { -webkit-box-reflect: below 0 linear-gradient(transparent 82%, rgba(255, 255, 255, .16)); }
 .hero__visual::after { bottom: calc(4.6rem - 3%); width: 80%; height: 10%;
   background: radial-gradient(closest-side, rgba(0, 0, 0, .6), rgba(224, 154, 91, .14) 55%, transparent); }
-@media (max-width: 900px) { .hero__arch { bottom: 1.4rem; height: 94%; } .hero__visual::after { bottom: calc(1.8rem - 3%); } }
+@media (max-width: 900px) { .hero__visual::after { bottom: calc(1.8rem - 3%); } }
