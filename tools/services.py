@@ -24,6 +24,12 @@ SERVICES = [
  ('majetkove-poistenie', 'Majetkové poistenie', 'Byt, dom a domácnosť', 'property'),
  ('financny-plan', 'Finančný plán', 'Všetky financie v jednom pláne', 'plan'),
 ]
+# podslužby, ktoré sú v menu pripojené pod hlavnou službou (slug podstránky alebo priamy odkaz)
+SUBS = {
+ 'hypoteky-a-uvery': [('refinancovanie', 'Refinancovanie', 'nižší úrok a splátka'),
+                      ('/hypoteky-a-uvery/#skratenie', 'Skrátenie úveru', 'napr. 15 rokov namiesto 30')],
+}
+SUB_SLUGS = {s for subs in SUBS.values() for s, _, _ in subs}
 def href(slug, home):
     return f'/{slug}/' if has_page(slug) else ('#sluzby' if home else '/#sluzby')
 def icon(k, cls='nav__ic'):
@@ -31,9 +37,15 @@ def icon(k, cls='nav__ic'):
 def nav(home, current=None):
     pre = '' if home else '/'
     cur = ' aria-current="page"'
-    items = '\n'.join(
-        f'            <a href="{href(s,home)}" class="nav__item"{cur if s==current else ""}>{icon(i)}<span><strong>{n}</strong><small>{sub}</small></span></a>'
-        for s,n,sub,i in SERVICES)
+    def item(s, n, sub, i):
+        a = f'<a href="{href(s,home)}" class="nav__item"{cur if s==current else ""}>{icon(i)}<span><strong>{n}</strong><small>{sub}</small></span></a>'
+        if s not in SUBS:
+            return '            ' + a
+        subs = ''.join(
+            f'<a href="{t if t.startswith("/") else href(t, home)}" class="nav__sub"{cur if t==current else ""}><strong>{sn}</strong><small>{ss}</small></a>'
+            for t, sn, ss in SUBS[s])
+        return f'            <div class="nav__group">{a}<div class="nav__subs">{subs}</div></div>'
+    items = '\n'.join(item(*x) for x in SERVICES if x[0] not in SUB_SLUGS)
     return f'''      <nav class="nav" aria-label="Hlavná navigácia">
         <div class="nav__drop">
           <button type="button" class="nav__toggle" aria-expanded="false" aria-controls="nav-sluzby">Služby <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
