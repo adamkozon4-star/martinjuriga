@@ -1498,3 +1498,4 @@ a.credit:hover { color: var(--blue); text-decoration: underline; text-underline-
   .nav__subs { padding: 0 0 0 calc(36px + .85rem); flex-direction: column; }
   .nav .nav__menu .nav__sub { padding: .45rem .7rem; }
 }
+.footer__word { font-size: clamp(3rem, 12vw, 10.4rem); padding-inline: .08em; margin-inline: 0; }
