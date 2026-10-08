@@ -23,6 +23,7 @@ const PAGES = {
   '/': 'Úvodná stránka',
   '/hypoteky-a-uvery/': 'Hypotéky a úvery',
   '/refinancovanie/': 'Refinancovanie',
+  '/skratenie-uveru/': 'Skrátenie úveru',
   '/investovanie/': 'Investovanie',
   '/sporenie-pre-deti/': 'Sporenie pre deti',
   '/dochodok/': 'Dôchodok',
