@@ -89,7 +89,7 @@ def photo(i, f, w, h, alt):
     hidden = ' hidden' if i >= SHOWN else ''
     return (f'<a href="/img/kancelaria-{f}-1600.webp" class="geo-gallery__item"{extra}{hidden} data-w="{w}" data-h="{h}">'
             f'<img src="/img/kancelaria-{f}-800.webp" width="{w // 2}" height="{h // 2}" loading="lazy" alt="{alt}" /></a>')
-gallery = '\n            '.join(photo(i, *p) for i, p in enumerate(PHOTOS))
+gallery = '\n          '.join(photo(i, *p) for i, p in enumerate(PHOTOS))
 
 towns_text = ', '.join(t[0] for t in TOWNS[:-1]) + ' a ' + TOWNS[-1][0]
 
@@ -106,9 +106,6 @@ html = f'''    <!-- ============ KDE POMÁHAM (3D mapa, generuje tools/make_map.
           <ul class="geo-towns reveal">
             <li>Dolný Kubín</li><li>Námestovo</li><li>Tvrdošín</li><li>Trstená</li><li>Žilina</li><li>Bratislava</li><li>osobne aj online po celom Slovensku</li>
           </ul>
-          <div class="geo-gallery reveal" data-lightbox>
-            {gallery}
-          </div>
           <a href="#kontakt" class="btn btn--dark reveal">Dohodnúť stretnutie <span aria-hidden="true">→</span></a>
         </div>
 
@@ -125,6 +122,9 @@ html = f'''    <!-- ============ KDE POMÁHAM (3D mapa, generuje tools/make_map.
             {chr(10).join("            " + o for o in objs).lstrip()}
             </div>
           </div>
+        </div>
+        <div class="geo-gallery reveal" data-lightbox>
+          {gallery}
         </div>
       </div>
     </section>

@@ -1461,3 +1461,13 @@ html.intro-on:not(.intro-out) .hero *, html.intro-on:not(.intro-out) .svc-hero *
 .lightbox__prev { left: 3vw; top: 50%; translate: 0 -50%; }
 .lightbox__next { right: 3vw; top: 50%; translate: 0 -50%; }
 @media (max-width: 600px) { .lightbox__prev, .lightbox__next { top: auto; bottom: 7vh; translate: none; } .lightbox__img { max-width: 96vw; } }
+
+/* galéria kancelárie cez celú šírku panelu pod mapou */
+.geo-wrap > .geo-gallery { grid-column: 1 / -1; max-width: none; margin: 1rem 0 0; grid-template-columns: 1.3fr 1fr 1fr 1fr; gap: 1rem; }
+.geo-wrap > .geo-gallery .geo-gallery__item, .geo-wrap > .geo-gallery .geo-gallery__item img { border-radius: 20px; }
+.geo-wrap > .geo-gallery .geo-gallery__item img { height: clamp(170px, 17vw, 250px); }
+.geo-wrap > .geo-gallery .geo-gallery__item[data-more]::after { border-radius: 20px; font-size: 2rem; }
+@media (max-width: 900px) {
+  .geo-wrap > .geo-gallery { grid-template-columns: 1fr 1fr; gap: .6rem; margin-top: .4rem; }
+  .geo-wrap > .geo-gallery .geo-gallery__item img { height: 140px; }
+}
