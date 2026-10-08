@@ -1499,3 +1499,7 @@ a.credit:hover { color: var(--blue); text-decoration: underline; text-underline-
   .nav .nav__menu .nav__sub { padding: .45rem .7rem; }
 }
 .footer__word { font-size: clamp(3rem, 12vw, 10.4rem); padding-inline: .08em; margin-inline: 0; }
+
+/* úvodná animácia s novým logom: odkrytie zľava doprava a jemný lesk */
+img.intro__mark { filter: none; width: clamp(130px, 18vw, 200px); clip-path: inset(0 100% 0 0); animation: introWipe 1s cubic-bezier(.65, 0, .25, 1) .15s forwards; }
+@keyframes introWipe { to { clip-path: inset(0 0 0 0); } }
