@@ -73,6 +73,24 @@ for x, y in HOUSES:
 for i, (n, x, y, m) in enumerate(TOWNS):
     objs.append(pin(n, x, y, m, i))
 
+PHOTOS = [  # (súbor, šírka, výška 1600-verzie, popis)
+    ('fasada', 1600, 1200, 'Budova kancelárie MeruCompany zvonku'),
+    ('vchod', 1600, 1200, 'Vchod do kancelárie MeruCompany'),
+    ('recepcia4', 1600, 1200, 'Recepcia kancelárie MeruCompany'),
+    ('dvere', 1600, 1200, 'Vstupné dvere s logom MeruCompany'),
+    ('recepcia2', 1200, 1600, 'Recepcia kancelárie'),
+    ('kreslo', 1600, 1200, 'Pracovisko v kancelárii'),
+    ('chodba', 1070, 1436, 'Chodba v kancelárii'),
+]
+SHOWN = 4
+def photo(i, f, w, h, alt):
+    more = len(PHOTOS) - SHOWN
+    extra = f' data-more="+{more}"' if i == SHOWN - 1 and more > 0 else ''
+    hidden = ' hidden' if i >= SHOWN else ''
+    return (f'<a href="/img/kancelaria-{f}-1600.webp" class="geo-gallery__item"{extra}{hidden} data-w="{w}" data-h="{h}">'
+            f'<img src="/img/kancelaria-{f}-800.webp" width="{w // 2}" height="{h // 2}" loading="lazy" alt="{alt}" /></a>')
+gallery = '\n            '.join(photo(i, *p) for i, p in enumerate(PHOTOS))
+
 towns_text = ', '.join(t[0] for t in TOWNS[:-1]) + ' a ' + TOWNS[-1][0]
 
 html = f'''    <!-- ============ KDE POMÁHAM (3D mapa, generuje tools/make_map.py) ============ -->
@@ -88,10 +106,8 @@ html = f'''    <!-- ============ KDE POMÁHAM (3D mapa, generuje tools/make_map.
           <ul class="geo-towns reveal">
             <li>Dolný Kubín</li><li>Námestovo</li><li>Tvrdošín</li><li>Trstená</li><li>Žilina</li><li>Bratislava</li><li>osobne aj online po celom Slovensku</li>
           </ul>
-          <div class="geo-gallery reveal">
-            <img src="/img/kancelaria-recepcia2-800.webp" width="600" height="800" loading="lazy" alt="Recepcia kancelárie" />
-            <img src="/img/kancelaria-kreslo-800.webp" width="800" height="600" loading="lazy" alt="Pracovisko v kancelárii" />
-            <img src="/img/kancelaria-chodba-800.webp" width="596" height="800" loading="lazy" alt="Chodba v kancelárii" />
+          <div class="geo-gallery reveal" data-lightbox>
+            {gallery}
           </div>
           <a href="#kontakt" class="btn btn--dark reveal">Dohodnúť stretnutie <span aria-hidden="true">→</span></a>
         </div>

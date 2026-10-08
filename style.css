@@ -1438,3 +1438,26 @@ html.intro-on:not(.intro-out) .hero *, html.intro-on:not(.intro-out) .svc-hero *
   #sluzby .bento__card--tall .bento__copy h3 { font-size: clamp(1.6rem, 2.3vw, 2rem); }
   #sluzby .bento__card:hover .glass { transform: translateY(-4px) rotate(-3deg); }
 }
+
+/* galéria kancelárie: 4 náhľady, kliknutím sa otvorí veľká fotka */
+.geo-gallery { grid-template-columns: repeat(4, 1fr); max-width: 32rem; }
+.geo-gallery__item { position: relative; display: block; border-radius: 14px; overflow: hidden; cursor: zoom-in; }
+.geo-gallery__item[hidden] { display: none; }
+.geo-gallery .geo-gallery__item img { height: 104px; border-radius: 14px; transition: transform .5s var(--ease), filter .3s; }
+.geo-gallery__item:hover img { transform: scale(1.06); filter: brightness(1.08); }
+.geo-gallery__item[data-more]::after { content: attr(data-more); position: absolute; inset: 0; display: grid; place-items: center; border-radius: 14px;
+  background: rgba(20, 18, 16, .62); color: #fff; font-weight: 800; font-size: 1.3rem; letter-spacing: -.02em; }
+@media (max-width: 600px) { .geo-gallery .geo-gallery__item img { height: 76px; } }
+
+.lightbox { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; background: rgba(12, 11, 10, .92); backdrop-filter: blur(6px);
+  opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s; }
+.lightbox.is-open { opacity: 1; visibility: visible; }
+.lightbox__img { max-width: min(92vw, 1400px); max-height: 82vh; width: auto; height: auto; border-radius: 16px; box-shadow: 0 40px 100px -30px #000; transition: opacity .25s; }
+.lightbox__cap { position: absolute; bottom: 3vh; left: 0; right: 0; text-align: center; color: rgba(255, 255, 255, .75); font-size: .9rem; }
+.lightbox button { position: absolute; display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .15);
+  background: rgba(255, 255, 255, .08); color: #fff; font-size: 1.5rem; line-height: 1; cursor: pointer; transition: background .2s; }
+.lightbox button:hover { background: var(--blue); color: #1c1c1c; }
+.lightbox__close { top: 3vh; right: 3vw; }
+.lightbox__prev { left: 3vw; top: 50%; translate: 0 -50%; }
+.lightbox__next { right: 3vw; top: 50%; translate: 0 -50%; }
+@media (max-width: 600px) { .lightbox__prev, .lightbox__next { top: auto; bottom: 7vh; translate: none; } .lightbox__img { max-width: 96vw; } }

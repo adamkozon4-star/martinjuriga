@@ -343,3 +343,47 @@ if (thread) {
 
 const yearEl = $('#year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+// galéria fotiek kancelárie: kliknutím sa otvorí veľká fotka, šípky / swipe listujú
+$$('[data-lightbox]').forEach((gal) => {
+  const items = [...gal.querySelectorAll('a')];
+  if (!items.length) return;
+  const box = document.createElement('div');
+  box.className = 'lightbox';
+  box.setAttribute('role', 'dialog');
+  box.setAttribute('aria-modal', 'true');
+  box.setAttribute('aria-label', 'Fotky kancelárie');
+  box.innerHTML = '<img class="lightbox__img" alt="" /><p class="lightbox__cap"></p>' +
+    '<button class="lightbox__close" aria-label="Zavrieť">×</button>' +
+    '<button class="lightbox__prev" aria-label="Predchádzajúca fotka">‹</button>' +
+    '<button class="lightbox__next" aria-label="Ďalšia fotka">›</button>';
+  document.body.appendChild(box);
+  const img = box.querySelector('.lightbox__img');
+  const cap = box.querySelector('.lightbox__cap');
+  let i = 0, lastFocus = null, startX = null;
+  const show = (n) => {
+    i = (n + items.length) % items.length;
+    const a = items[i], alt = a.querySelector('img').alt;
+    img.src = a.href; img.alt = alt;
+    cap.textContent = `${alt} · ${i + 1} / ${items.length}`;
+  };
+  const open = (n) => { lastFocus = document.activeElement; show(n); box.classList.add('is-open'); document.body.style.overflow = 'hidden'; box.querySelector('.lightbox__close').focus(); };
+  const close = () => { box.classList.remove('is-open'); document.body.style.overflow = ''; if (lastFocus) lastFocus.focus(); };
+  items.forEach((a, n) => a.addEventListener('click', (e) => { e.preventDefault(); open(n); }));
+  box.querySelector('.lightbox__close').addEventListener('click', close);
+  box.querySelector('.lightbox__prev').addEventListener('click', () => show(i - 1));
+  box.querySelector('.lightbox__next').addEventListener('click', () => show(i + 1));
+  box.addEventListener('click', (e) => { if (e.target === box) close(); });
+  document.addEventListener('keydown', (e) => {
+    if (!box.classList.contains('is-open')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') show(i - 1);
+    if (e.key === 'ArrowRight') show(i + 1);
+  });
+  box.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, { passive: true });
+  box.addEventListener('touchend', (e) => {
+    if (startX === null) return;
+    const dx = e.changedTouches[0].clientX - startX; startX = null;
+    if (Math.abs(dx) > 50) show(dx < 0 ? i + 1 : i - 1);
+  });
+});
