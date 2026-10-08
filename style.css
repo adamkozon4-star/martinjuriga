@@ -1399,3 +1399,12 @@ html.intro-on:not(.intro-out) .hero *, html.intro-on:not(.intro-out) .svc-hero *
 .hero__visual::after { bottom: calc(4.6rem - 3%); width: 80%; height: 10%;
   background: radial-gradient(closest-side, rgba(0, 0, 0, .6), rgba(224, 154, 91, .14) 55%, transparent); }
 @media (max-width: 900px) { .hero__visual::after { bottom: calc(1.8rem - 3%); } }
+
+/* úvod bez tabuľky výsledkov: hlavička plynule prechádza do ďalšej sekcie */
+.hero { padding-bottom: 0; }
+.hero__person { margin-bottom: 2.2rem; }
+.hero__visual::after { bottom: calc(2.2rem - 3%); }
+.promise { margin-top: 1.5rem !important; }
+@media (max-width: 900px) { .hero__person { margin-bottom: 1.4rem; } .hero__visual::after { bottom: calc(1.4rem - 3%); } }
+.hero__bg, .hero::after { -webkit-mask-image: linear-gradient(#000 70%, transparent); mask-image: linear-gradient(#000 70%, transparent); }
+.hero__visual::before { -webkit-mask-image: linear-gradient(#000 60%, transparent 92%); mask-image: linear-gradient(#000 60%, transparent 92%); }
