@@ -1517,3 +1517,22 @@ img.intro__mark { filter: none; width: clamp(130px, 18vw, 200px); clip-path: ins
   .lightbox__next { right: auto; left: 50%; translate: 10px 0; }
   .lightbox__cap { bottom: max(24px, env(safe-area-inset-bottom)); padding-inline: 16px; }
 }
+
+/* ===== mobil: bez posúvania do strán, väčšie dotykové plochy ===== */
+.about > *, .geo-wrap > *, .contact > *, .faq > *, .svc-hero__inner > * { min-width: 0; }
+@media (max-width: 600px) {
+  .btn { white-space: normal; text-align: center; line-height: 1.25; }
+  #postup .road { margin-inline: 0; }
+  #postup > .container, #kde > .container { overflow-x: clip; }
+  .about__stat { right: 0; }
+  .footer__col { gap: .1rem; }
+  .footer__col a:not(.btn) { padding-block: .55rem; }
+  .crumbs a { display: inline-block; padding-block: .5rem; }
+  .crumbs { margin-bottom: .6rem; }
+  .logo__text small { font-size: .66rem; letter-spacing: .22em; }
+  .form .check, .form label:has(input[type="checkbox"]) { min-height: 32px; }
+  .footer__bottom a { display: inline-block; padding-block: .6rem; }
+  .footer__bottom { gap: 0 1.4rem; }
+}
+html, body { overflow-x: clip; }
+@media (max-width: 900px) { #kde .geo { margin-top: 3.5rem; } }
