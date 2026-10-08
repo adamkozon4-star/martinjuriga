@@ -73,13 +73,17 @@ for x, y in HOUSES:
 for i, (n, x, y, m) in enumerate(TOWNS):
     objs.append(pin(n, x, y, m, i))
 
-PHOTOS = [  # (súbor, šírka, výška 1600-verzie, popis)
+PHOTOS = [  # (súbor, šírka, výška 1600-verzie, popis); prvé SHOWN sú viditeľné náhľady
     ('fasada', 1600, 1200, 'Budova kancelárie MeruCompany zvonku'),
-    ('vchod', 1600, 1200, 'Vchod do kancelárie MeruCompany'),
-    ('recepcia4', 1600, 1200, 'Recepcia kancelárie MeruCompany'),
+    ('recepcia-pult', 1200, 1600, 'Recepcia s logom MeruCompany'),
+    ('zasadacky', 1600, 1200, 'Presklené zasadačky na stretnutia'),
+    ('skolenie', 1600, 1200, 'Miestnosť na stretnutia a školenia'),
+    ('vchod', 1600, 1200, 'Vchod do kancelárie'),
     ('dvere', 1600, 1200, 'Vstupné dvere s logom MeruCompany'),
-    ('recepcia2', 1200, 1600, 'Recepcia kancelárie'),
+    ('recepcia4', 1600, 1200, 'Recepcia kancelárie'),
+    ('recepcia-kancelaria', 1600, 1200, 'Recepcia a pracovné miesta'),
     ('kreslo', 1600, 1200, 'Pracovisko v kancelárii'),
+    ('recepcia2', 1200, 1600, 'Recepcia kancelárie'),
     ('chodba', 1070, 1436, 'Chodba v kancelárii'),
 ]
 SHOWN = 4
@@ -122,6 +126,13 @@ html = f'''    <!-- ============ KDE POMÁHAM (3D mapa, generuje tools/make_map.
             {chr(10).join("            " + o for o in objs).lstrip()}
             </div>
           </div>
+        </div>
+        <div class="geo-office reveal">
+          <div>
+            <span class="eyebrow">Kancelária</span>
+            <h3>Tu sa stretneme</h3>
+          </div>
+          <p>Na osobné stretnutie vás pozvem do kancelárie MeruCompany. Pokojné prostredie, kde si všetko v kľude prejdeme. Kliknite na fotku a pozrite sa dnu.</p>
         </div>
         <div class="geo-gallery reveal" data-lightbox>
           {gallery}

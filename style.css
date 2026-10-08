@@ -1471,3 +1471,11 @@ html.intro-on:not(.intro-out) .hero *, html.intro-on:not(.intro-out) .svc-hero *
   .geo-wrap > .geo-gallery { grid-template-columns: 1fr 1fr; gap: .6rem; margin-top: .4rem; }
   .geo-wrap > .geo-gallery .geo-gallery__item img { height: 140px; }
 }
+
+/* nadpis nad galériou kancelárie */
+.geo-office { grid-column: 1 / -1; display: grid; grid-template-columns: auto minmax(0, 30rem); justify-content: space-between; align-items: end; gap: 1rem 3rem;
+  margin-top: clamp(1.5rem, 3vw, 2.5rem); padding-top: clamp(1.5rem, 3vw, 2.5rem); border-top: 1px solid var(--card-line); }
+.geo-office .eyebrow { margin-bottom: .6rem; }
+.geo-office h3 { font-size: clamp(1.6rem, 2.6vw, 2.2rem); letter-spacing: -.03em; line-height: 1.1; }
+.geo-office p { color: var(--page-muted); margin: 0; }
+@media (max-width: 900px) { .geo-office { grid-template-columns: 1fr; } }
