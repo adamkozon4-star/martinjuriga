@@ -1412,3 +1412,29 @@ html.intro-on:not(.intro-out) .hero *, html.intro-on:not(.intro-out) .svc-hero *
 .hero__person { -webkit-box-reflect: unset; }
 .hero__person { width: min(580px, 104%); max-width: none; }
 @media (max-width: 900px) { .hero__person { width: min(400px, 90%); } }
+
+/* služby: všetko na jednu obrazovku (desktop) */
+@media (min-width: 1101px) {
+  #sluzby.section { padding-block: clamp(3.5rem, 7vh, 5.5rem); }
+  #sluzby .section-head { max-width: none; display: grid; grid-template-columns: 1fr minmax(0, 26rem); column-gap: 3rem; align-items: end; margin-bottom: 2rem; }
+  #sluzby .section-head .eyebrow { grid-column: 1 / -1; margin-bottom: .8rem; justify-self: start; }
+  #sluzby .section-head h2 { font-size: clamp(2rem, 2.7vw, 2.7rem); }
+  #sluzby .section-head p { margin: 0 0 .4rem; }
+  #sluzby .bento { gap: 1rem; }
+  #sluzby .bento__card:not(.bento__card--tall) { padding: 1.5rem 1.6rem; }
+  #sluzby .bento__card:not(.bento__card--tall) .bento__media { position: absolute; top: 1.1rem; right: 1.1rem; min-height: 0; flex: none; }
+  #sluzby .bento__card:not(.bento__card--tall) .glass { width: 76px; }
+  #sluzby .bento__card:not(.bento__card--tall) h3 { padding-right: 88px; font-size: 1.3rem; min-height: 72px; }
+  #sluzby .bento__card:not(.bento__card--tall) .bento__copy { display: flex; flex-direction: column; height: 100%; }
+  #sluzby .bento__card:not(.bento__card--tall) .bento__copy .btn { margin-top: auto; align-self: flex-start; padding: .7rem 1.2rem; }
+  #sluzby .bento__copy p { margin: .5rem 0 1rem; font-size: .95rem; }
+  #sluzby .bento__opts { grid-template-columns: 1fr 1fr; margin: -.3rem 0 1rem; }
+  #sluzby .bento__opts a { padding: .55rem .75rem; }
+  #sluzby .bento__opts b { font-size: .88rem; }
+  #sluzby .bento__opts span { font-size: .78rem; line-height: 1.3; }
+  #sluzby .bento__card--tall { padding: 1.8rem; }
+  #sluzby .bento__card--tall .bento__media { min-height: 0; }
+  #sluzby .bento__card--tall .glass { width: min(250px, 100%); }
+  #sluzby .bento__card--tall .bento__copy h3 { font-size: clamp(1.6rem, 2.3vw, 2rem); }
+  #sluzby .bento__card:hover .glass { transform: translateY(-4px) rotate(-3deg); }
+}
