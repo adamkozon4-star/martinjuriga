@@ -354,9 +354,9 @@ $$('[data-lightbox]').forEach((gal) => {
   box.setAttribute('aria-modal', 'true');
   box.setAttribute('aria-label', 'Fotky kancelárie');
   box.innerHTML = '<img class="lightbox__img" alt="" /><p class="lightbox__cap"></p>' +
-    '<button class="lightbox__close" aria-label="Zavrieť">×</button>' +
-    '<button class="lightbox__prev" aria-label="Predchádzajúca fotka">‹</button>' +
-    '<button class="lightbox__next" aria-label="Ďalšia fotka">›</button>';
+    '<button class="lightbox__close" aria-label="Zavrieť"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>' +
+    '<button class="lightbox__prev" aria-label="Predchádzajúca fotka"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>' +
+    '<button class="lightbox__next" aria-label="Ďalšia fotka"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>';
   document.body.appendChild(box);
   const img = box.querySelector('.lightbox__img');
   const cap = box.querySelector('.lightbox__cap');
