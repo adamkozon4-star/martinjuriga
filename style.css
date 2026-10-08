@@ -1384,3 +1384,12 @@ html.intro-on:not(.intro-out) .hero *, html.intro-on:not(.intro-out) .svc-hero *
 
 /* originálny podpis v sekcii O mne */
 .signature-img { display: block; width: clamp(180px, 20vw, 260px); height: auto; transform: rotate(-4deg); }
+
+/* úvod: Martin v kresle bez kruhu, len s tieňom na zemi a teplým svetlom za ním */
+.hero__circle, .hero__ring { display: none; }
+.hero__visual::before { content: ""; position: absolute; left: 50%; bottom: 8%; width: 80%; aspect-ratio: 1; translate: -50% 0; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(224, 154, 91, .22), transparent 75%); pointer-events: none; }
+.hero__visual::after { content: ""; position: absolute; left: 50%; bottom: calc(4.6rem - 2%); width: 62%; height: 7%; translate: -50% 0; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(0, 0, 0, .55), transparent); z-index: 1; pointer-events: none; }
+.hero__person { width: min(500px, 92%); margin-bottom: 4.6rem; filter: drop-shadow(0 24px 30px rgba(0, 0, 0, .35)); }
+@media (max-width: 900px) { .hero__person { width: min(340px, 78%); margin-bottom: 1.8rem; } .hero__visual::after { bottom: calc(1.8rem - 2%); } }
