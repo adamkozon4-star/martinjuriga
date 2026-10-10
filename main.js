@@ -45,6 +45,20 @@ $$('.nav__drop').forEach((drop) => {
   });
 });
 
+/* ---------- odkazy na sekcie bez #kotvy v adrese (zdieľaný link sa otvorí hore) ---------- */
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('a[href*="#"]');
+  if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey) return;
+  const url = new URL(a.href, location.href);
+  if (url.pathname !== location.pathname || !url.hash) return;
+  const target = url.hash === '#top' ? document.body : document.getElementById(decodeURIComponent(url.hash.slice(1)));
+  if (!target) return;
+  e.preventDefault();
+  if (url.hash === '#top') window.scrollTo({ top: 0, behavior: 'smooth' });
+  else target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+});
+
 /* ---------- postupné zobrazovanie ---------- */
 const io = new IntersectionObserver((entries) => {
   entries.forEach((e) => {

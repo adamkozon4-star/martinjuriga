@@ -40,6 +40,17 @@
     </div>
   </div>
   <script>
+    // stránka sa vždy otvorí hore: prehliadač si nepamätá starú pozíciu a pri obnovení zahodí #kotvu v adrese
+    (function () {
+      try {
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        var nav = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+        var reload = nav ? nav.type === 'reload' || nav.type === 'back_forward' : false;
+        if (location.hash && reload) history.replaceState(null, '', location.pathname + location.search);
+        if (!location.hash) window.scrollTo(0, 0);
+        addEventListener('load', function () { if (!location.hash) window.scrollTo(0, 0); });
+      } catch (e) {}
+    })();
     (function () {
       var d = document.documentElement, seen = false;
       try { seen = sessionStorage.getItem('intro') === '1'; sessionStorage.setItem('intro', '1'); } catch (e) {}
