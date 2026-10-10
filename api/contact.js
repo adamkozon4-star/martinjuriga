@@ -42,7 +42,7 @@ const layout = (inner, footer) => `<!doctype html><html lang="sk"><body style="m
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border-radius:20px;overflow:hidden;font-family:Arial,Helvetica,sans-serif;color:#1c1c1c">
 <tr><td style="padding:22px 28px;border-bottom:1px solid #eeeae7">
   <table role="presentation" cellpadding="0" cellspacing="0"><tr>
-    <td style="padding-right:12px"><img src="${SITE}/img/email-logo.png" width="49" height="28" alt="" style="display:block;border:0" /></td>
+    <td style="padding-right:12px"><img src="${SITE}/img/email-logo.png?v=2" width="53" height="28" alt="" style="display:block;border:0" /></td>
     <td style="font-size:16px;font-weight:bold;line-height:1.2">Martin Juriga<br /><span style="font-size:10px;font-weight:normal;letter-spacing:2px;color:#7e756d">FINANČNÉ PLÁNOVANIE</span></td>
   </tr></table>
 </td></tr>
