@@ -32,6 +32,7 @@ def lis(items, indent=14):
 
 
 def render(c):
+    read = (f'\n        <p class="svc-read reveal">Prečítajte si aj: <a href="{c["read"][0]}">{c["read"][1]} <span aria-hidden="true">→</span></a></p>' if c.get('read') else '')
     cards = ''.join(f'''          <article class="svc-card reveal">
             <div class="svc-card__media">{glass(ic)}</div>
             <h3>{h}</h3>
@@ -148,7 +149,7 @@ def render(c):
 <!-- @partial:cesta -->
         <ol class="steps">
 {steps}        </ol>
-        <p class="svc-note reveal">{c['steps_note']}</p>
+        <p class="svc-note reveal">{c['steps_note']}</p>{read}
       </div>
     </section>
 
@@ -249,6 +250,7 @@ CONTENT = {
            ('Porovnanie a prepočet', 'Porovnáme splátku aj celkové náklady vrátane poplatkov spojených s prechodom.'),
            ('Žiadosť v novej banke', 'Pomôžem s dokladmi a počas schvaľovania komunikujem s bankou.'),
            ('Splatenie starého úveru', 'Nová banka splatí pôvodný úver a vy už platíte len jednu splátku v novej banke.')],
+    read=('/blog/koniec-fixacie-hypoteky/', 'Končí vám fixácia hypotéky? Čo robiť krok za krokom'),
     steps_note='Konečné podmienky úveru určuje banka po posúdení vašej žiadosti.',
     docs=dict(eyebrow='Čo si pripraviť', h2='Doklady k refinancovaniu.',
       p='Na prvé stretnutie stačí úverová zmluva a posledný výpis. Ostatné doplníme postupne.',
@@ -292,6 +294,7 @@ CONTENT = {
            ('Prepočet možností', 'Pozrieme sa na zostatok, úrok a fixáciu a prepočítame, o koľko rokov sa dá úver skrátiť.'),
            ('Výber cesty', 'Mimoriadne splátky, kratšia doba pri fixácii alebo refinancovanie. Rozhodnete sa podľa čísel.'),
            ('Vybavenie v banke', 'Pomôžem s dokladmi a komunikáciou s bankou, kým nie je zmena hotová.')],
+    read=('/blog/koniec-fixacie-hypoteky/', 'Končí vám fixácia hypotéky? Čo robiť krok za krokom'),
     steps_note='Konečné podmienky úveru určuje banka po posúdení vašej žiadosti.',
     docs=dict(eyebrow='Čo si pripraviť', h2='Doklady k prepočtu.',
       p='Na prvé stretnutie stačí úverová zmluva a posledný výpis. Ostatné doplníme podľa toho, akú cestu si vyberiete.',

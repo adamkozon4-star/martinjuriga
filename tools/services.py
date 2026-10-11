@@ -47,6 +47,7 @@ def nav(home, current=None):
             for t, sn, ss in SUBS[s])
         return f'            <div class="nav__group">{a}<div class="nav__subs">{subs}</div></div>'
     items = '\n'.join(item(*x) for x in SERVICES if x[0] not in SUB_SLUGS)
+    blog_cur = cur if (current or '').startswith('blog') else ''
     return f'''      <nav class="nav" aria-label="Hlavná navigácia">
         <div class="nav__drop">
           <button type="button" class="nav__toggle" aria-expanded="false" aria-controls="nav-sluzby">Služby <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
@@ -57,6 +58,7 @@ def nav(home, current=None):
         </div>
         <a href="{pre}#o-mne">O mne</a>
         <a href="{pre}#faq">Otázky</a>
+        <a href="/blog/"{blog_cur}>Články</a>
       </nav>'''
 def footer_services(home):
     return '\n'.join(f'          <a href="{href(s,home)}">{n}</a>' for s,n,_,_ in SERVICES)

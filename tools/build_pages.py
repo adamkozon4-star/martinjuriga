@@ -58,7 +58,7 @@ def to_sub(fragment):
     # kotvy na úvodnú stránku, okrem tých, ktoré sú aj na podstránke
     return re.sub(r'href="#(?!kontakt"|top")([\w-]+)"', r'href="/#\1"', f)
 
-def page(slug, title, desc, h_name, body, tema, faq, og_image):
+def page(slug, title, desc, h_name, body, tema, faq, og_image, ld=None, og_type='website'):
     url = f'https://martinjuriga.sk/{slug}/'
     header = cut('  <!-- ============ HEADER', '</header>')
     header = re.sub(r'      <nav class="nav".*?</nav>', lambda m: nav(False, slug), header, flags=re.S)
@@ -69,7 +69,7 @@ def page(slug, title, desc, h_name, body, tema, faq, og_image):
     foot = cut('  <!-- ============ FOOTER', '</html>')
     foot = re.sub(r'(<p class="footer__h">Služby</p>\n).*?(\s*</nav>)', lambda m: m.group(1)+footer_services(False)+m.group(2), foot, count=1, flags=re.S)
     foot = to_sub(foot).replace('<a href="#top" class="logo">', '<a href="/" class="logo">').replace('src="main.js"', 'src="/main.js"')
-    ld = [
+    ld = ld or [
       {"@context": "https://schema.org", "@type": "Service", "name": h_name, "serviceType": h_name, "url": url,
        "image": ["https://martinjuriga.sk/img/martin-juriga.jpg", f"https://martinjuriga.sk/img/{og_image}"],
        "description": desc,
@@ -97,7 +97,7 @@ def page(slug, title, desc, h_name, body, tema, faq, og_image):
   <link rel="icon" href="/img/favicon-192.png" type="image/png" sizes="192x192" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content="{og_type}" />
   <meta property="og:title" content="{title}" />
   <meta property="og:description" content="{desc}" />
   <meta property="og:url" content="{url}" />
@@ -195,6 +195,20 @@ if __name__ == '__main__':
         os.makedirs(slug, exist_ok=True)
         open(os.path.join(slug, 'index.html'), 'w').write(out)
         built.append(slug)
+    # blog
+    import blog
+    blog_index = page('blog', 'Články o hypotékach, poistení a investovaní | Martin Juriga, Orava',
+                      'Praktické rady k hypotékam, refinancovaniu, poisteniu, investovaniu a dôchodku pre ľudí z Oravy, Žiliny a celého Slovenska.',
+                      'Články', blog.index_body(), 'Hypotéka', [], 'og.jpg', ld=blog.index_ld())
+    os.makedirs('blog', exist_ok=True)
+    open('blog/index.html', 'w').write(blog_index)
+    built.append('blog')
+    for a in blog.ARTICLES:
+        body = blog.article_body(a)
+        out = page(f"blog/{a['slug']}", a['title'], a['desc'], a['h1'], body, a['tema'], [], 'og.jpg', ld=blog.article_ld(a, body), og_type='article')
+        os.makedirs(f"blog/{a['slug']}", exist_ok=True)
+        open(f"blog/{a['slug']}/index.html", 'w').write(out)
+        built.append(f"blog/{a['slug']}")
     update_sitemap(built)
     build_404()
     print('postavené:', ', '.join(built))
