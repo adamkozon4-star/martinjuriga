@@ -429,3 +429,14 @@ $$('[data-lightbox]').forEach((gal) => {
     if (Math.abs(dx) > 50) show(dx < 0 ? i + 1 : i - 1);
   });
 });
+
+/* ---------- blog: zvýraznenie aktuálnej kapitoly v obsahu ---------- */
+const tocLinks = $$('.post-toc a');
+if (tocLinks.length && 'IntersectionObserver' in window) {
+  const map = new Map(tocLinks.map((a) => [a.getAttribute('href').slice(1), a]));
+  const setActive = (id) => tocLinks.forEach((a) => a.classList.toggle('is-active', a === map.get(id)));
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) setActive(e.target.id); });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  map.forEach((_, id) => { const h = document.getElementById(id); if (h) io.observe(h); });
+}
