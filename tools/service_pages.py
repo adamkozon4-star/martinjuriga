@@ -63,8 +63,7 @@ def render(c):
             <li><a href="/#sluzby">Služby</a></li>
             <li aria-current="page">{c['name']}</li>
           </ol>
-          <span class="pill reveal"><span class="pill__dot"></span>{c['name']} · Orava a Žilina</span>
-          <h1 class="reveal">{h1(c['h1'])}</h1>
+          <h1 class="reveal"><span class="pill h1-kicker"><span class="pill__dot"></span>{c['name']} · Orava a Žilina</span> {h1(c['h1'])}</h1>
           <p class="svc-hero__lead reveal">{c['lead']} {TOWNS}</p>
           <div class="hero__actions reveal">
             <a href="#kontakt" class="btn btn--primary">Nezáväzná konzultácia <span aria-hidden="true">→</span></a>
@@ -262,7 +261,9 @@ CONTENT = {
          ('Zaplatím poplatok za predčasné splatenie?', 'Pri hypotéke ku koncu fixácie zvyčajne nie, vtedy ju môžete splatiť alebo refinancovať bez poplatku. Mimo tohto termínu môže banka poplatok účtovať, zákon ho však obmedzuje. Konkrétne podmienky si overíme vo vašej zmluve.'),
          ('Oplatí sa mi refinancovanie?', 'Nie vždy. Rozhoduje rozdiel v podmienkach, zostatok úveru, zostávajúca doba splácania aj náklady spojené s prechodom, napríklad znalecký posudok či poplatok za vklad do katastra. Spolu to prepočítame a ak sa to neoplatí, poviem vám to.'),
          ('Môžem pri refinancovaní úver navýšiť?', 'Často áno, ak to dovolí hodnota nehnuteľnosti a váš príjem. Navýšené peniaze môžete použiť napríklad na rekonštrukciu alebo na splatenie iných úverov.'),
-         ('Dá sa refinancovať aj spotrebný úver?', 'Áno. Spotrebné úvery, kreditné karty či kontokorent sa dajú spojiť do jedného úveru. Niekedy je výhodnejšie zahrnúť ich do hypotéky, inokedy nie. Prejdeme to spolu.')],
+         ('Dá sa refinancovať aj spotrebný úver?', 'Áno. Spotrebné úvery, kreditné karty či kontokorent sa dajú spojiť do jedného úveru. Niekedy je výhodnejšie zahrnúť ich do hypotéky, inokedy nie. Prejdeme to spolu.'),
+         ('Potrebujem nový znalecký posudok?', 'Niekedy áno. Záleží na tom, aký starý je pôvodný posudok a čo vyžaduje nová banka. Niektoré banky akceptujú aktualizáciu alebo si ocenenie zabezpečia samy.'),
+         ('Musím pri refinancovaní meniť aj poistenie nehnuteľnosti?', 'Nie vždy. Nová banka zvyčajne vyžaduje poistenie nehnuteľnosti viazané v jej prospech. Existujúce poistenie sa často dá upraviť a netreba ho rušiť. Skontrolujeme aj to, či je poistná suma stále aktuálna.')],
   ),
 
   'skratenie-uveru': dict(
@@ -303,7 +304,9 @@ CONTENT = {
          ('Zaplatím poplatok za mimoriadnu splátku?', 'Pri konci fixácie zvyčajne nie. Mimo nej môže banka poplatok účtovať a niektoré banky dovoľujú časť úveru splatiť bezplatne každý rok. Overíme to vo vašej zmluve.'),
          ('Zvýši sa mi splátka?', 'Pri kratšej dobe splácania áno, pri mimoriadnych splátkach či nižšom úroku nie nutne. Vždy nastavíme splátku tak, aby vám ostala rezerva.'),
          ('Kedy je najlepší čas úver skrátiť?', 'Najviac možností máte ku koncu fixácie. Vtedy sa dajú meniť podmienky aj vložiť väčšia suma bez poplatku. Ideálne začnite riešiť dva až tri mesiace vopred.'),
-         ('Dá sa skrátiť aj spotrebný úver?', 'Áno. Spotrebný úver sa dá často splatiť skôr alebo spojiť s inými úvermi. Prejdeme spolu, čo je pre vás výhodnejšie.')],
+         ('Dá sa skrátiť aj spotrebný úver?', 'Áno. Spotrebný úver sa dá často splatiť skôr alebo spojiť s inými úvermi. Prejdeme spolu, čo je pre vás výhodnejšie.'),
+         ('Koľko ušetrím, ak úver skrátim?', 'Záleží na zostatku, úroku a na tom, o koľko rokov úver skrátite. Pri dlhých hypotékach môže byť rozdiel na zaplatených úrokoch výrazný. Presné čísla vám prepočítam na stretnutí pre vašu konkrétnu zmluvu.'),
+         ('Čo ak si neskôr nebudem môcť dovoliť vyššiu splátku?', 'Preto nastavujeme splátku tak, aby vám v rozpočte ostala rezerva. Ak sa vaša situácia zmení, pri ďalšom konci fixácie sa dá doba splácania znova upraviť.')],
   ),
 
   'sporenie-pre-deti': dict(
@@ -342,7 +345,9 @@ CONTENT = {
          ('Sporenie alebo investovanie?', 'Pri krátkom horizonte do pár rokov býva vhodnejšie sporenie. Pri dlhšom horizonte môže investovanie priniesť vyšší výnos, no jeho hodnota kolíše. Rozdiel vám vysvetlím a rozhodnete sa sami.'),
          ('Môžu prispievať aj starí rodičia?', 'Áno. Prispievať môže ktokoľvek z rodiny, pravidelne aj jednorazovo, napríklad k narodeninám či Vianociam.'),
          ('Čo ak budeme peniaze potrebovať skôr?', 'Pri väčšine riešení sa k peniazom dostanete, no pri investíciách môže byť ich hodnota v danom momente nižšia. Podmienky výberu prejdeme vopred.'),
-         ('Kedy dostane peniaze dieťa?', 'To si dohodneme pri nastavení. O tom, kedy a na čo sa peniaze použijú, rozhodujete vy ako rodičia.')],
+         ('Kedy dostane peniaze dieťa?', 'To si dohodneme pri nastavení. O tom, kedy a na čo sa peniaze použijú, rozhodujete vy ako rodičia.'),
+         ('Koľko mám pre dieťa odkladať mesačne?', 'Neexistuje jedna správna suma. Začať sa dá aj s pár desiatkami eur mesačne. Prepočítame, koľko by ste potrebovali na váš cieľ, napríklad na štúdium, a nastavíme sumu tak, aby vám nechýbala v rozpočte.'),
+         ('Na koho meno má byť zmluva?', 'Závisí to od produktu a od toho, kto má mať nad peniazmi kontrolu. Niekedy je zmluva na rodiča, inokedy na dieťa. Vysvetlím vám rozdiely a vyberiete si, čo vám vyhovuje.')],
   ),
 
   'dochodok': dict(
@@ -381,7 +386,9 @@ CONTENT = {
          ('Oplatí sa III. pilier?', 'Často áno, najmä ak vám zamestnávateľ prispieva. Príspevky si navyše môžete v zákonom stanovenej výške odpočítať zo základu dane.'),
          ('Môžem zmeniť fond alebo spoločnosť v II. pilieri?', 'Áno, stratégiu aj dôchodkovú správcovskú spoločnosť sa dá zmeniť. Pomôžem vám zistiť, či to má vo vašom prípade zmysel, a vybaviť to.'),
          ('Koľko budem mať na dôchodku?', 'Presne to nevie nikto, ale dá sa to približne odhadnúť. Spolu spočítame, s čím môžete rátať a koľko odkladať, aby vám nič nechýbalo.'),
-         ('Kedy je najlepšie začať?', 'Čím skôr, tým lepšie. Ale aj desať rokov pred dôchodkom sa dá ešte veľa urobiť.')],
+         ('Kedy je najlepšie začať?', 'Čím skôr, tým lepšie. Ale aj desať rokov pred dôchodkom sa dá ešte veľa urobiť.'),
+         ('Čo sa stane s peniazmi v II. pilieri, ak zomriem?', 'Úspory v II. pilieri sú dedičné. Ak sporiteľ zomrie pred odchodom do dôchodku, zostatok na jeho účte pripadne pozostalým.'),
+         ('Môžem si z III. piliera vybrať peniaze skôr?', 'Závisí to od vašej zmluvy a od toho, ako dlho sporíte. Predčasný výber môže znamenať stratu daňových výhod alebo príspevkov od zamestnávateľa. Podmienky vašej zmluvy si pozrieme spolu.')],
   ),
 
   'zivotne-poistenie': dict(
@@ -420,7 +427,9 @@ CONTENT = {
          ('Mám poistenie k úveru z banky. Stačí to?', 'Poistenie k úveru zvyčajne kryje hlavne splácanie úveru. Pozrieme sa, či vás a vašu rodinu chráni aj v ďalších situáciách.'),
          ('Aký je rozdiel medzi rizikovým a investičným životným poistením?', 'Rizikové poistenie chráni pred následkami choroby, úrazu či smrti. Investičné k tomu pridáva aj investovanie. Vysvetlím vám rozdiel, aby ste vedeli, za čo platíte.'),
          ('Môžem upraviť zmluvu, ktorú už mám?', 'Často áno. Pozrieme sa na ňu a zistíme, či ju stačí upraviť, alebo má zmysel uvažovať o inom riešení.'),
-         ('Čo robiť pri poistnej udalosti?', 'Ozvite sa mi. Pomôžem vám s nahlásením, dokladmi a komunikáciou s poisťovňou.')],
+         ('Čo robiť pri poistnej udalosti?', 'Ozvite sa mi. Pomôžem vám s nahlásením, dokladmi a komunikáciou s poisťovňou.'),
+         ('Môžem sa poistiť, ak mám zdravotné problémy?', 'Často áno. Poisťovne posudzujú zdravotný stav individuálne a výsledkom môže byť štandardné poistenie, prirážka alebo výluka. Pri porovnaní viacerých poisťovní je väčšia šanca nájsť vhodné riešenie.'),
+         ('Ako často treba poistenie prehodnotiť?', 'Pri väčších zmenách v živote, napríklad pri hypotéke, narodení dieťaťa alebo zmene práce. Inak ho spolu skontrolujeme pri pravidelnom servise raz ročne.')],
   ),
 
   'majetkove-poistenie': dict(
@@ -459,7 +468,9 @@ CONTENT = {
          ('Čo je podpoistenie?', 'Ak je poistná suma nižšia ako skutočná hodnota majetku, poisťovňa môže plnenie pomerne znížiť. Preto je dôležité majetok oceniť správne a poistnú sumu občas aktualizovať.'),
          ('Potrebujem poistenie zodpovednosti?', 'Odporúča sa takmer každému. Kryje škody, ktoré omylom spôsobíte iným, napríklad keď vytopíte suseda alebo dieťa niečo poškodí.'),
          ('Banka chce poistenie k hypotéke. Môžem si vybrať poisťovňu?', 'Zvyčajne áno. Banka vyžaduje poistenie nehnuteľnosti a vinkuláciu v jej prospech, poisťovňu si však často môžete vybrať sami. Pomôžem vám s porovnaním.'),
-         ('Čo robiť pri škode?', 'Zdokumentujte škodu fotkami a ozvite sa mi. Pomôžem vám s nahlásením a komunikáciou s poisťovňou.')],
+         ('Čo robiť pri škode?', 'Zdokumentujte škodu fotkami a ozvite sa mi. Pomôžem vám s nahlásením a komunikáciou s poisťovňou.'),
+         ('Kryje poistenie domácnosti aj krádež?', 'Krádež vlámaním býva súčasťou väčšiny poistení domácnosti, rozsah a limity sa však líšia. Pozrieme sa aj na to, či zmluva kryje veci mimo bytu, napríklad v pivnici alebo v aute.'),
+         ('Ako často treba poistnú sumu aktualizovať?', 'Pri väčšej zmene, napríklad po rekonštrukcii, prístavbe alebo kúpe drahšieho vybavenia. Inak stačí poistnú sumu skontrolovať pri pravidelnom servise raz ročne, aby ste neboli podpoistení.')],
   ),
 
   'financny-plan': dict(
@@ -499,7 +510,9 @@ CONTENT = {
          ('Čo všetko plán obsahuje?', 'Prehľad vašich financií, rezervu, ciele s konkrétnymi sumami a termínmi, ochranu príjmu a rodiny, dôchodok a dlhodobé investovanie.'),
          ('Je finančný plán len pre ľudí s vysokým príjmom?', 'Vôbec nie. Najväčší zmysel má práve vtedy, keď chcete z bežného príjmu dostať čo najviac a vyhnúť sa zbytočným zmluvám.'),
          ('Ako často treba plán aktualizovať?', 'Vždy, keď sa vám výrazne zmení život, napríklad pri novej práci, dieťati či kúpe bývania. Inak ho stačí raz za čas spolu skontrolovať.'),
-         ('Ako dlho trvá príprava plánu?', 'Závisí od toho, koľko zmlúv a cieľov máte. Zvyčajne stačia dve až tri stretnutia.')],
+         ('Ako dlho trvá príprava plánu?', 'Závisí od toho, koľko zmlúv a cieľov máte. Zvyčajne stačia dve až tri stretnutia.'),
+         ('Pozriete sa aj na zmluvy, ktoré mám inde?', 'Áno. Do auditu zmlúv patria všetky vaše zmluvy bez ohľadu na to, kde ste ich uzatvorili. Ukážem vám, ktoré sú v poriadku a pri ktorých má zmysel uvažovať o zmene.'),
+         ('Musím zrušiť zmluvy, ktoré už mám?', 'Nie. Nič sa neruší automaticky. Ak niektorá zmluva prestala dávať zmysel, vysvetlím vám prečo a aké máte možnosti. Rozhodnutie je vždy na vás.')],
   ),
 }
 
