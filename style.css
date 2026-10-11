@@ -1680,3 +1680,13 @@ h1:has(> .h1-kicker) { margin-top: 0; }
 .post-card:hover .post-card__ic { transform: translateY(-6px) rotate(-4deg); }
 .post-card__visual > span { position: absolute; left: 1rem; bottom: .8rem; font-size: .68rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--page-text); opacity: .8; }
 .post-hero--index + .section { padding-top: clamp(2.5rem, 5vw, 3.5rem); }
+.post__steps { list-style: none; counter-reset: st; padding: 0; margin: 1.2rem 0 1.4rem; display: grid; gap: .9rem; }
+.post__steps li { counter-increment: st; position: relative; padding: 1rem 1.2rem 1rem 3.6rem; border-radius: 16px; background: var(--card); border: 1px solid var(--card-line); line-height: 1.55; }
+.post__steps li::before { content: counter(st, decimal-leading-zero); position: absolute; left: 1rem; top: 1rem; width: 1.9rem; height: 1.9rem; display: grid; place-items: center; border-radius: 50%; border: 1.5px solid var(--blue); color: #f0b47c; font-size: .75rem; font-weight: 800; }
+.post__more { margin-top: 1.2rem; padding: 1.2rem 1.5rem; border-radius: 20px; background: var(--card); border: 1px solid var(--card-line); }
+.post__more p { margin: 0 0 .7rem; font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); }
+.post__more ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .3rem; }
+.post__body .post__more a { display: block; padding: .6rem 0; color: var(--page-text); text-decoration: none; font-weight: 600; line-height: 1.35; border-top: 1px solid var(--card-line); }
+.post__body .post__more li:first-child a { border-top: 0; }
+.post__body .post__more a:hover { color: #f0b47c; }
+.post__more a span { display: block; font-size: .72rem; font-weight: 700; color: var(--page-muted); text-transform: uppercase; letter-spacing: .1em; margin-bottom: .15rem; }

@@ -206,9 +206,12 @@ if __name__ == '__main__':
     for a in blog.ARTICLES:
         body = blog.article_body(a)
         out = page(f"blog/{a['slug']}", a['title'], a['desc'], a['h1'], body, a['tema'], [], 'og.jpg', ld=blog.article_ld(a, body), og_type='article')
+        if a.get('draft'):
+            out = out.replace('content="index, follow, max-image-preview:large"', 'content="noindex, nofollow"')
         os.makedirs(f"blog/{a['slug']}", exist_ok=True)
         open(f"blog/{a['slug']}/index.html", 'w').write(out)
-        built.append(f"blog/{a['slug']}")
+        if not a.get('draft'):
+            built.append(f"blog/{a['slug']}")
     update_sitemap(built)
     build_404()
     print('postavené:', ', '.join(built))

@@ -6,7 +6,46 @@ BLOG_DIR = os.path.join(os.path.dirname(__file__), 'blog')
 SITE = 'https://martinjuriga.sk'
 MONTHS = ['januára', 'februára', 'marca', 'apríla', 'mája', 'júna', 'júla', 'augusta', 'septembra', 'októbra', 'novembra', 'decembra']
 
-ARTICLES = [  # najnovší hore
+ARTICLES = [  # najnovší hore; draft=True: stránka existuje, ale nie je v zozname ani v sitemap a má noindex
+    dict(slug='kolko-si-mozem-pozicat-hypoteka', draft=True,
+         title='Koľko si môžem požičať na hypotéku? Pravidlá 2026 | Martin Juriga',
+         h1='Koľko si môžem požičať na hypotéku? Pravidlá v roku 2026',
+         card='DTI, DSTI a LTV po ľudsky, príklad výpočtu, čo znižuje schválenú sumu a čo sa mení od roku 2027.',
+         desc='Koľko vám banka požičia na hypotéku? Pravidlá DTI, DSTI a LTV vysvetlené po ľudsky, príklad výpočtu, tipy ako si pomôcť a zmeny od roku 2027. Orava, Žilina aj online.',
+         tag='Hypotéky', tema='Hypotéka', date='2026-10-11', minutes=6,
+         lead='Koľko vám banka požičia, závisí od troch pravidiel: celkového dlhu voči príjmu, splátok voči príjmu a výšky úveru voči hodnote nehnuteľnosti. Vysvetlím ich po ľudsky aj s príkladom.',
+         summary=['Celkový dlh môže byť najviac 8-násobok ročného čistého príjmu.',
+                  'Banky bežne požičajú do 80 % hodnoty nehnuteľnosti, zvyšok je z vlastných zdrojov.',
+                  'Kreditky a kontokorenty znižujú sumu, aj keď ich nepoužívate.'],
+         visual=('coins', 'pct', 'Koľko si požičať', ('8×', 'ročný čistý príjem (DTI)')),
+         help=('Chcete presnú sumu?', 'Prepočítam vám, koľko vám požičajú viaceré banky naraz.'),
+         related=[('/hypoteky-a-uvery/', 'Hypotéky a úvery'), ('/refinancovanie/', 'Refinancovanie'), ('/financny-plan/', 'Finančný plán')]),
+    dict(slug='audit-poistnych-zmluv',
+         title='Audit poistných zmlúv: neplaťte za staré poistky | Martin Juriga, Orava',
+         h1='Audit poistných zmlúv: ako zistiť, či neplatíte za staré a zbytočné poistky',
+         card='Sedem znakov, že je čas na kontrolu, čo pri audite pozeráme a prečo nerušiť starú zmluvu skôr, ako máte novú.',
+         desc='Platíte za staré alebo duplicitné poistky? Sedem znakov, že je čas na audit zmlúv, čo kontrolujeme pri životnom a majetkovom poistení a ako audit prebieha. Orava, Žilina aj online.',
+         tag='Poistenie', tema='Poistenie', date='2026-10-11', minutes=6,
+         lead='Väčšina ľudí uzatvorí poistenie raz a potom ho roky nerieši. Zmluvy pritom zastarajú rovnako ako všetko ostatné. Ukážem vám, ako zistiť, za čo vlastne platíte a čo vám chýba.',
+         summary=['Zmluvu staršiu ako 5 rokov sa oplatí skontrolovať.',
+                  'Častý problém sú duplicitné poistky a nízka poistná suma domu.',
+                  'Starú zmluvu nerušte skôr, ako budete mať novú.'],
+         visual=('magnifier', 'shield', 'Audit zmlúv', ('7 znakov', 'že je čas na kontrolu')),
+         help=('Chcete audit zmlúv?', 'Pošlite mi zmluvy, prejdeme ich spolu. Pre vás zadarmo.'),
+         related=[('/zivotne-poistenie/', 'Životné poistenie'), ('/majetkove-poistenie/', 'Poistenie majetku'), ('/financny-plan/', 'Finančný plán')]),
+    dict(slug='hypoteka-orava',
+         title='Hypotéka na Orave: kúpa bytu a domu v Dolnom Kubíne, Námestove | Martin Juriga',
+         h1='Hypotéka na Orave: ako kúpiť byt alebo dom v Dolnom Kubíne, Námestove a Tvrdošíne',
+         card='Lokálny sprievodca: vlastné zdroje, starší dom, pozemok na stavbu, list vlastníctva, príjem zo zahraničia a postup krok za krokom.',
+         desc='Kupujete byt alebo dom na Orave? Sprievodca hypotékou v Dolnom Kubíne, Námestove, Tvrdošíne a Trstenej: vlastné zdroje, starší dom, pozemok, list vlastníctva a postup krok za krokom.',
+         tag='Hypotéky', tema='Hypotéka', date='2026-10-11', minutes=7,
+         lead='Kúpa bytu v Dolnom Kubíne sa od kúpy staršieho domu na dedine pri Námestove dosť líši. Spísal som, na čo si dať pozor pri hypotéke na Orave a ako postupovať, aby vás nič neprekvapilo.',
+         summary=['Najprv si prepočítajte sumu, až potom hľadajte nehnuteľnosť.',
+                  'Pri staršom dome a pozemku si vopred overte list vlastníctva.',
+                  'Príjem zo zahraničia alebo zo živnosti posudzuje každá banka inak.'],
+         visual=('house', 'pct', 'Hypotéka na Orave', ('80 %', 'bežná výška úveru z hodnoty')),
+         help=('Kupujete bývanie?', 'Prepočítam vám hypotéku a porovnám ponuky viacerých bánk.'),
+         related=[('/hypoteky-a-uvery/', 'Hypotéky a úvery'), ('/majetkove-poistenie/', 'Poistenie nehnuteľnosti'), ('/financny-plan/', 'Finančný plán')]),
     dict(slug='koniec-fixacie-hypoteky',
          title='Koniec fixácie hypotéky: čo robiť krok za krokom | Martin Juriga',
          h1='Končí vám fixácia hypotéky? Čo robiť krok za krokom',
@@ -18,6 +57,7 @@ ARTICLES = [  # najnovší hore
                   'Máte 4 možnosti: prijať ponuku, vyjednať lepšiu, refinancovať alebo úver skrátiť.',
                   'Ku koncu fixácie môžete splatiť časť úveru bez poplatku za predčasné splatenie.'],
          visual=('hourglass', 'coins', 'Koniec fixácie', ('3 % → 4 %', '+54 € mesačne pri 100 000 €')),
+         help=('Končí vám fixácia?', 'Pošlite mi list od banky, porovnám ho s ponukami ďalších bánk.'),
          related=[('/refinancovanie/', 'Refinancovanie hypotéky'), ('/skratenie-uveru/', 'Skrátenie úveru'), ('/hypoteky-a-uvery/', 'Hypotéky a úvery')]),
 ]
 
@@ -37,6 +77,13 @@ def glass(name, cls):
     g = open(os.path.join(os.path.dirname(__file__), 'glass', name + '.svg')).read()
     g = g.replace('class="glass svc-stage__pct"', 'class="glass"')
     return g.replace('<svg class="glass"', f'<svg class="glass {cls}"', 1)
+
+def more_articles(a):
+    others = [o for o in ARTICLES if o['slug'] != a['slug'] and not o.get('draft')][:3]
+    if not others:
+        return ''
+    li = ''.join(f'<li><a href="/blog/{o["slug"]}/"><span>{o["tag"]}</span>{o["h1"]}</a></li>' for o in others)
+    return f'<nav class="post__more" aria-label="Ďalšie články"><p>Ďalšie články</p><ul>{li}</ul></nav>'
 
 def article_body(a):
     text = open(os.path.join(BLOG_DIR, a['slug'] + '.html')).read()
@@ -77,8 +124,8 @@ def article_body(a):
             <ol>{toc}</ol>
           </nav>
           <div class="post-help">
-            <p class="post-help__h">Končí vám fixácia?</p>
-            <p>Pošlite mi list od banky, porovnám ho s ponukami ďalších bánk.</p>
+            <p class="post-help__h">{a['help'][0]}</p>
+            <p>{a['help'][1]}</p>
             <a href="tel:+421915448705" class="post-help__tel">+421 915 448 705</a>
             <a href="#kontakt" class="btn btn--primary btn--sm">Napísať správu <span aria-hidden="true">→</span></a>
           </div>
@@ -101,6 +148,7 @@ def article_body(a):
             <p>Súvisiace služby</p>
             <ul>{rel}</ul>
           </nav>
+          {more_articles(a)}
           <p class="post__note">Článok má informatívny charakter a nie je ponukou ani odporúčaním. Konkrétne podmienky úveru určuje banka po posúdení vašej žiadosti.</p>
         </div>
       </div>
@@ -132,7 +180,7 @@ def index_body():
             <p>{a['card']}</p>
             <span class="post-card__meta"><time datetime="{a['date']}">{nice_date(a['date'])}</time> · {a['minutes']} min čítania</span>
             <span class="post-card__more">Čítať článok <span aria-hidden="true">→</span></span>
-          </a>''' for a in ARTICLES)
+          </a>''' for a in ARTICLES if not a.get('draft'))
     defs = open(os.path.join(os.path.dirname(__file__), 'partials', 'glass-defs.html')).read()
     return f'''    <!-- ============ ČLÁNKY ============ -->
 {defs}
@@ -155,7 +203,7 @@ def index_body():
 def index_ld():
     return [
         {"@context": "https://schema.org", "@type": "Blog", "name": "Články o financiách – Martin Juriga", "url": f"{SITE}/blog/", "inLanguage": "sk",
-         "blogPost": [{"@type": "BlogPosting", "headline": a['h1'], "url": f"{SITE}/blog/{a['slug']}/", "datePublished": a['date']} for a in ARTICLES]},
+         "blogPost": [{"@type": "BlogPosting", "headline": a['h1'], "url": f"{SITE}/blog/{a['slug']}/", "datePublished": a['date']} for a in ARTICLES if not a.get('draft')]},
         {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Domov", "item": f"{SITE}/"},
             {"@type": "ListItem", "position": 2, "name": "Články", "item": f"{SITE}/blog/"}]},
