@@ -1690,3 +1690,4 @@ h1:has(> .h1-kicker) { margin-top: 0; }
 .post__body .post__more li:first-child a { border-top: 0; }
 .post__body .post__more a:hover { color: #f0b47c; }
 .post__more a span { display: block; font-size: .72rem; font-weight: 700; color: var(--page-muted); text-transform: uppercase; letter-spacing: .1em; margin-bottom: .15rem; }
+.contact__photo { -webkit-mask-image: none; mask-image: none; }
