@@ -295,7 +295,7 @@ if (done) {
   done.innerHTML = `
     <svg class="form__done-ic" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="28"/><path d="M20 33l8 8 16-17"/></svg>
     <h3 tabindex="-1">Ďakujem, správa odišla!</h3>
-    <p>Ozvem sa vám do 24 hodín a dohodneme si stretnutie, osobne alebo online. Ak ste zadali e-mail, poslal som vám aj potvrdenie.</p>
+    <p>Ozvem sa vám do 24 hodín a dohodneme si stretnutie, osobne alebo online.</p>
     <button type="button" class="btn btn--light form__again">Napísať ďalšiu správu <span aria-hidden="true">↺</span></button>`;
   form.appendChild(done);
 }
