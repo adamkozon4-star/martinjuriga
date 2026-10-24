@@ -1,5 +1,9 @@
-// Kontaktný formulár: prijme dopyt z webu, pošle ho Martinovi e-mailom cez Resend (resend.com)
-// a klientovi, ak zadal e-mail, pošle krátke potvrdenie.
+// Kontaktný formulár: prijme dopyt z webu a pošle ho Martinovi e-mailom cez Resend (resend.com).
+//
+// BEZPEČNOSŤ: e-mail ide VŽDY len na pevné adresy (CONTACT_TO / CONTACT_BCC). Na adresu,
+// ktorú zadá návštevník, sa nič neposiela – ide len do reply_to. Automatické potvrdenie
+// klientovi bolo vypnuté (10/2026): takýto formulár sa dá zneužiť na rozosielanie e-mailov
+// cudzím ľuďom z domény send.peakstudio.sk, čo míňa spoločný limit a kazí reputáciu domény.
 // Premenné prostredia (Vercel → Settings → Environment Variables):
 //   RESEND_API_KEY  povinné, API kľúč z Resend
 //   CONTACT_TO      komu chodia dopyty, viac adries oddeľ čiarkou (predvolene martin.juriga@merucompany.sk)
@@ -11,11 +15,6 @@ const list = (v) => (v || '').split(',').map((a) => a.trim()).filter(Boolean);
 const TO = list(process.env.CONTACT_TO || 'martin.juriga@merucompany.sk');
 const BCC = list(process.env.CONTACT_BCC);
 const FROM = process.env.CONTACT_FROM || 'Web Martin Juriga <onboarding@resend.dev>';
-// potvrdenie klientovi ide z rovnakej adresy, ale s Martinovým menom; odpoveď smeruje Martinovi
-const FROM_ADDR = (FROM.match(/<([^>]+)>/) || [, FROM])[1];
-const CONFIRM_FROM = `Martin Juriga <${FROM_ADDR}>`;
-const MARTIN_EMAIL = 'martin.juriga@merucompany.sk';
-const PHONE = '+421 915 448 705';
 const SITE = 'https://martinjuriga.sk';
 
 const TOPICS = ['Investície', 'Hypotéka', 'Poistenie', 'Dôchodok', 'Rezerva', 'II. a III. pilier', 'Poistenie nehnuteľnosti', 'PZP'];
@@ -31,6 +30,36 @@ const PAGES = {
   '/majetkove-poistenie/': 'Majetkové poistenie',
   '/financny-plan/': 'Finančný plán',
 };
+
+// Formulár smie prísť len z týchto webov (prehliadač posiela hlavičku Origin vždy)
+const ALLOWED_HOSTS = ['martinjuriga.sk', 'www.martinjuriga.sk', 'localhost:3000'];
+const allowedOrigin = (origin) => {
+  if (!origin) return false;
+  try {
+    const host = new URL(origin).host;
+    return ALLOWED_HOSTS.includes(host) || host.endsWith('.vercel.app');
+  } catch {
+    return false;
+  }
+};
+
+// Brzda: max. 3 odoslania za minútu z jednej IP (v pamäti inštancie – nie tvrdý limit,
+// ale naivné zaplavenie z jednej adresy zastaví)
+const RATE_LIMIT = 3;
+const RATE_WINDOW_MS = 60_000;
+const hits = new Map();
+function rateLimited(ip) {
+  const now = Date.now();
+  const recent = (hits.get(ip) || []).filter((t) => now - t < RATE_WINDOW_MS);
+  recent.push(now);
+  hits.set(ip, recent);
+  if (hits.size > 5000) hits.clear();
+  return recent.length > RATE_LIMIT;
+}
+
+// Typické znaky spamu: odkazy a azbuka (klienti píšu po slovensky/česky)
+const LINK_RE = /(https?:\/\/|www\.|\b[a-z0-9-]+\.(buzz|xyz|top|click|link|ru|site|online|shop)\b)/i;
+const CYRILLIC_RE = /[\u0400-\u04FF]/;
 
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const clean = (v, max) => (typeof v === 'string' ? v.trim().slice(0, max) : '');
@@ -69,6 +98,10 @@ export default async function handler(req, res) {
     return res.status(405).json({ ok: false, error: 'method' });
   }
 
+  const ip = String(req.headers['x-forwarded-for'] || '').split(',')[0].trim() || 'unknown';
+  if (rateLimited(ip)) return res.status(429).json({ ok: false, error: 'rate' });
+  if (!allowedOrigin(req.headers.origin)) return res.status(403).json({ ok: false, error: 'origin' });
+
   let body = req.body || {};
   if (typeof body === 'string') {
     try { body = JSON.parse(body); } catch { body = {}; }
@@ -87,6 +120,12 @@ export default async function handler(req, res) {
 
   if (!meno || !telefon || !body.suhlas) return res.status(400).json({ ok: false, error: 'required' });
   if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return res.status(400).json({ ok: false, error: 'email' });
+
+  // spam (odkazy, azbuka) ticho zahodíme – robotovi tvrdíme, že prešiel
+  if ([meno, sprava].some((v) => LINK_RE.test(v) || CYRILLIC_RE.test(v))) {
+    console.warn('spam zahodený', { ip });
+    return res.status(200).json({ ok: true });
+  }
 
   const key = process.env.RESEND_API_KEY;
   if (!key) return res.status(500).json({ ok: false, error: 'config' });
@@ -125,32 +164,6 @@ export default async function handler(req, res) {
   } catch (e) {
     console.error(e);
     return res.status(502).json({ ok: false, error: 'send' });
-  }
-
-  // ---------- potvrdenie pre klienta ----------
-  // Zámerne bez mena a textu, ktorý klient napísal, aby sa formulár nedal zneužiť na rozosielanie cudzieho obsahu.
-  if (email) {
-    const confirm = `
-    <h1 style="margin:0 0 16px;font-size:24px;line-height:1.25">Ďakujem za vašu správu</h1>
-    <p style="margin:0 0 14px;font-size:15px;line-height:1.6">Dobrý deň,</p>
-    <p style="margin:0 0 14px;font-size:15px;line-height:1.6">vaša správa na tému <strong>${esc(tema)}</strong> mi prišla. Čoskoro sa vám ozvem a dohodneme si stretnutie, osobne alebo online, ako vám to bude vyhovovať. Prvé stretnutie je zadarmo a nezáväzné.</p>
-    <p style="margin:0 0 22px;font-size:15px;line-height:1.6">Ak sa chcete spojiť skôr, zavolajte mi alebo jednoducho odpovedzte na tento e-mail.</p>
-    <p style="margin:0 0 24px">${button(`tel:${PHONE.replace(/\s/g, '')}`, `Zavolať ${PHONE}`)}</p>
-    <p style="margin:0;font-size:15px;line-height:1.6">S pozdravom<br /><strong>Martin Juriga</strong><br /><span style="color:#7e756d">${MARTIN_EMAIL}</span></p>`;
-    const legal = `Martin Juriga, podriadený finančný agent zapísaný v registri NBS pod č. 277707. Tento e-mail ste dostali, pretože ste vyplnili kontaktný formulár na <a href="${SITE}" style="color:#7e756d">martinjuriga.sk</a>. Ak ste ho neodoslali vy, môžete ho ignorovať.`;
-    try {
-      await send(key, {
-        from: CONFIRM_FROM,
-        to: [email],
-        reply_to: MARTIN_EMAIL,
-        subject: 'Ďakujem za správu – Martin Juriga',
-        html: layout(confirm, legal),
-        text: `Dobrý deň,\n\nvaša správa na tému ${tema} mi prišla. Čoskoro sa vám ozvem a dohodneme si stretnutie, osobne alebo online. Prvé stretnutie je zadarmo a nezáväzné.\n\nAk sa chcete spojiť skôr, zavolajte mi na ${PHONE} alebo odpovedzte na tento e-mail.\n\nS pozdravom\nMartin Juriga\n${MARTIN_EMAIL}\n\nMartin Juriga, podriadený finančný agent zapísaný v registri NBS pod č. 277707.`,
-      });
-    } catch (e) {
-      // dopyt už Martinovi odišiel, chybu potvrdenia len zapíšeme
-      console.error('potvrdenie', e);
-    }
   }
 
   return res.status(200).json({ ok: true });
