@@ -83,10 +83,6 @@ def render(c):
           <img class="svc-stage__person" src="/img/martin-sluzby-1000.webp" srcset="/img/martin-sluzby-640.webp 640w, /img/martin-sluzby-1000.webp 1000w" sizes="(max-width: 900px) 80vw, 460px" width="1000" height="1195" alt="Martin Juriga, {c['name'].lower()}" fetchpriority="high" />
           {glass(c['small'], 'svc-stage__pct')}
           <div class="h-card h-card--free"><span class="pill__dot"></span>{c.get('free', 'Služba je pre vás bezplatná')}</div>
-          <div class="h-card h-card--badge">
-            <span class="h-card__medal"><svg viewBox="0 0 24 24">{badge_ic}</svg></span>
-            <span><strong>{badge_strong}</strong><small>{badge_small}</small></span>
-          </div>
         </div>
       </div>
     </section>
