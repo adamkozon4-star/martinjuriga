@@ -135,7 +135,7 @@ html = f'''    <!-- ============ KDE POMÁHAM (3D mapa, generuje tools/make_map.
             <span class="eyebrow">Kancelária</span>
             <h3>Tu sa stretneme</h3>
           </div>
-          <p>Na osobné stretnutie vás pozvem do kancelárie MeruCompany. Pokojné prostredie, kde si všetko v kľude prejdeme. Kliknite na fotku a pozrite sa dnu.</p>
+          <p>Na osobné stretnutie vás pozvem do kancelárie MeruCompany na <a href="https://www.google.com/maps/search/?api=1&amp;query=Martin+Juriga+Bernol%C3%A1kova+19%2F13+Trsten%C3%A1" target="_blank" rel="noopener">Bernolákovej 19 v Trstenej</a>. Pokojné prostredie, kde si všetko v kľude prejdeme. Kliknite na fotku a pozrite sa dnu.</p>
         </div>
         <div class="geo-gallery reveal" data-lightbox>
           {gallery}

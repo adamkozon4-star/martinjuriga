@@ -74,7 +74,7 @@ def page(slug, title, desc, h_name, body, tema, faq, og_image, ld=None, og_type=
        "image": ["https://martinjuriga.sk/img/martin-juriga.jpg", f"https://martinjuriga.sk/img/{og_image}"],
        "description": desc,
        "provider": {"@type": "FinancialService", "name": "Martin Juriga – finančné plánovanie", "url": "https://martinjuriga.sk/", "image": "https://martinjuriga.sk/img/martin-juriga.jpg", "telephone": "+421915448705",
-                    "address": {"@type": "PostalAddress", "streetAddress": "Medzibrodie nad Oravou 136", "postalCode": "026 01", "addressLocality": "Dolný Kubín", "addressCountry": "SK"}},
+                    "address": {"@type": "PostalAddress", "streetAddress": "Bernolákova 19/13", "postalCode": "028 01", "addressLocality": "Trstená", "addressCountry": "SK"}, "hasMap": "https://www.google.com/maps/search/?api=1&query=Martin+Juriga+Bernol%C3%A1kova+19%2F13+Trsten%C3%A1"},
        "areaServed": ["Dolný Kubín", "Námestovo", "Tvrdošín", "Trstená", "Žilina", "Slovensko"]},
       {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "Domov", "item": "https://martinjuriga.sk/"},
